@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:note_app/common/exception.dart';
 
 import 'package:note_app/domain/model/error.dart';
 import 'package:note_app/domain/model/note.dart';
@@ -16,8 +17,13 @@ class GetNoteUsecase {
       final note = noteDto.toDomain();
 
       return right(note);
-    } catch (_) {
-      return left(NoteError());
+    } catch (e) {
+      if (e is NoRecordsException) {
+        return left(NoteError(message: "Empty, click '+' to add new."));
+      }
+      return left(
+        NoteError(message: 'Failed to load notes, please try again.'),
+      );
     }
   }
 }

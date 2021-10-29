@@ -10,7 +10,7 @@ class NoteRepositoryImplementation implements NoteRepository {
   final Database _database;
 
   @override
-  Future addUpdateNote(int? id, NoteDto note) async {
+  Future addUpdateNote(NoteDto note, {int? id}) async {
     try {
       if (id == null) {
         await _database.add(note);
