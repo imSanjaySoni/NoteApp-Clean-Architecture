@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:note_app/common/constants.dart';
+import 'package:note_app/data/dto/note_dto.dart';
 import 'package:note_app/presentation/screens/add_update_note/bloc/add_update_bloc.dart';
 import 'package:note_app/presentation/screens/home/bloc/home_bloc.dart';
 
@@ -17,6 +18,7 @@ Future main() async {
 
   //* hive local database setup
   await Hive.initFlutter();
+  Hive.registerAdapter(NoteDtoAdapter());
   await Hive.openBox(databaseBox, keyComparator: _reverseOrder);
 
   //* Update statusbar theme

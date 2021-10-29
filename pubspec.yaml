@@ -26,7 +26,6 @@ dependencies:
   hive_flutter: ^1.1.0
   injectable: ^1.5.0
   intl: ^0.17.0
-  json_serializable: ^5.0.2
   shimmer: ^2.0.0
 
 dev_dependencies:

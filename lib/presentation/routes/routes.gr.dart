@@ -5,8 +5,8 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/foundation.dart' as _i5;
 import 'package:flutter/material.dart' as _i3;
+import 'package:flutter/widgets.dart' as _i5;
 
 import '../../domain/model/note.dart' as _i6;
 import '../screens/screens.dart' as _i1;
