@@ -11,7 +11,7 @@ class GetNoteUsecase {
   const GetNoteUsecase(this._repository);
   final NoteRepository _repository;
 
-  Future<Either<NoteError, Note>> call(int id) async {
+  Future<Either<NoteError, Note>> call(String id) async {
     try {
       final noteDto = await _repository.getNote(id);
       final note = noteDto.toDomain();

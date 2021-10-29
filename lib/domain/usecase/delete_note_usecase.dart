@@ -9,7 +9,7 @@ class DeleteNoteUsecase {
   DeleteNoteUsecase(this._repository);
   final NoteRepository _repository;
 
-  Future<Either<NoteError, Unit>> call(int id) async {
+  Future<Either<NoteError, Unit>> call(String id) async {
     try {
       await _repository.deleteNote(id);
       return right(unit);

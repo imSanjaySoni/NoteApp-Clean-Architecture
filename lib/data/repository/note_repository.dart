@@ -10,7 +10,7 @@ class NoteRepositoryImplementation implements NoteRepository {
   final Database _database;
 
   @override
-  Future addUpdateNote(NoteDto note, {int? id}) async {
+  Future addUpdateNote(NoteDto note, {String? id}) async {
     try {
       if (id == null) {
         await _database.add(note);
@@ -23,7 +23,7 @@ class NoteRepositoryImplementation implements NoteRepository {
   }
 
   @override
-  Future deleteNote(int id) async {
+  Future deleteNote(String id) async {
     try {
       await _database.delete(id);
     } catch (_) {
@@ -43,7 +43,7 @@ class NoteRepositoryImplementation implements NoteRepository {
   }
 
   @override
-  Future<NoteDto> getNote(int id) async {
+  Future<NoteDto> getNote(String id) async {
     try {
       final noteDto = await _database.get(id) as NoteDto;
       return noteDto;

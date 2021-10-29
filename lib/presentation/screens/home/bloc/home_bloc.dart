@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:note_app/domain/model/note.dart';
-import 'package:note_app/domain/usecase/show_notes_usecase.dart';
+import 'package:note_app/domain/usecase/usecase.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

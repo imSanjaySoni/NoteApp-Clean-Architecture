@@ -11,7 +11,7 @@ class Note {
     this.dateTime,
   });
 
-  final int? id;
+  final String? id;
   final String? title;
   final String? description;
   final Color? color;

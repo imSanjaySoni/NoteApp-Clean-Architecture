@@ -1,8 +1,10 @@
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/exception.dart';
 import 'package:note_app/domain/database/database.dart';
+import 'package:uuid/uuid.dart';
 
 @LazySingleton(as: Database)
 class DatabaseImplementing implements Database {
@@ -10,7 +12,7 @@ class DatabaseImplementing implements Database {
   Box get box => Hive.box(databaseBox);
 
   @override
-  Future<T> get<T>(int id) async {
+  Future<T> get<T>(String id) async {
     try {
       final data = await box.get(id);
       if (data == null) {
@@ -38,25 +40,26 @@ class DatabaseImplementing implements Database {
   @override
   Future add<T>(T item) async {
     try {
-      await box.add(item);
+      const uuid = Uuid();
+      await box.put(uuid.v1(), item);
     } catch (_) {
       rethrow;
     }
   }
 
   @override
-  Future delete(int id) async {
+  Future delete(String id) async {
     try {
-      await box.deleteAt(id);
+      await box.delete(id);
     } catch (_) {
       rethrow;
     }
   }
 
   @override
-  Future update<T>(int id, T item) async {
+  Future update<T>(String id, T item) async {
     try {
-      await box.putAt(id, item);
+      await box.put(id, item);
     } catch (_) {
       rethrow;
     }

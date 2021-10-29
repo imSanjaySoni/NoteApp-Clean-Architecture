@@ -27,6 +27,7 @@ dependencies:
   injectable: ^1.5.0
   intl: ^0.17.0
   shimmer: ^2.0.0
+  uuid: ^3.0.5
 
 dev_dependencies:
   auto_route_generator: ^2.4.1

@@ -9,6 +9,7 @@ import 'package:note_app/presentation/components/components.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
+import 'bloc/add_update_bloc.dart';
 import 'widgets/colors_bar.dart';
 
 class AddUpdateNoteScreen extends StatefulWidget {
@@ -48,7 +49,18 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
         actions: [
           AppButton(
             child: const Text('  Save  '),
-            onPressed: () {},
+            onPressed: () {
+              context.read<AddUpdateBloc>().add(
+                    AddUpdateEvent.addNote(
+                      Note(
+                        color: _selectedColor,
+                        dateTime: DateTime.now(),
+                        description: _descriptionController.text,
+                        title: _titleController.text,
+                      ),
+                    ),
+                  );
+            },
           ),
         ],
       ),

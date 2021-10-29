@@ -36,7 +36,7 @@ Future main() async {
           create: (_) => getIt<HomeBloc>()..add(const HomeEvent.getAllNotes()),
         ),
         BlocProvider<AddUpdateBloc>(
-          create: (_) => AddUpdateBloc(),
+          create: (_) => getIt<AddUpdateBloc>(),
         ),
       ],
       child: App(),
