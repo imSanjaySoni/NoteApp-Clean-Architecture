@@ -1,0 +1,35 @@
+{
+   "cSpell.words": [
+      "note_ap"
+   ],
+   "files.exclude": {
+      "**/.git": false,
+      "**/.svn": false,
+      "**/.hg": false,
+      "**/CVS": false,
+      "**/.DS_Store": false,
+      "**/Thumbs.db": false,
+      "**/.classpath": false,
+      "**/.project": false,
+      "**/.settings": false,
+      "**/.factorypath": false,
+      "**/*.freezed.dart": false,
+      "**/*.g.dart": false,
+      "**/*.config.dart": false,
+      "**/*.flutter-plugins": false,
+      "**/*.flutter-plugins-dependencies": false,
+      "**/*.metadata": false,
+      "**/*.packages": false,
+      "**/*pubspec.lock": false,
+      "**/*.idea": false,
+      "**/*.dart_tool": false,
+      "**/*firebase.json": false,
+      "**/*.firebaserc": false,
+      "**/*.firebase": false,
+      "**/*.vscode": false,
+      "**/*.gitignore": false,
+      "**/*.iml": false,
+      "**/*.md": false
+   },
+   "explorerExclude.backup": null
+}
