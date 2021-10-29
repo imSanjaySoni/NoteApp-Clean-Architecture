@@ -1,4 +1,5 @@
 import 'dart:ui' show Color;
+
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:note_app/domain/model/note.dart';
@@ -31,6 +32,22 @@ class NoteDto {
       description: description,
       dateTime: DateTime.tryParse(dateTime!),
       color: Color(colorValue!),
+    );
+  }
+
+  NoteDto copyWith({
+    String? id,
+    String? title,
+    String? description,
+    int? colorValue,
+    String? dateTime,
+  }) {
+    return NoteDto(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      colorValue: colorValue ?? this.colorValue,
+      dateTime: dateTime ?? this.dateTime,
     );
   }
 

@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/exception.dart';
 import 'package:note_app/domain/database/database.dart';
-import 'package:uuid/uuid.dart';
 
 @LazySingleton(as: Database)
 class DatabaseImplementing implements Database {
@@ -38,16 +37,6 @@ class DatabaseImplementing implements Database {
   }
 
   @override
-  Future add<T>(T item) async {
-    try {
-      const uuid = Uuid();
-      await box.put(uuid.v1(), item);
-    } catch (_) {
-      rethrow;
-    }
-  }
-
-  @override
   Future delete(String id) async {
     try {
       await box.delete(id);
@@ -57,7 +46,7 @@ class DatabaseImplementing implements Database {
   }
 
   @override
-  Future update<T>(String id, T item) async {
+  Future addUpdate<T>(String id, T item) async {
     try {
       await box.put(id, item);
     } catch (_) {

@@ -11,10 +11,10 @@ class UpdateNoteUsecase {
   UpdateNoteUsecase(this._repository);
   final NoteRepository _repository;
 
-  Future<Either<NoteError, Unit>> call(Note note, String noteId) async {
+  Future<Either<NoteError, Unit>> call(Note note) async {
     try {
       final noteDto = NoteDto.toDto(note);
-      await _repository.addUpdateNote(noteDto, id: noteId);
+      await _repository.addUpdateNote(noteDto);
       return right(unit);
     } catch (e) {
       return left(

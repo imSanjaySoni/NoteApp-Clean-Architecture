@@ -50,16 +50,31 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
           AppButton(
             child: const Text('  Save  '),
             onPressed: () {
-              context.read<AddUpdateBloc>().add(
-                    AddUpdateEvent.addNote(
-                      Note(
-                        color: _selectedColor,
-                        dateTime: DateTime.now(),
-                        description: _descriptionController.text,
-                        title: _titleController.text,
+              if (widget.note?.id != null) {
+                context.read<AddUpdateBloc>().add(
+                      AddUpdateEvent.updateNote(
+                        Note(
+                          id: widget.note!.id!,
+                          color: _selectedColor,
+                          dateTime: DateTime.now(),
+                          description: _descriptionController.text,
+                          title: _titleController.text,
+                        ),
+                        widget.note!.id!,
                       ),
-                    ),
-                  );
+                    );
+              } else {
+                context.read<AddUpdateBloc>().add(
+                      AddUpdateEvent.addNote(
+                        Note(
+                          color: _selectedColor,
+                          dateTime: DateTime.now(),
+                          description: _descriptionController.text,
+                          title: _titleController.text,
+                        ),
+                      ),
+                    );
+              }
             },
           ),
         ],

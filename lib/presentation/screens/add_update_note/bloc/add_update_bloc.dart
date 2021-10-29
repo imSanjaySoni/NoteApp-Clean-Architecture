@@ -31,7 +31,7 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
     on<_UpdateNote>((event, emit) async {
       emit(const AddUpdateState.saving());
 
-      final failureOrSuccess = await _updateUsecase(event.note, event.note.id!);
+      final failureOrSuccess = await _updateUsecase(event.note);
 
       failureOrSuccess.fold((error) {
         emit(AddUpdateState.failed(message: error.message));

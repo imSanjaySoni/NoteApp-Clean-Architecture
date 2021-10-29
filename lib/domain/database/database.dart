@@ -5,6 +5,5 @@ abstract class Database {
   Future<T> get<T>(String id);
   List<T> getAll<T>();
   Future delete(String id);
-  Future add<T>(T item);
-  Future update<T>(String id, T item);
+  Future addUpdate<T>(String id, T item);
 }
