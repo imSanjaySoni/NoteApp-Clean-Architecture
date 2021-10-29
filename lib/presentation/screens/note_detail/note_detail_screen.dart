@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import 'package:note_app/domain/model/note.dart';
@@ -34,18 +35,24 @@ class NoteDetailScreen extends StatelessWidget {
           vertical: AppSpacings.xl.h,
         ),
         children: [
-          Text(
-            note.title ?? '',
-            softWrap: true,
-            style: AppTypography.headline3,
+          FadeInLeft(
+            child: Text(
+              note.title ?? '',
+              softWrap: true,
+              style: AppTypography.headline3,
+            ),
           ),
           SizedBox(height: AppSpacings.xxl.h),
-          Text(note.date, style: AppTypography.title),
+          FadeInDown(
+            child: Text(note.date, style: AppTypography.title),
+          ),
           SizedBox(height: AppSpacings.xxl.h),
-          Text(
-            note.description ?? '',
-            softWrap: true,
-            style: AppTypography.headline6,
+          FadeInRight(
+            child: Text(
+              note.description ?? '',
+              softWrap: true,
+              style: AppTypography.headline6,
+            ),
           ),
         ],
       ),

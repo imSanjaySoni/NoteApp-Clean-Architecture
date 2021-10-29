@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:note_app/common/constants.dart';
+import 'package:note_app/common/strings.dart';
 
 import 'routes/routes.dart';
 import 'theme/theme.dart';
@@ -16,7 +17,7 @@ class App extends StatelessWidget {
       designSize: designRatio,
       builder: () {
         return MaterialApp.router(
-          title: 'PriceTracker',
+          title: StringConstants.appName,
           debugShowCheckedModeBanner: false,
           routeInformationParser: _router.defaultRouteParser(),
           routerDelegate: _router.delegate(),

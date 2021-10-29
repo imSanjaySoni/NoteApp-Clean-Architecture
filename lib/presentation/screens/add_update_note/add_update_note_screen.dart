@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import 'package:note_app/common/constants.dart';
@@ -39,11 +40,9 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
       backgroundColor: _selectedColor,
       bottomNavigationBar: ColorsBar(
         selectedColor: _selectedColor,
-        onChanged: (Color color) {
-          setState(() {
-            _selectedColor = color;
-          });
-        },
+        onChanged: (Color color) => setState(() {
+          _selectedColor = color;
+        }),
       ),
       appBar: NoteAppBar(
         actions: [
@@ -59,58 +58,66 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
           vertical: AppSpacings.xl.h,
         ),
         children: [
-          Stack(
-            children: [
-              if (_titleController.text.isEmptyString)
-                Opacity(
-                  opacity: 0.6,
-                  child: Text(
-                    'Title',
-                    style: AppTypography.headline1,
-                    softWrap: true,
+          FadeInDown(
+            delay: const Duration(milliseconds: 100),
+            duration: animationDuration,
+            child: Stack(
+              children: [
+                if (_titleController.text.isEmptyString)
+                  Opacity(
+                    opacity: 0.6,
+                    child: Text(
+                      'Title',
+                      style: AppTypography.headline1,
+                      softWrap: true,
+                    ),
                   ),
+                TextField(
+                  controller: _titleController,
+                  style: AppTypography.headline1,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.zero,
+                  ),
+                  minLines: 1,
+                  maxLines: 10,
+                  onChanged: (text) {
+                    setState(() {});
+                  },
                 ),
-              TextField(
-                controller: _titleController,
-                style: AppTypography.headline1,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.zero,
-                ),
-                maxLength: 150,
-                minLines: 1,
-                maxLines: 10,
-                onChanged: (text) {
-                  setState(() {});
-                },
-              ),
-            ],
+              ],
+            ),
           ),
-          Stack(
-            children: [
-              if (_descriptionController.text.isEmptyString)
-                Opacity(
-                  opacity: 0.6,
-                  child: Text(
-                    'Type something...',
-                    style: AppTypography.headline6,
-                    softWrap: true,
+          SizedBox(height: AppSpacings.xxl.h),
+          FadeInDown(
+            delay: const Duration(milliseconds: 400),
+            duration: animationDuration,
+            child: Stack(
+              children: [
+                if (_descriptionController.text.isEmptyString)
+                  Opacity(
+                    opacity: 0.6,
+                    child: Text(
+                      'Type something...',
+                      style: AppTypography.headline6,
+                      softWrap: true,
+                    ),
                   ),
+                TextField(
+                  controller: _descriptionController,
+                  style: AppTypography.headline6,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.zero,
+                  ),
+                  minLines: 2,
+                  maxLines: 100,
+                  onChanged: (text) {
+                    setState(() {});
+                  },
                 ),
-              TextField(
-                controller: _descriptionController,
-                style: AppTypography.headline6,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.zero,
-                ),
-                minLines: 2,
-                maxLines: 100,
-                onChanged: (text) {
-                  setState(() {});
-                },
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

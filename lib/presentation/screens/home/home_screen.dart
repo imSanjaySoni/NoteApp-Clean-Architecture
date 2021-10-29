@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/common/constants.dart';
@@ -26,11 +27,14 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context.router.push(AddUpdateNoteRoute());
-        },
-        child: const Icon(FeatherIcons.plus),
+      floatingActionButton: FadeInRight(
+        delay: animationDuration,
+        child: FloatingActionButton(
+          onPressed: () {
+            context.router.push(AddUpdateNoteRoute());
+          },
+          child: const Icon(FeatherIcons.plus),
+        ),
       ),
       body: _BuildNotesList(notes: notes),
     );
@@ -56,7 +60,10 @@ class _BuildNotesList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: notes.length,
       itemBuilder: (BuildContext context, int index) {
-        return NoteCard(note: notes[index]);
+        return FadeInUp(
+          duration: Duration(milliseconds: 300 * index + 100),
+          child: NoteCard(note: notes[index]),
+        );
       },
       staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
       mainAxisSpacing: AppSpacings.l.h,
