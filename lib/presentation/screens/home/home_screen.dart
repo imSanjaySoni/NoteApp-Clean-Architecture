@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/common/constants.dart';
 
@@ -9,6 +10,7 @@ import 'package:note_app/presentation/components/components.dart';
 import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
 
+import 'bloc/home_bloc.dart';
 import 'widgets/note_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -36,7 +38,15 @@ class HomeScreen extends StatelessWidget {
           child: const Icon(FeatherIcons.plus),
         ),
       ),
-      body: _BuildNotesList(notes: notes),
+      body: BlocBuilder<HomeBloc, HomeState>(
+        builder: (_, state) {
+          return state.maybeMap(
+            orElse: () => const Center(child: CircularProgressIndicator()),
+            error: (error) => ErrorText(error.message ?? ''),
+            loaded: (data) => _BuildNotesList(notes: data.notes),
+          );
+        },
+      ),
     );
   }
 }
@@ -71,59 +81,3 @@ class _BuildNotesList extends StatelessWidget {
     );
   }
 }
-
-final notes = [
-  Note(
-    color: colors.first,
-    dateTime: DateTime.now(),
-    title:
-        'etfy eyteyf ye  ert yertfy  ergf eyf yef fer e sdt ywt fyteyft y In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.',
-    description: 'this is description text',
-  ),
-  Note(
-    color: colors[2],
-    dateTime: DateTime.now(),
-    title:
-        'In publishing and graphic design, Lorem ipsum is a placeholder text commonly',
-    description:
-        'etfy eyteyf ye  ert yertfy  ergf eyf yef fer e sdt ywt fyteyft y In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. etfy eyteyf ye  ert yertfy  ergf eyf yef fer e sdt ywt fyteyft y In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.',
-  ),
-  Note(
-    color: colors[1],
-    dateTime: DateTime.now(),
-    title: 'This is title suyeyf ',
-    description: 'this is description text',
-  ),
-  Note(
-    color: colors.last,
-    dateTime: DateTime.now(),
-    title: 'This is tile',
-    description: 'this is description text',
-  ),
-  Note(
-    color: colors[2],
-    dateTime: DateTime.now(),
-    title:
-        'etfy eyteyf ye  ert yertfy  ergf eyf yef fer e sdt ywt fyteyft y In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.',
-    description: 'this is description text',
-  ),
-  Note(
-    color: colors[3],
-    dateTime: DateTime.now(),
-    title: 'This is tile dfdy e ge dveh eryf y',
-    description: 'this is description text',
-  ),
-  Note(
-    color: colors[4],
-    dateTime: DateTime.now(),
-    title: 'This is tile',
-    description: 'this is description text',
-  ),
-  Note(
-    color: colors.last,
-    dateTime: DateTime.now(),
-    title:
-        'etfy eyteyf ye  ert yertfy  ergf eyf yef fer e sdt ywt fyteyft y In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.',
-    description: 'this is description text',
-  ),
-];

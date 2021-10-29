@@ -19,7 +19,7 @@ class ShowAllNotesUsecase {
       return right(notes);
     } catch (e) {
       if (e is NoRecordsException) {
-        return left(NoteError(message: "Empty, click '+' to add new."));
+        return left(NoteError(message: 'Empty...'));
       }
       return left(
         NoteError(message: 'Failed to load notes, please try again.'),

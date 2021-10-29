@@ -33,7 +33,7 @@ Future main() async {
     MultiBlocProvider(
       providers: [
         BlocProvider<HomeBloc>(
-          create: (_) => getIt<HomeBloc>(),
+          create: (_) => getIt<HomeBloc>()..add(const HomeEvent.getAllNotes()),
         ),
         BlocProvider<AddUpdateBloc>(
           create: (_) => AddUpdateBloc(),
