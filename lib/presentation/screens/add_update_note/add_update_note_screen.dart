@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/common/extension/string.dart';
 
+import 'package:note_app/common/constants.dart';
+import 'package:note_app/common/extension/random.dart';
+import 'package:note_app/common/extension/string.dart';
+import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/components/components.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
+import 'widgets/colors_bar.dart';
+
 class AddUpdateNoteScreen extends StatefulWidget {
-  const AddUpdateNoteScreen({Key? key}) : super(key: key);
+  const AddUpdateNoteScreen({Key? key, this.note}) : super(key: key);
+  final Note? note;
 
   @override
   _AddUpdateNoteScreenState createState() => _AddUpdateNoteScreenState();
 }
 
 class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
+  late Color _selectedColor;
   late TextEditingController _titleController;
   late TextEditingController _descriptionController;
 
@@ -20,17 +27,28 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
   void initState() {
     super.initState();
 
-    _titleController = TextEditingController();
-    _descriptionController = TextEditingController();
+    _selectedColor = widget.note?.color ?? colors.randomElement;
+    _titleController = TextEditingController(text: widget.note?.title);
+    _descriptionController =
+        TextEditingController(text: widget.note?.description);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _selectedColor,
+      bottomNavigationBar: ColorsBar(
+        selectedColor: _selectedColor,
+        onChanged: (Color color) {
+          setState(() {
+            _selectedColor = color;
+          });
+        },
+      ),
       appBar: NoteAppBar(
         actions: [
           AppButton(
-            child: const Text('Save'),
+            child: const Text('  Save  '),
             onPressed: () {},
           ),
         ],
@@ -63,9 +81,7 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
                 minLines: 1,
                 maxLines: 10,
                 onChanged: (text) {
-                  setState(() {
-                    print(_titleController.text.isEmptyString);
-                  });
+                  setState(() {});
                 },
               ),
             ],

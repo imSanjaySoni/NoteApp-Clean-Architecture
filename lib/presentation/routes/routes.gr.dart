@@ -5,8 +5,8 @@
 // **************************************************************************
 
 import 'package:auto_route/auto_route.dart' as _i2;
+import 'package:flutter/foundation.dart' as _i5;
 import 'package:flutter/material.dart' as _i3;
-import 'package:flutter/widgets.dart' as _i5;
 
 import '../../domain/model/note.dart' as _i6;
 import '../screens/screens.dart' as _i1;
@@ -47,9 +47,11 @@ class AppRouter extends _i2.RootStackRouter {
           barrierDismissible: false);
     },
     AddUpdateNoteRoute.name: (routeData) {
+      final args = routeData.argsAs<AddUpdateNoteRouteArgs>(
+          orElse: () => const AddUpdateNoteRouteArgs());
       return _i2.CustomPage<dynamic>(
           routeData: routeData,
-          child: const _i1.AddUpdateNoteScreen(),
+          child: _i1.AddUpdateNoteScreen(key: args.key, note: args.note),
           transitionsBuilder: _i4.TransitionsBuilders.slideRightWithFade,
           durationInMilliseconds: 200,
           opaque: true,
@@ -100,8 +102,19 @@ class NoteDetailRouteArgs {
 }
 
 /// generated route for [_i1.AddUpdateNoteScreen]
-class AddUpdateNoteRoute extends _i2.PageRouteInfo<void> {
-  const AddUpdateNoteRoute() : super(name, path: 'add-update-note');
+class AddUpdateNoteRoute extends _i2.PageRouteInfo<AddUpdateNoteRouteArgs> {
+  AddUpdateNoteRoute({_i5.Key? key, _i6.Note? note})
+      : super(name,
+            path: 'add-update-note',
+            args: AddUpdateNoteRouteArgs(key: key, note: note));
 
   static const String name = 'AddUpdateNoteRoute';
+}
+
+class AddUpdateNoteRouteArgs {
+  const AddUpdateNoteRouteArgs({this.key, this.note});
+
+  final _i5.Key? key;
+
+  final _i6.Note? note;
 }

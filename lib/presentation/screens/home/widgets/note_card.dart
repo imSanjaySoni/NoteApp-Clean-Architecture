@@ -26,7 +26,7 @@ class NoteCard extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppSpacings.m.r),
-          color: note.color?.withOpacity(0.8),
+          color: note.color,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,

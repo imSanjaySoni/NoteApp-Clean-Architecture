@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/components/components.dart';
+import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
@@ -12,11 +13,14 @@ class NoteDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: note.color,
       appBar: NoteAppBar(
         actions: [
           AppButton(
             child: const Icon(FeatherIcons.edit),
-            onPressed: () {},
+            onPressed: () {
+              context.router.push(AddUpdateNoteRoute(note: note));
+            },
           ),
           AppButton(
             child: const Icon(FeatherIcons.trash2),

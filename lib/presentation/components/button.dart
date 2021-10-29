@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/presentation/theme/colors.dart';
 
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
@@ -15,7 +16,7 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTextStyle(
-      style: AppTypography.buttonLink,
+      style: AppTypography.buttonLink.copyWith(color: AppColors.white),
       child: GestureDetector(
         onTap: onPressed,
         child: Container(
@@ -23,8 +24,8 @@ class AppButton extends StatelessWidget {
           height: 40.w,
           constraints: BoxConstraints(minWidth: 40.w),
           decoration: BoxDecoration(
-            color: Colors.black12,
-            borderRadius: BorderRadius.circular(AppSpacings.m.r),
+            color: const Color(0xff444444),
+            borderRadius: BorderRadius.circular(AppSpacings.l.r),
           ),
           child: Center(
             child: child,
