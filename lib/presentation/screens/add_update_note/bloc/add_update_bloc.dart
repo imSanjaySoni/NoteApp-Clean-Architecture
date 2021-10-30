@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:note_app/common/constants.dart';
 import 'package:note_app/di/di.dart';
 
 import 'package:note_app/domain/model/note.dart';
@@ -25,7 +26,7 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
 
       final failureOrSuccess = await _addUsecase(event.note);
 
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(animationDuration);
 
       failureOrSuccess.fold((failure) {
         emit(AddUpdateState.failed(message: failure.message));
@@ -44,7 +45,7 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
 
       final failureOrSuccess = await _updateUsecase(event.note);
 
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(animationDuration);
 
       failureOrSuccess.fold((failure) {
         emit(AddUpdateState.failed(message: failure.message));

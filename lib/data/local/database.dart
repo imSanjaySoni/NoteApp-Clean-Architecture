@@ -30,6 +30,7 @@ class DatabaseImplementing implements Database {
       if (data.isEmpty) {
         throw NoteAppException.noRecords();
       }
+
       return data.toList().cast<T>();
     } catch (_) {
       rethrow;

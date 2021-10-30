@@ -2,9 +2,12 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_app/common/constants.dart';
 
 import 'package:note_app/common/strings.dart';
+import 'package:note_app/di/di.dart';
+import 'package:note_app/domain/database/database.dart';
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/components/components.dart';
 import 'package:note_app/presentation/routes/routes.dart';
@@ -41,7 +44,7 @@ class HomeScreen extends StatelessWidget {
       body: BlocBuilder<HomeBloc, HomeState>(
         builder: (_, state) {
           return state.maybeMap(
-            orElse: () => const Center(child: CircularProgressIndicator()),
+            orElse: () => const ErrorText('Loading..'),
             error: (error) => ErrorText(error.message ?? ''),
             loaded: (data) => _BuildNotesList(notes: data.notes),
           );
@@ -61,23 +64,30 @@ class _BuildNotesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StaggeredGridView.countBuilder(
-      padding: EdgeInsets.symmetric(
-        horizontal: AppSpacings.xl.w,
-        vertical: AppSpacings.xl.h,
-      ),
-      crossAxisCount: 2,
-      shrinkWrap: true,
-      itemCount: notes.length,
-      itemBuilder: (BuildContext context, int index) {
-        return FadeInUp(
-          duration: Duration(milliseconds: 300 * index + 100),
-          child: NoteCard(note: notes[index]),
+    return ValueListenableBuilder(
+      valueListenable: getIt<Database>().box.listenable(),
+      builder: (BuildContext context, value, Widget? child) {
+        context.read<HomeBloc>().add(const HomeEvent.getAllNotes());
+
+        return StaggeredGridView.countBuilder(
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacings.xl.w,
+            vertical: AppSpacings.xl.h,
+          ),
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          itemCount: notes.length,
+          itemBuilder: (BuildContext context, int index) {
+            return FadeInUp(
+              duration: Duration(milliseconds: 300 * index + 100),
+              child: NoteCard(note: notes[index]),
+            );
+          },
+          staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
+          mainAxisSpacing: AppSpacings.l.h,
+          crossAxisSpacing: AppSpacings.l.w,
         );
       },
-      staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
-      mainAxisSpacing: AppSpacings.l.h,
-      crossAxisSpacing: AppSpacings.l.w,
     );
   }
 }
