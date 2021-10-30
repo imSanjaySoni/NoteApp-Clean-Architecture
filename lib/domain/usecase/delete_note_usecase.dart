@@ -6,14 +6,14 @@ import 'package:note_app/domain/repository/note_repository.dart';
 
 @injectable
 class DeleteNoteUsecase {
-  DeleteNoteUsecase(this._repository);
+  const DeleteNoteUsecase(this._repository);
   final NoteRepository _repository;
 
   Future<Either<NoteError, Unit>> call(String id) async {
     try {
       await _repository.deleteNote(id);
       return right(unit);
-    } catch (e) {
+    } catch (_) {
       return left(
         NoteError(message: 'Failed to delete note, please try again.'),
       );

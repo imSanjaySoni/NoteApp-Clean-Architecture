@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
@@ -18,4 +19,8 @@ extension ContextEx on BuildContext {
       ),
     );
   }
+}
+
+extension AppRouterEx on AppRouter {
+  BuildContext get context => navigatorKey.currentContext!;
 }

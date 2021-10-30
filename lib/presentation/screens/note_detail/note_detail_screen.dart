@@ -1,11 +1,14 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/components/components.dart';
 import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
+
+import 'bloc/note_detail_bloc.dart';
 
 class NoteDetailScreen extends StatelessWidget {
   const NoteDetailScreen({Key? key, required this.note}) : super(key: key);
@@ -25,7 +28,11 @@ class NoteDetailScreen extends StatelessWidget {
           ),
           AppButton(
             child: const Icon(FeatherIcons.trash2),
-            onPressed: () {},
+            onPressed: () {
+              context
+                  .read<NoteDetailBloc>()
+                  .add(NoteDetailEvent.deleteNote(note.id!));
+            },
           ),
         ],
       ),

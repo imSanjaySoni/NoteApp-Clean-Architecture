@@ -37,117 +37,135 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: _selectedColor,
-      bottomNavigationBar: ColorsBar(
-        selectedColor: _selectedColor,
-        onChanged: (Color color) => setState(() {
-          _selectedColor = color;
-        }),
-      ),
-      appBar: NoteAppBar(
-        actions: [
-          AppButton(
-            child: const Text('  Save  '),
-            onPressed: () {
-              if (widget.note?.id != null) {
-                context.read<AddUpdateBloc>().add(
-                      AddUpdateEvent.updateNote(
-                        Note(
-                          id: widget.note!.id!,
-                          color: _selectedColor,
-                          dateTime: DateTime.now(),
-                          description: _descriptionController.text,
-                          title: _titleController.text,
-                        ),
-                        widget.note!.id!,
-                      ),
-                    );
-              } else {
-                context.read<AddUpdateBloc>().add(
-                      AddUpdateEvent.addNote(
-                        Note(
-                          color: _selectedColor,
-                          dateTime: DateTime.now(),
-                          description: _descriptionController.text,
-                          title: _titleController.text,
-                        ),
-                      ),
-                    );
-              }
-            },
+    return Stack(
+      children: [
+        Scaffold(
+          backgroundColor: _selectedColor,
+          bottomNavigationBar: ColorsBar(
+            selectedColor: _selectedColor,
+            onChanged: (Color color) => setState(() {
+              _selectedColor = color;
+            }),
           ),
-        ],
-      ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(
-          horizontal: AppSpacings.xl.w,
-          vertical: AppSpacings.xl.h,
-        ),
-        children: [
-          FadeInDown(
-            delay: const Duration(milliseconds: 100),
-            duration: animationDuration,
-            child: Stack(
-              children: [
-                if (_titleController.text.isEmptyString)
-                  Opacity(
-                    opacity: 0.6,
-                    child: Text(
-                      'Title',
+          appBar: NoteAppBar(
+            actions: [
+              AppButton(
+                isLoading: context.watch<AddUpdateBloc>().state.maybeMap(
+                      orElse: () => false,
+                      saving: (_) => true,
+                    ),
+                child: const Text('  Save  '),
+                onPressed: () {
+                  if (widget.note?.id != null) {
+                    context.read<AddUpdateBloc>().add(
+                          AddUpdateEvent.updateNote(
+                            Note(
+                              id: widget.note!.id!,
+                              color: _selectedColor,
+                              dateTime: DateTime.now(),
+                              description: _descriptionController.text,
+                              title: _titleController.text,
+                            ),
+                            widget.note!.id!,
+                          ),
+                        );
+                  } else {
+                    context.read<AddUpdateBloc>().add(
+                          AddUpdateEvent.addNote(
+                            Note(
+                              color: _selectedColor,
+                              dateTime: DateTime.now(),
+                              description: _descriptionController.text,
+                              title: _titleController.text,
+                            ),
+                          ),
+                        );
+                  }
+                },
+              ),
+            ],
+          ),
+          body: ListView(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSpacings.xl.w,
+              vertical: AppSpacings.xl.h,
+            ),
+            children: [
+              FadeInDown(
+                delay: const Duration(milliseconds: 100),
+                duration: animationDuration,
+                child: Stack(
+                  children: [
+                    if (_titleController.text.isEmptyString)
+                      Opacity(
+                        opacity: 0.6,
+                        child: Text(
+                          'Title',
+                          style: AppTypography.headline1,
+                          softWrap: true,
+                        ),
+                      ),
+                    TextField(
+                      controller: _titleController,
                       style: AppTypography.headline1,
-                      softWrap: true,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.zero,
+                      ),
+                      minLines: 1,
+                      maxLines: 10,
+                      onChanged: (text) {
+                        setState(() {});
+                      },
                     ),
-                  ),
-                TextField(
-                  controller: _titleController,
-                  style: AppTypography.headline1,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                  minLines: 1,
-                  maxLines: 10,
-                  onChanged: (text) {
-                    setState(() {});
-                  },
+                  ],
                 ),
-              ],
-            ),
-          ),
-          SizedBox(height: AppSpacings.xxl.h),
-          FadeInDown(
-            delay: const Duration(milliseconds: 400),
-            duration: animationDuration,
-            child: Stack(
-              children: [
-                if (_descriptionController.text.isEmptyString)
-                  Opacity(
-                    opacity: 0.6,
-                    child: Text(
-                      'Type something...',
+              ),
+              SizedBox(height: AppSpacings.xxl.h),
+              FadeInDown(
+                delay: const Duration(milliseconds: 400),
+                duration: animationDuration,
+                child: Stack(
+                  children: [
+                    if (_descriptionController.text.isEmptyString)
+                      Opacity(
+                        opacity: 0.6,
+                        child: Text(
+                          'Type something...',
+                          style: AppTypography.headline6,
+                          softWrap: true,
+                        ),
+                      ),
+                    TextField(
+                      controller: _descriptionController,
                       style: AppTypography.headline6,
-                      softWrap: true,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.zero,
+                      ),
+                      minLines: 2,
+                      maxLines: 100,
+                      onChanged: (text) {
+                        setState(() {});
+                      },
                     ),
-                  ),
-                TextField(
-                  controller: _descriptionController,
-                  style: AppTypography.headline6,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                  minLines: 2,
-                  maxLines: 100,
-                  onChanged: (text) {
-                    setState(() {});
-                  },
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+
+        // show overlay screen while saving.
+        context.watch<AddUpdateBloc>().state.maybeMap(
+              orElse: () => Container(),
+              saving: (_) => FadeIn(
+                child: Container(
+                  color: Colors.black.withOpacity(0.2),
+                ),
+              ),
+            ),
+      ],
     );
   }
 }

@@ -11,6 +11,7 @@ import 'package:note_app/presentation/screens/home/bloc/home_bloc.dart';
 
 import 'di/di.dart';
 import 'presentation/app.dart';
+import 'presentation/screens/note_detail/bloc/note_detail_bloc.dart';
 
 Future main() async {
   //* inject dependencies
@@ -38,8 +39,11 @@ Future main() async {
         BlocProvider<AddUpdateBloc>(
           create: (_) => getIt<AddUpdateBloc>(),
         ),
+        BlocProvider<NoteDetailBloc>(
+          create: (_) => getIt<NoteDetailBloc>(),
+        ),
       ],
-      child: App(),
+      child: const App(),
     ),
   );
 }

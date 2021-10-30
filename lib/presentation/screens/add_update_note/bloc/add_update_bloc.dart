@@ -1,9 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:note_app/domain/model/note.dart';
+import 'package:note_app/di/di.dart';
 
+import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/domain/usecase/usecase.dart';
+import 'package:note_app/presentation/components/toast.dart';
+import 'package:note_app/presentation/routes/routes.dart';
+
 export 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'add_update_bloc.freezed.dart';
@@ -21,10 +25,17 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
 
       final failureOrSuccess = await _addUsecase(event.note);
 
-      failureOrSuccess.fold((error) {
-        emit(AddUpdateState.failed(message: error.message));
-      }, (notes) {
+      await Future.delayed(const Duration(seconds: 2));
+
+      failureOrSuccess.fold((failure) {
+        emit(AddUpdateState.failed(message: failure.message));
+        getIt<AppRouter>()
+            .context
+            .showToast('🙁  ${failure.message}', isError: true);
+      }, (_) {
         emit(const AddUpdateState.saved());
+        getIt<AppRouter>().navigate(const HomeRoute());
+        getIt<AppRouter>().context.showToast('🤙  Note Added.');
       });
     });
 
@@ -33,10 +44,17 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
 
       final failureOrSuccess = await _updateUsecase(event.note);
 
-      failureOrSuccess.fold((error) {
-        emit(AddUpdateState.failed(message: error.message));
-      }, (notes) {
+      await Future.delayed(const Duration(seconds: 2));
+
+      failureOrSuccess.fold((failure) {
+        emit(AddUpdateState.failed(message: failure.message));
+        getIt<AppRouter>()
+            .context
+            .showToast('🙁  ${failure.message}', isError: true);
+      }, (_) {
         emit(const AddUpdateState.saved());
+        getIt<AppRouter>().navigate(const HomeRoute());
+        getIt<AppRouter>().context.showToast('🤙  Note Updated.');
       });
     });
   }
