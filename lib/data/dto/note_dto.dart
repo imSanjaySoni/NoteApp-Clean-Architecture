@@ -51,6 +51,8 @@ class NoteDto {
     );
   }
 
+  bool get validNote => title?.isNotEmpty == true;
+
   @HiveField(0)
   final String? id;
   @HiveField(1)

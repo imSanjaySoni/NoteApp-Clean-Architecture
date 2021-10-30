@@ -51,7 +51,7 @@ class NoteDetailScreen extends StatelessWidget {
           ),
           SizedBox(height: AppSpacings.xxl.h),
           FadeInDown(
-            child: Text(note.date, style: AppTypography.title),
+            child: Text(note.date, style: AppTypography.description),
           ),
           SizedBox(height: AppSpacings.xxl.h),
           FadeInRight(

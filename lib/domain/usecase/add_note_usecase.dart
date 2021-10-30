@@ -17,9 +17,15 @@ class AddNoteUsecase {
     try {
       final noteDto = NoteDto.toDto(note);
 
-      await _repository.addUpdateNote(noteDto.copyWith(id: _uuid.v1()));
+      if (!noteDto.validNote) {
+        return left(
+          NoteError(message: 'Failed to add note, Title should not empty.'),
+        );
+      }
+
+      await _repository.addUpdateNote(noteDto.copyWith(id: _uuid.v4()));
       return right(unit);
-    } catch (e) {
+    } catch (_) {
       return left(NoteError(message: 'Failed to add note, please try again.'));
     }
   }

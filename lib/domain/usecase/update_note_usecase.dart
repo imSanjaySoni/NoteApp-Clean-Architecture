@@ -8,12 +8,19 @@ import 'package:note_app/domain/repository/note_repository.dart';
 
 @injectable
 class UpdateNoteUsecase {
-  UpdateNoteUsecase(this._repository);
+  const UpdateNoteUsecase(this._repository);
   final NoteRepository _repository;
 
   Future<Either<NoteError, Unit>> call(Note note) async {
     try {
       final noteDto = NoteDto.toDto(note);
+
+      if (!noteDto.validNote) {
+        return left(
+          NoteError(message: 'Failed to update note, Title should not empty.'),
+        );
+      }
+
       await _repository.addUpdateNote(noteDto);
       return right(unit);
     } catch (e) {
