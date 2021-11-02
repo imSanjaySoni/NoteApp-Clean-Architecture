@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/strings.dart';
@@ -30,14 +31,17 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: FadeIn(
-          duration: animationDuration,
-          child: Text(
-            StringConstants.appName,
-            style: AppTypography.headline1.copyWith(color: AppColors.white),
+    return AnnotatedRegion(
+      value: SystemUiOverlayStyle.light,
+      child: Scaffold(
+        backgroundColor: Colors.black,
+        body: Center(
+          child: FadeIn(
+            duration: animationDuration,
+            child: Text(
+              StringConstants.appName,
+              style: AppTypography.headline1.copyWith(color: AppColors.white),
+            ),
           ),
         ),
       ),

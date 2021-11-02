@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:note_app/presentation/theme/colors.dart';
@@ -14,7 +13,7 @@ class AppTheme {
       centerTitle: false,
       elevation: 0,
       titleTextStyle: GoogleFonts.montserrat(
-        fontSize: 17.sp,
+        fontSize: 17,
         fontWeight: FontWeight.bold,
         color: AppColors.title,
       ),

@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/presentation/theme/colors.dart';
 
@@ -18,6 +17,7 @@ class ColorsBar extends StatelessWidget {
     return FadeInRight(
       delay: const Duration(milliseconds: 600),
       child: SafeArea(
+        minimum: const EdgeInsets.only(bottom: 12),
         child: Material(
           color: selectedColor,
           child: SizedBox(
@@ -67,7 +67,7 @@ class _ColorBox extends StatelessWidget {
           child: Container(
             height: 40,
             width: 40,
-            margin: EdgeInsets.all(AppSpacings.s.w),
+            margin: const EdgeInsets.all(AppSpacings.s),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: color,

@@ -1,10 +1,11 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:note_app/common/constants.dart';
 
+import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/strings.dart';
 import 'package:note_app/di/di.dart';
 import 'package:note_app/domain/database/database.dart';
@@ -23,6 +24,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: NoteAppBar(
+        systemUiOverlayStyle: SystemUiOverlayStyle.light,
         autoImplementLeading: false,
         title: StringConstants.homeAppBarTitle,
         actions: [
@@ -70,9 +72,9 @@ class _BuildNotesList extends StatelessWidget {
         context.read<HomeBloc>().add(const HomeEvent.getAllNotes());
 
         return StaggeredGridView.countBuilder(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppSpacings.xl.w,
-            vertical: AppSpacings.xl.h,
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSpacings.xl,
+            vertical: AppSpacings.xl,
           ),
           crossAxisCount: 2,
           shrinkWrap: true,
@@ -84,8 +86,8 @@ class _BuildNotesList extends StatelessWidget {
             );
           },
           staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
-          mainAxisSpacing: AppSpacings.l.h,
-          crossAxisSpacing: AppSpacings.l.w,
+          mainAxisSpacing: AppSpacings.l,
+          crossAxisSpacing: AppSpacings.l,
         );
       },
     );

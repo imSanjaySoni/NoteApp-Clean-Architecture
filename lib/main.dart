@@ -11,6 +11,7 @@ import 'package:note_app/presentation/screens/home/bloc/home_bloc.dart';
 
 import 'di/di.dart';
 import 'presentation/app.dart';
+import 'presentation/screens/add_update_note/bloc/add_update_form/add_update_form_bloc.dart';
 import 'presentation/screens/note_detail/bloc/note_detail_bloc.dart';
 
 Future main() async {
@@ -35,6 +36,9 @@ Future main() async {
       providers: [
         BlocProvider<HomeBloc>(
           create: (_) => getIt<HomeBloc>()..add(const HomeEvent.getAllNotes()),
+        ),
+        BlocProvider<AddUpdateFormBloc>(
+          create: (_) => AddUpdateFormBloc(),
         ),
         BlocProvider<AddUpdateBloc>(
           create: (_) => getIt<AddUpdateBloc>(),

@@ -33,11 +33,11 @@ class AppButton extends StatelessWidget {
           ),
           child: Container(
             padding: const EdgeInsets.all(AppSpacings.m),
-            height: 40.w,
-            constraints: BoxConstraints(minWidth: 40.w),
+            height: 40,
+            constraints: const BoxConstraints(minWidth: 40),
             decoration: BoxDecoration(
               color: const Color(0xff444444),
-              borderRadius: BorderRadius.circular(AppSpacings.l.r),
+              borderRadius: BorderRadius.circular(AppSpacings.l),
             ),
             child: Center(
               key: ValueKey(isLoading),

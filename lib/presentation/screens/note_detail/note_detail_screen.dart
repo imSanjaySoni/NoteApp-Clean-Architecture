@@ -37,24 +37,30 @@ class NoteDetailScreen extends StatelessWidget {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(
-          horizontal: AppSpacings.xl.w,
-          vertical: AppSpacings.xl.h,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacings.xl,
+          vertical: AppSpacings.xl,
         ),
         children: [
-          FadeInLeft(
+          FadeInDown(
+            delay: const Duration(milliseconds: 100),
             child: Text(
               note.title ?? '',
               softWrap: true,
               style: AppTypography.headline3,
             ),
           ),
-          SizedBox(height: AppSpacings.xxl.h),
+          const SizedBox(height: AppSpacings.xxl),
           FadeInDown(
-            child: Text(note.date, style: AppTypography.description),
+            delay: const Duration(milliseconds: 200),
+            child: Text(
+              note.date,
+              style: AppTypography.description.copyWith(color: Colors.black87),
+            ),
           ),
-          SizedBox(height: AppSpacings.xxl.h),
-          FadeInRight(
+          const SizedBox(height: AppSpacings.xxl),
+          FadeInDown(
+            delay: const Duration(milliseconds: 400),
             child: Text(
               note.description ?? '',
               softWrap: true,

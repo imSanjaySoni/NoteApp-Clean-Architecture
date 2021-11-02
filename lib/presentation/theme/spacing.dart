@@ -1,5 +1,3 @@
-export 'package:flutter_screenutil/flutter_screenutil.dart';
-
 class AppSpacings {
   const AppSpacings._();
   static const double s = 4.0;

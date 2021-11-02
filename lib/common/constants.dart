@@ -1,4 +1,4 @@
-import 'dart:ui' show Size, Color;
+import 'dart:ui' show Color;
 
 const List<Color> colors = [
   Color(0xffe6ee9b),
@@ -11,8 +11,6 @@ const List<Color> colors = [
   Color(0xffFFC7C7),
   Color(0xffCCF6C8),
 ];
-
-const Size designRatio = Size(375, 812);
 
 const Duration splashDuration = Duration(seconds: 2);
 const Duration animationDuration = Duration(milliseconds: 400);

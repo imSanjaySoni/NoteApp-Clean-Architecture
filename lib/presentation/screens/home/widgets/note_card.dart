@@ -27,16 +27,16 @@ class NoteCard extends StatelessWidget {
       },
       child: Container(
         clipBehavior: Clip.antiAlias,
-        constraints: BoxConstraints(
-          maxHeight: 300.h,
-          minHeight: 100.h,
+        constraints: const BoxConstraints(
+          maxHeight: 300,
+          minHeight: 100,
         ),
-        padding: EdgeInsets.symmetric(
-          horizontal: AppSpacings.l.w,
-          vertical: AppSpacings.l.h,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacings.l,
+          vertical: AppSpacings.l,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(AppSpacings.m.r),
+          borderRadius: BorderRadius.circular(AppSpacings.m),
           color: note.color,
         ),
         child: Stack(
@@ -49,7 +49,7 @@ class NoteCard extends StatelessWidget {
                 Flexible(
                   child: AutoSizeText(
                     note.title ?? '',
-                    presetFontSizes: [16.sp, 14.sp, 12.sp, 10.sp, 8.sp],
+                    presetFontSizes: const [16, 14, 12, 10, 8],
                     textScaleFactor: 2,
                     softWrap: true,
                     style: AppTypography.headline6,
@@ -57,10 +57,11 @@ class NoteCard extends StatelessWidget {
                     overflow: TextOverflow.fade,
                   ),
                 ),
-                SizedBox(height: AppSpacings.m.h),
+                const SizedBox(height: AppSpacings.m),
                 Text(
                   note.date,
-                  style: AppTypography.title,
+                  style:
+                      AppTypography.description.copyWith(color: Colors.black87),
                 ),
               ],
             ),

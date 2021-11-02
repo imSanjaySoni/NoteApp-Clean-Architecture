@@ -5,7 +5,7 @@ extension StringEx on String? {
     if (str == null) {
       return true;
     }
-    final newStr = str.replaceAll('\n', '')..replaceAll(' ', '');
+    final newStr = str.trim();
     return newStr.isEmpty;
   }
 }
