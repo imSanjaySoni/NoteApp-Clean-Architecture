@@ -23,16 +23,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NoteAppBar(
+      appBar: const NoteAppBar(
         systemUiOverlayStyle: SystemUiOverlayStyle.light,
         autoImplementLeading: false,
         title: StringConstants.homeAppBarTitle,
-        actions: [
-          AppButton(
-            child: const Icon(FeatherIcons.search),
-            onPressed: () {},
-          ),
-        ],
       ),
       floatingActionButton: FadeInRight(
         delay: animationDuration,
