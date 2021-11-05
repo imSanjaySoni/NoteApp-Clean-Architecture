@@ -6,6 +6,38 @@ import 'package:note_app/domain/model/note.dart';
 
 part 'note_dto.g.dart';
 
+@HiveType(typeId: 0)
+class TodoDto {
+  TodoDto({
+    this.id,
+    this.title,
+    this.completed,
+  });
+
+  factory TodoDto.fromDomain(Todo todo) {
+    return TodoDto(
+      completed: todo.completed,
+      id: todo.id,
+      title: todo.title,
+    );
+  }
+
+  @HiveField(0)
+  final String? id;
+  @HiveField(1)
+  final String? title;
+  @HiveField(2)
+  final bool? completed;
+
+  Todo toDomain() {
+    return Todo(
+      id: id,
+      title: title,
+      completed: completed,
+    );
+  }
+}
+
 @HiveType(typeId: 1)
 class NoteDto {
   NoteDto({
@@ -14,6 +46,7 @@ class NoteDto {
     this.description,
     this.colorValue,
     this.dateTime,
+    this.todoList = const [],
   });
 
   factory NoteDto.fromNote(Note note) {
@@ -23,6 +56,7 @@ class NoteDto {
       description: note.description,
       dateTime: note.dateTime?.toIso8601String(),
       colorValue: note.color?.value,
+      todoList: [],
     );
   }
   Note toDomain() {
@@ -32,8 +66,11 @@ class NoteDto {
       description: description,
       dateTime: DateTime.tryParse(dateTime!),
       color: Color(colorValue!),
+      todo: todoList?.map((todo) => todo.toDomain()).toList() ?? [],
     );
   }
+
+  bool get validNote => title?.isNotEmpty == true;
 
   NoteDto copyWith({
     String? id,
@@ -41,6 +78,7 @@ class NoteDto {
     String? description,
     int? colorValue,
     String? dateTime,
+    List<TodoDto>? todoList,
   }) {
     return NoteDto(
       id: id ?? this.id,
@@ -48,10 +86,9 @@ class NoteDto {
       description: description ?? this.description,
       colorValue: colorValue ?? this.colorValue,
       dateTime: dateTime ?? this.dateTime,
+      todoList: todoList ?? this.todoList,
     );
   }
-
-  bool get validNote => title?.isNotEmpty == true;
 
   @HiveField(0)
   final String? id;
@@ -63,4 +100,6 @@ class NoteDto {
   final int? colorValue;
   @HiveField(4)
   final String? dateTime;
+  @HiveField(5)
+  final List<TodoDto>? todoList;
 }

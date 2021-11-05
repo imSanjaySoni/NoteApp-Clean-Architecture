@@ -25,6 +25,7 @@ Future main() async {
   //* hive local database setup
   await Hive.initFlutter();
   Hive.registerAdapter(NoteDtoAdapter());
+  Hive.registerAdapter(TodoDtoAdapter());
   await Hive.openBox(databaseBox, keyComparator: _reverseOrder);
 
   //* Update statusbar theme

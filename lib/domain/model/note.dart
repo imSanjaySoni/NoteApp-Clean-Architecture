@@ -2,6 +2,7 @@ import 'dart:ui' show Color;
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
+import 'package:uuid/uuid.dart';
 
 part 'note.freezed.dart';
 
@@ -26,9 +27,21 @@ class Note with _$Note {
 
 @freezed
 class Todo with _$Todo {
+  Todo._();
+
   factory Todo({
     bool? completed,
     String? title,
     String? id,
   }) = _Todo;
+
+  factory Todo.empty() {
+    const _uuid = Uuid();
+
+    return Todo(
+      id: _uuid.v4(),
+      title: '',
+      completed: false,
+    );
+  }
 }
