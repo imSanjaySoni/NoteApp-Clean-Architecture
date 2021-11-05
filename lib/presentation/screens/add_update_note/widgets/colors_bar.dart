@@ -1,10 +1,4 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:note_app/common/constants.dart';
-import 'package:note_app/presentation/theme/colors.dart';
-
-import 'package:note_app/presentation/theme/spacing.dart';
+part of '../add_update_note_screen.dart';
 
 class ColorsBar extends StatelessWidget {
   const ColorsBar({Key? key, this.selectedColor, required this.onChanged})

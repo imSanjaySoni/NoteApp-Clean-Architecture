@@ -21,11 +21,18 @@ class AppTheme {
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(
       secondary: const Color(0xff333333),
+      primary: const Color(0xff333333),
     ),
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: Color(0xff252525),
       selectionHandleColor: Color(0xff252525),
       selectionColor: Colors.black26,
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateProperty.all(const Color(0xff252525)),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(40)),
+      ),
     ),
   );
 }

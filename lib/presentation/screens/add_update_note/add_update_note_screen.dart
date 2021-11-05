@@ -5,12 +5,16 @@ import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/extension/random.dart';
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/components/components.dart';
+import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
 import 'bloc/add_update_bloc.dart';
 import 'bloc/add_update_form/add_update_form_bloc.dart';
-import 'widgets/colors_bar.dart';
+
+part 'widgets/todo_tile.dart';
+part 'widgets/colors_bar.dart';
+part 'widgets/text_forms.dart';
 
 class AddUpdateNoteScreen extends StatefulWidget {
   const AddUpdateNoteScreen({Key? key, this.note}) : super(key: key);
@@ -111,75 +115,27 @@ class _BuildForm extends StatelessWidget {
         ],
       ),
       body: ListView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         padding: const EdgeInsets.symmetric(
           horizontal: AppSpacings.xl,
           vertical: AppSpacings.xl,
         ),
         children: [
-          FadeInDown(
-            delay: const Duration(milliseconds: 100),
-            duration: animationDuration,
-            child: Stack(
-              children: [
-                if (state.showTitleHint)
-                  Opacity(
-                    opacity: 0.6,
-                    child: Text(
-                      'Title',
-                      style: AppTypography.headline1,
-                      softWrap: true,
-                    ),
-                  ),
-                TextField(
-                  controller: _titleController,
-                  style: AppTypography.headline1,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                  minLines: 1,
-                  maxLines: 10,
-                  onChanged: (value) {
-                    context.read<AddUpdateFormBloc>().add(
-                          AddUpdateFormEvent.titleChanged(value),
-                        );
-                  },
-                ),
-              ],
-            ),
+          //* Add/Update Note title
+          _BuildTitleField(
+            state: state,
+            titleController: _titleController,
           ),
-          const SizedBox(height: AppSpacings.xxl),
-          FadeInDown(
-            delay: const Duration(milliseconds: 400),
-            duration: animationDuration,
-            child: Stack(
-              children: [
-                if (state.showDescriptionHint)
-                  Opacity(
-                    opacity: 0.6,
-                    child: Text(
-                      'Type something...',
-                      style: AppTypography.headline6,
-                      softWrap: true,
-                    ),
-                  ),
-                TextField(
-                  controller: _descriptionController,
-                  style: AppTypography.headline6,
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                  minLines: 2,
-                  maxLines: 100,
-                  onChanged: (value) {
-                    context.read<AddUpdateFormBloc>().add(
-                          AddUpdateFormEvent.descriptionChanged(value),
-                        );
-                  },
-                ),
-              ],
-            ),
+          const SizedBox(height: AppSpacings.xl),
+
+          //* Add/Update todo list.
+          _BuildTodoListField(state: state),
+          const SizedBox(height: AppSpacings.xl),
+
+          //* Add/Update note description.
+          _BuildDescriptionField(
+            state: state,
+            descriptionController: _descriptionController,
           ),
         ],
       ),

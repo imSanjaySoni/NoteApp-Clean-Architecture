@@ -22,13 +22,15 @@ class _$NoteTearOff {
       String? title,
       String? description,
       Color? color,
-      DateTime? dateTime}) {
+      DateTime? dateTime,
+      List<Todo> todo = const []}) {
     return _Note(
       id: id,
       title: title,
       description: description,
       color: color,
       dateTime: dateTime,
+      todo: todo,
     );
   }
 }
@@ -43,6 +45,7 @@ mixin _$Note {
   String? get description => throw _privateConstructorUsedError;
   Color? get color => throw _privateConstructorUsedError;
   DateTime? get dateTime => throw _privateConstructorUsedError;
+  List<Todo> get todo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NoteCopyWith<Note> get copyWith => throw _privateConstructorUsedError;
@@ -57,7 +60,8 @@ abstract class $NoteCopyWith<$Res> {
       String? title,
       String? description,
       Color? color,
-      DateTime? dateTime});
+      DateTime? dateTime,
+      List<Todo> todo});
 }
 
 /// @nodoc
@@ -75,6 +79,7 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
     Object? description = freezed,
     Object? color = freezed,
     Object? dateTime = freezed,
+    Object? todo = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -97,6 +102,10 @@ class _$NoteCopyWithImpl<$Res> implements $NoteCopyWith<$Res> {
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      todo: todo == freezed
+          ? _value.todo
+          : todo // ignore: cast_nullable_to_non_nullable
+              as List<Todo>,
     ));
   }
 }
@@ -111,7 +120,8 @@ abstract class _$NoteCopyWith<$Res> implements $NoteCopyWith<$Res> {
       String? title,
       String? description,
       Color? color,
-      DateTime? dateTime});
+      DateTime? dateTime,
+      List<Todo> todo});
 }
 
 /// @nodoc
@@ -130,6 +140,7 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
     Object? description = freezed,
     Object? color = freezed,
     Object? dateTime = freezed,
+    Object? todo = freezed,
   }) {
     return _then(_Note(
       id: id == freezed
@@ -152,6 +163,10 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      todo: todo == freezed
+          ? _value.todo
+          : todo // ignore: cast_nullable_to_non_nullable
+              as List<Todo>,
     ));
   }
 }
@@ -159,7 +174,13 @@ class __$NoteCopyWithImpl<$Res> extends _$NoteCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Note extends _Note {
-  _$_Note({this.id, this.title, this.description, this.color, this.dateTime})
+  _$_Note(
+      {this.id,
+      this.title,
+      this.description,
+      this.color,
+      this.dateTime,
+      this.todo = const []})
       : super._();
 
   @override
@@ -172,10 +193,13 @@ class _$_Note extends _Note {
   final Color? color;
   @override
   final DateTime? dateTime;
+  @JsonKey(defaultValue: const [])
+  @override
+  final List<Todo> todo;
 
   @override
   String toString() {
-    return 'Note(id: $id, title: $title, description: $description, color: $color, dateTime: $dateTime)';
+    return 'Note(id: $id, title: $title, description: $description, color: $color, dateTime: $dateTime, todo: $todo)';
   }
 
   @override
@@ -193,7 +217,9 @@ class _$_Note extends _Note {
                 const DeepCollectionEquality().equals(other.color, color)) &&
             (identical(other.dateTime, dateTime) ||
                 const DeepCollectionEquality()
-                    .equals(other.dateTime, dateTime)));
+                    .equals(other.dateTime, dateTime)) &&
+            (identical(other.todo, todo) ||
+                const DeepCollectionEquality().equals(other.todo, todo)));
   }
 
   @override
@@ -203,7 +229,8 @@ class _$_Note extends _Note {
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(color) ^
-      const DeepCollectionEquality().hash(dateTime);
+      const DeepCollectionEquality().hash(dateTime) ^
+      const DeepCollectionEquality().hash(todo);
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +244,8 @@ abstract class _Note extends Note {
       String? title,
       String? description,
       Color? color,
-      DateTime? dateTime}) = _$_Note;
+      DateTime? dateTime,
+      List<Todo> todo}) = _$_Note;
   _Note._() : super._();
 
   @override
@@ -231,6 +259,169 @@ abstract class _Note extends Note {
   @override
   DateTime? get dateTime => throw _privateConstructorUsedError;
   @override
+  List<Todo> get todo => throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
   _$NoteCopyWith<_Note> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+class _$TodoTearOff {
+  const _$TodoTearOff();
+
+  _Todo call({bool? completed, String? title, String? id}) {
+    return _Todo(
+      completed: completed,
+      title: title,
+      id: id,
+    );
+  }
+}
+
+/// @nodoc
+const $Todo = _$TodoTearOff();
+
+/// @nodoc
+mixin _$Todo {
+  bool? get completed => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $TodoCopyWith<Todo> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TodoCopyWith<$Res> {
+  factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
+      _$TodoCopyWithImpl<$Res>;
+  $Res call({bool? completed, String? title, String? id});
+}
+
+/// @nodoc
+class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
+  _$TodoCopyWithImpl(this._value, this._then);
+
+  final Todo _value;
+  // ignore: unused_field
+  final $Res Function(Todo) _then;
+
+  @override
+  $Res call({
+    Object? completed = freezed,
+    Object? title = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_value.copyWith(
+      completed: completed == freezed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
+  factory _$TodoCopyWith(_Todo value, $Res Function(_Todo) then) =
+      __$TodoCopyWithImpl<$Res>;
+  @override
+  $Res call({bool? completed, String? title, String? id});
+}
+
+/// @nodoc
+class __$TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
+    implements _$TodoCopyWith<$Res> {
+  __$TodoCopyWithImpl(_Todo _value, $Res Function(_Todo) _then)
+      : super(_value, (v) => _then(v as _Todo));
+
+  @override
+  _Todo get _value => super._value as _Todo;
+
+  @override
+  $Res call({
+    Object? completed = freezed,
+    Object? title = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_Todo(
+      completed: completed == freezed
+          ? _value.completed
+          : completed // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Todo implements _Todo {
+  _$_Todo({this.completed, this.title, this.id});
+
+  @override
+  final bool? completed;
+  @override
+  final String? title;
+  @override
+  final String? id;
+
+  @override
+  String toString() {
+    return 'Todo(completed: $completed, title: $title, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Todo &&
+            (identical(other.completed, completed) ||
+                const DeepCollectionEquality()
+                    .equals(other.completed, completed)) &&
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(completed) ^
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$TodoCopyWith<_Todo> get copyWith =>
+      __$TodoCopyWithImpl<_Todo>(this, _$identity);
+}
+
+abstract class _Todo implements Todo {
+  factory _Todo({bool? completed, String? title, String? id}) = _$_Todo;
+
+  @override
+  bool? get completed => throw _privateConstructorUsedError;
+  @override
+  String? get title => throw _privateConstructorUsedError;
+  @override
+  String? get id => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$TodoCopyWith<_Todo> get copyWith => throw _privateConstructorUsedError;
 }

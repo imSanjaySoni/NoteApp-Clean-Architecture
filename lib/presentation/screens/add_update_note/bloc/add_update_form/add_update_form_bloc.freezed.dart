@@ -938,11 +938,15 @@ class _$AddUpdateFormStateTearOff {
   const _$AddUpdateFormStateTearOff();
 
   _AddUpdateFormState call(
-      {String? title, String? description, Color? selectedColor}) {
+      {String? title,
+      String? description,
+      Color? selectedColor,
+      List<Todo> todos = const []}) {
     return _AddUpdateFormState(
       title: title,
       description: description,
       selectedColor: selectedColor,
+      todos: todos,
     );
   }
 }
@@ -955,6 +959,7 @@ mixin _$AddUpdateFormState {
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   Color? get selectedColor => throw _privateConstructorUsedError;
+  List<Todo> get todos => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AddUpdateFormStateCopyWith<AddUpdateFormState> get copyWith =>
@@ -966,7 +971,11 @@ abstract class $AddUpdateFormStateCopyWith<$Res> {
   factory $AddUpdateFormStateCopyWith(
           AddUpdateFormState value, $Res Function(AddUpdateFormState) then) =
       _$AddUpdateFormStateCopyWithImpl<$Res>;
-  $Res call({String? title, String? description, Color? selectedColor});
+  $Res call(
+      {String? title,
+      String? description,
+      Color? selectedColor,
+      List<Todo> todos});
 }
 
 /// @nodoc
@@ -983,6 +992,7 @@ class _$AddUpdateFormStateCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? selectedColor = freezed,
+    Object? todos = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -997,6 +1007,10 @@ class _$AddUpdateFormStateCopyWithImpl<$Res>
           ? _value.selectedColor
           : selectedColor // ignore: cast_nullable_to_non_nullable
               as Color?,
+      todos: todos == freezed
+          ? _value.todos
+          : todos // ignore: cast_nullable_to_non_nullable
+              as List<Todo>,
     ));
   }
 }
@@ -1008,7 +1022,11 @@ abstract class _$AddUpdateFormStateCopyWith<$Res>
           _AddUpdateFormState value, $Res Function(_AddUpdateFormState) then) =
       __$AddUpdateFormStateCopyWithImpl<$Res>;
   @override
-  $Res call({String? title, String? description, Color? selectedColor});
+  $Res call(
+      {String? title,
+      String? description,
+      Color? selectedColor,
+      List<Todo> todos});
 }
 
 /// @nodoc
@@ -1027,6 +1045,7 @@ class __$AddUpdateFormStateCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? selectedColor = freezed,
+    Object? todos = freezed,
   }) {
     return _then(_AddUpdateFormState(
       title: title == freezed
@@ -1041,6 +1060,10 @@ class __$AddUpdateFormStateCopyWithImpl<$Res>
           ? _value.selectedColor
           : selectedColor // ignore: cast_nullable_to_non_nullable
               as Color?,
+      todos: todos == freezed
+          ? _value.todos
+          : todos // ignore: cast_nullable_to_non_nullable
+              as List<Todo>,
     ));
   }
 }
@@ -1048,7 +1071,8 @@ class __$AddUpdateFormStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddUpdateFormState extends _AddUpdateFormState {
-  _$_AddUpdateFormState({this.title, this.description, this.selectedColor})
+  _$_AddUpdateFormState(
+      {this.title, this.description, this.selectedColor, this.todos = const []})
       : super._();
 
   @override
@@ -1057,10 +1081,13 @@ class _$_AddUpdateFormState extends _AddUpdateFormState {
   final String? description;
   @override
   final Color? selectedColor;
+  @JsonKey(defaultValue: const [])
+  @override
+  final List<Todo> todos;
 
   @override
   String toString() {
-    return 'AddUpdateFormState(title: $title, description: $description, selectedColor: $selectedColor)';
+    return 'AddUpdateFormState(title: $title, description: $description, selectedColor: $selectedColor, todos: $todos)';
   }
 
   @override
@@ -1074,7 +1101,9 @@ class _$_AddUpdateFormState extends _AddUpdateFormState {
                     .equals(other.description, description)) &&
             (identical(other.selectedColor, selectedColor) ||
                 const DeepCollectionEquality()
-                    .equals(other.selectedColor, selectedColor)));
+                    .equals(other.selectedColor, selectedColor)) &&
+            (identical(other.todos, todos) ||
+                const DeepCollectionEquality().equals(other.todos, todos)));
   }
 
   @override
@@ -1082,7 +1111,8 @@ class _$_AddUpdateFormState extends _AddUpdateFormState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(selectedColor);
+      const DeepCollectionEquality().hash(selectedColor) ^
+      const DeepCollectionEquality().hash(todos);
 
   @JsonKey(ignore: true)
   @override
@@ -1094,7 +1124,8 @@ abstract class _AddUpdateFormState extends AddUpdateFormState {
   factory _AddUpdateFormState(
       {String? title,
       String? description,
-      Color? selectedColor}) = _$_AddUpdateFormState;
+      Color? selectedColor,
+      List<Todo> todos}) = _$_AddUpdateFormState;
   _AddUpdateFormState._() : super._();
 
   @override
@@ -1103,6 +1134,8 @@ abstract class _AddUpdateFormState extends AddUpdateFormState {
   String? get description => throw _privateConstructorUsedError;
   @override
   Color? get selectedColor => throw _privateConstructorUsedError;
+  @override
+  List<Todo> get todos => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AddUpdateFormStateCopyWith<_AddUpdateFormState> get copyWith =>

@@ -67,7 +67,7 @@ class _BuildNotesList extends StatelessWidget {
       itemCount: notes.length,
       itemBuilder: (BuildContext context, int index) {
         return FadeInUp(
-          duration: Duration(milliseconds: 300 * index + 100),
+          duration: Duration(milliseconds: 100 * index),
           child: NoteCard(note: notes[index]),
         );
       },
