@@ -10,27 +10,27 @@ class _AddTodoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      dense: true,
-      contentPadding: EdgeInsets.zero,
-      title: Row(
-        children: [
-          const SizedBox(width: 12),
-          Icon(
-            FeatherIcons.plusCircle,
-            size: 18,
-            color: AppColors.title.withOpacity(0.6),
-          ),
-          const SizedBox(width: 22),
-          Text(
-            'Add todo',
-            style: AppTypography.title.copyWith(
-              color: AppColors.title.withOpacity(0.6),
+    return Opacity(
+      opacity: 0.6,
+      child: ListTile(
+        dense: true,
+        contentPadding: EdgeInsets.zero,
+        title: Row(
+          children: [
+            Text(
+              'Add todo',
+              style: AppTypography.title,
             ),
-          ),
-        ],
+            const SizedBox(width: 12),
+            const Icon(
+              FeatherIcons.plusCircle,
+              size: 18,
+              color: AppColors.title,
+            ),
+          ],
+        ),
+        onTap: onAdd,
       ),
-      onTap: onAdd,
     );
   }
 }
@@ -61,10 +61,8 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
 
   @override
   Widget build(BuildContext context) {
-    return CheckboxListTile(
-      controlAffinity: ListTileControlAffinity.leading,
+    return ListTile(
       dense: true,
-      value: false,
       contentPadding: EdgeInsets.zero,
       title: TextField(
         style: AppTypography.title,
@@ -80,7 +78,7 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
         maxLines: 4,
         minLines: 1,
       ),
-      secondary: IconButton(
+      trailing: IconButton(
         iconSize: 18,
         icon: const Icon(
           FeatherIcons.trash2,
@@ -88,7 +86,6 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
         ),
         onPressed: () {},
       ),
-      onChanged: null,
     );
   }
 }
