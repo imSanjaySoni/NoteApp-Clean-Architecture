@@ -19,7 +19,13 @@ class AppTheme {
       ),
       iconTheme: const IconThemeData(color: AppColors.title),
     ),
-    colorScheme:
-        ColorScheme.fromSwatch().copyWith(secondary: const Color(0xff333333)),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: const Color(0xff333333),
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Color(0xff252525),
+      selectionHandleColor: Color(0xff252525),
+      selectionColor: Colors.black26,
+    ),
   );
 }

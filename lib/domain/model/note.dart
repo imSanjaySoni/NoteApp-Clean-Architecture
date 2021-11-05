@@ -1,21 +1,21 @@
 import 'dart:ui' show Color;
 
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
 
-class Note {
-  Note({
-    this.id,
-    this.title,
-    this.description,
-    this.color,
-    this.dateTime,
-  });
+part 'note.freezed.dart';
 
-  final String? id;
-  final String? title;
-  final String? description;
-  final Color? color;
-  final DateTime? dateTime;
+@freezed
+class Note with _$Note {
+  Note._();
+
+  factory Note({
+    String? id,
+    String? title,
+    String? description,
+    Color? color,
+    DateTime? dateTime,
+  }) = _Note;
 
   final DateFormat _formatter = DateFormat('MMMM dd, yyyy');
   String get date => dateTime != null ? _formatter.format(dateTime!) : '';

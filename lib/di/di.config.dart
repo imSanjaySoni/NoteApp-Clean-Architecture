@@ -34,7 +34,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   final registerCoreDependencies = _$RegisterCoreDependencies();
   gh.factory<_i3.AddUpdateBloc>(() => _i3.AddUpdateBloc(
       get<_i4.AddNoteUsecase>(), get<_i4.UpdateNoteUsecase>()));
-  gh.factory<_i5.AddUpdateFormBloc>(() => _i5.AddUpdateFormBloc());
+  gh.factory<_i5.AddUpdateFormBloc>(
+      () => _i5.AddUpdateFormBloc(get<_i3.AddUpdateBloc>()));
   gh.factory<_i6.AppRouter>(() => registerCoreDependencies.appRouter);
   gh.lazySingleton<_i7.Database>(() => _i8.DatabaseImplementing());
   gh.factory<_i9.HomeBloc>(() => _i9.HomeBloc(get<_i4.ShowAllNotesUsecase>()));

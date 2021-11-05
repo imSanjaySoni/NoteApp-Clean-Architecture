@@ -26,6 +26,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         });
       },
     );
+
+    on<_Refresh>(
+      (event, emit) async {
+        if (state is _Loaded) {
+          final _state = state as _Loaded;
+
+          final failureOrSuccess = await _usecase();
+
+          failureOrSuccess.fold((error) {
+            emit(HomeState.error(error.message));
+          }, (notes) {
+            emit(_state.copyWith(notes: notes));
+          });
+        }
+      },
+    );
   }
 
   final ShowAllNotesUsecase _usecase;

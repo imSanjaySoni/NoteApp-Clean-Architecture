@@ -1,7 +1,7 @@
 part of 'add_update_form_bloc.dart';
 
 @freezed
-abstract class AddUpdateFormState with _$AddUpdateFormState {
+class AddUpdateFormState with _$AddUpdateFormState {
   const AddUpdateFormState._();
   factory AddUpdateFormState({
     String? title,

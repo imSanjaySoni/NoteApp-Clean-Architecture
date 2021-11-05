@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
@@ -12,8 +14,9 @@ class UpdateNoteUsecase {
   final NoteRepository _repository;
 
   Future<Either<NoteError, Unit>> call(Note note) async {
+    log('note for update ->$note');
     try {
-      final noteDto = NoteDto.toDto(note);
+      final noteDto = NoteDto.fromNote(note);
 
       if (!noteDto.validNote) {
         return left(

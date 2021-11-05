@@ -88,6 +88,8 @@ abstract class $AddUpdateEventCopyWith<$Res> {
           AddUpdateEvent value, $Res Function(AddUpdateEvent) then) =
       _$AddUpdateEventCopyWithImpl<$Res>;
   $Res call({Note note});
+
+  $NoteCopyWith<$Res> get note;
 }
 
 /// @nodoc
@@ -110,6 +112,13 @@ class _$AddUpdateEventCopyWithImpl<$Res>
               as Note,
     ));
   }
+
+  @override
+  $NoteCopyWith<$Res> get note {
+    return $NoteCopyWith<$Res>(_value.note, (value) {
+      return _then(_value.copyWith(note: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -119,6 +128,9 @@ abstract class _$AddNoteCopyWith<$Res>
       __$AddNoteCopyWithImpl<$Res>;
   @override
   $Res call({Note note});
+
+  @override
+  $NoteCopyWith<$Res> get note;
 }
 
 /// @nodoc
@@ -255,6 +267,9 @@ abstract class _$UpdateNoteCopyWith<$Res>
       __$UpdateNoteCopyWithImpl<$Res>;
   @override
   $Res call({Note note, String noteId});
+
+  @override
+  $NoteCopyWith<$Res> get note;
 }
 
 /// @nodoc

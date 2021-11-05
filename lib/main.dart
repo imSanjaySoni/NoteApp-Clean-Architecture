@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/data/dto/note_dto.dart';
+import 'package:note_app/observer.dart';
 import 'package:note_app/presentation/screens/add_update_note/bloc/add_update_bloc.dart';
 import 'package:note_app/presentation/screens/home/bloc/home_bloc.dart';
 
@@ -15,6 +16,9 @@ import 'presentation/screens/add_update_note/bloc/add_update_form/add_update_for
 import 'presentation/screens/note_detail/bloc/note_detail_bloc.dart';
 
 Future main() async {
+  //* observe bloc logs
+  Bloc.observer = MyBlocObserver();
+
   //* inject dependencies
   configureInjection(Environment.dev);
 
@@ -38,7 +42,7 @@ Future main() async {
           create: (_) => getIt<HomeBloc>()..add(const HomeEvent.getAllNotes()),
         ),
         BlocProvider<AddUpdateFormBloc>(
-          create: (_) => AddUpdateFormBloc(),
+          create: (_) => getIt<AddUpdateFormBloc>(),
         ),
         BlocProvider<AddUpdateBloc>(
           create: (_) => getIt<AddUpdateBloc>(),

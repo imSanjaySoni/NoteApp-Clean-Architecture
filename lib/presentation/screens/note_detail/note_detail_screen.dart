@@ -44,16 +44,15 @@ class NoteDetailScreen extends StatelessWidget {
         children: [
           FadeInDown(
             delay: const Duration(milliseconds: 100),
-            child: Text(
+            child: SelectableText(
               note.title ?? '',
-              softWrap: true,
               style: AppTypography.headline3,
             ),
           ),
           const SizedBox(height: AppSpacings.xxl),
           FadeInDown(
             delay: const Duration(milliseconds: 200),
-            child: Text(
+            child: SelectableText(
               note.date,
               style: AppTypography.description.copyWith(color: Colors.black87),
             ),
@@ -61,9 +60,8 @@ class NoteDetailScreen extends StatelessWidget {
           const SizedBox(height: AppSpacings.xxl),
           FadeInDown(
             delay: const Duration(milliseconds: 400),
-            child: Text(
+            child: SelectableText(
               note.description ?? '',
-              softWrap: true,
               style: AppTypography.headline6,
             ),
           ),

@@ -47,117 +47,14 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
       builder: (ctx, state) {
         return Stack(
           children: [
-            Scaffold(
-              backgroundColor: state.selectedColor,
-              bottomNavigationBar: ColorsBar(
-                selectedColor: state.selectedColor,
-                onChanged: (Color color) {
-                  context
-                      .read<AddUpdateFormBloc>()
-                      .add(AddUpdateFormEvent.colorChanged(color));
-                },
-              ),
-              appBar: NoteAppBar(
-                actions: [
-                  AppButton(
-                    isLoading: context.watch<AddUpdateBloc>().state.maybeMap(
-                          orElse: () => false,
-                          saving: (_) => true,
-                        ),
-                    child: const Text('  Save  '),
-                    onPressed: () {
-                      if (widget.note?.id != null) {
-                        context.read<AddUpdateBloc>().add(
-                              AddUpdateEvent.updateNote(
-                                Note(),
-                                widget.note!.id!,
-                              ),
-                            );
-                      } else {
-                        context
-                            .read<AddUpdateBloc>()
-                            .add(AddUpdateEvent.addNote(Note()));
-                      }
-                    },
-                  ),
-                ],
-              ),
-              body: ListView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacings.xl,
-                  vertical: AppSpacings.xl,
-                ),
-                children: [
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 100),
-                    duration: animationDuration,
-                    child: Stack(
-                      children: [
-                        if (state.showTitleHint)
-                          Opacity(
-                            opacity: 0.6,
-                            child: Text(
-                              'Title',
-                              style: AppTypography.headline1,
-                              softWrap: true,
-                            ),
-                          ),
-                        TextField(
-                          controller: _titleController,
-                          style: AppTypography.headline1,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.zero,
-                          ),
-                          minLines: 1,
-                          maxLines: 10,
-                          onChanged: (value) {
-                            context.read<AddUpdateFormBloc>().add(
-                                  AddUpdateFormEvent.titleChanged(value),
-                                );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: AppSpacings.xxl),
-                  FadeInDown(
-                    delay: const Duration(milliseconds: 400),
-                    duration: animationDuration,
-                    child: Stack(
-                      children: [
-                        if (state.showDescriptionHint)
-                          Opacity(
-                            opacity: 0.6,
-                            child: Text(
-                              'Type something...',
-                              style: AppTypography.headline6,
-                              softWrap: true,
-                            ),
-                          ),
-                        TextField(
-                          controller: _descriptionController,
-                          style: AppTypography.headline6,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.zero,
-                          ),
-                          minLines: 2,
-                          maxLines: 100,
-                          onChanged: (value) {
-                            context.read<AddUpdateFormBloc>().add(
-                                  AddUpdateFormEvent.descriptionChanged(value),
-                                );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+            _BuildForm(
+              widget: widget,
+              state: state,
+              titleController: _titleController,
+              descriptionController: _descriptionController,
             ),
 
-            // show overlay screen while saving.
+            //* show overlay screen while saving.
             context.watch<AddUpdateBloc>().state.maybeMap(
                   orElse: () => Container(),
                   saving: (_) => FadeIn(
@@ -170,5 +67,150 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
         );
       },
     );
+  }
+}
+
+class _BuildForm extends StatelessWidget {
+  const _BuildForm({
+    Key? key,
+    required this.widget,
+    required TextEditingController titleController,
+    required TextEditingController descriptionController,
+    required this.state,
+  })  : _titleController = titleController,
+        _descriptionController = descriptionController,
+        super(key: key);
+
+  final AddUpdateNoteScreen widget;
+  final TextEditingController _titleController;
+  final TextEditingController _descriptionController;
+  final AddUpdateFormState state;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: state.selectedColor,
+      bottomNavigationBar: ColorsBar(
+        selectedColor: state.selectedColor,
+        onChanged: (Color color) {
+          context
+              .read<AddUpdateFormBloc>()
+              .add(AddUpdateFormEvent.colorChanged(color));
+        },
+      ),
+      appBar: NoteAppBar(
+        actions: [
+          AppButton(
+            isLoading: context.watch<AddUpdateBloc>().state.maybeMap(
+                  orElse: () => false,
+                  saving: (_) => true,
+                ),
+            child: const Text('  Save  '),
+            onPressed: () => _addOrUpdateNote(context),
+          ),
+        ],
+      ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacings.xl,
+          vertical: AppSpacings.xl,
+        ),
+        children: [
+          FadeInDown(
+            delay: const Duration(milliseconds: 100),
+            duration: animationDuration,
+            child: Stack(
+              children: [
+                if (state.showTitleHint)
+                  Opacity(
+                    opacity: 0.6,
+                    child: Text(
+                      'Title',
+                      style: AppTypography.headline1,
+                      softWrap: true,
+                    ),
+                  ),
+                TextField(
+                  controller: _titleController,
+                  style: AppTypography.headline1,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.zero,
+                  ),
+                  minLines: 1,
+                  maxLines: 10,
+                  onChanged: (value) {
+                    context.read<AddUpdateFormBloc>().add(
+                          AddUpdateFormEvent.titleChanged(value),
+                        );
+                  },
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: AppSpacings.xxl),
+          FadeInDown(
+            delay: const Duration(milliseconds: 400),
+            duration: animationDuration,
+            child: Stack(
+              children: [
+                if (state.showDescriptionHint)
+                  Opacity(
+                    opacity: 0.6,
+                    child: Text(
+                      'Type something...',
+                      style: AppTypography.headline6,
+                      softWrap: true,
+                    ),
+                  ),
+                TextField(
+                  controller: _descriptionController,
+                  style: AppTypography.headline6,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.zero,
+                  ),
+                  minLines: 2,
+                  maxLines: 100,
+                  onChanged: (value) {
+                    context.read<AddUpdateFormBloc>().add(
+                          AddUpdateFormEvent.descriptionChanged(value),
+                        );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _addOrUpdateNote(BuildContext context) {
+    if (widget.note == null) {
+      context.read<AddUpdateBloc>().add(
+            AddUpdateEvent.addNote(
+              Note(
+                title: _titleController.text,
+                description: _descriptionController.text,
+                color: state.selectedColor,
+                dateTime: DateTime.now(),
+              ),
+            ),
+          );
+    } else {
+      context.read<AddUpdateBloc>().add(
+            AddUpdateEvent.updateNote(
+              Note(
+                id: widget.note!.id!,
+                title: _titleController.text,
+                description: _descriptionController.text,
+                color: state.selectedColor,
+                dateTime: DateTime.now(),
+              ),
+              widget.note!.id!,
+            ),
+          );
+    }
   }
 }

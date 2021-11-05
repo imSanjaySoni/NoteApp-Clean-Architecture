@@ -6,8 +6,9 @@
 
 import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:flutter/material.dart' as _i3;
+import 'package:flutter/widgets.dart' as _i5;
 
-import '../../domain/model/note.dart' as _i5;
+import '../../domain/model/note.dart' as _i6;
 import '../screens/screens.dart' as _i1;
 import 'routes.dart' as _i4;
 
@@ -83,7 +84,7 @@ class HomeRoute extends _i2.PageRouteInfo<void> {
 
 /// generated route for [_i1.NoteDetailScreen]
 class NoteDetailRoute extends _i2.PageRouteInfo<NoteDetailRouteArgs> {
-  NoteDetailRoute({_i3.Key? key, required _i5.Note note})
+  NoteDetailRoute({_i5.Key? key, required _i6.Note note})
       : super(name,
             path: '/notes/:noteId',
             args: NoteDetailRouteArgs(key: key, note: note),
@@ -95,14 +96,14 @@ class NoteDetailRoute extends _i2.PageRouteInfo<NoteDetailRouteArgs> {
 class NoteDetailRouteArgs {
   const NoteDetailRouteArgs({this.key, required this.note});
 
-  final _i3.Key? key;
+  final _i5.Key? key;
 
-  final _i5.Note note;
+  final _i6.Note note;
 }
 
 /// generated route for [_i1.AddUpdateNoteScreen]
 class AddUpdateNoteRoute extends _i2.PageRouteInfo<AddUpdateNoteRouteArgs> {
-  AddUpdateNoteRoute({_i3.Key? key, _i5.Note? note})
+  AddUpdateNoteRoute({_i5.Key? key, _i6.Note? note})
       : super(name,
             path: 'add-update-note',
             args: AddUpdateNoteRouteArgs(key: key, note: note));
@@ -113,7 +114,7 @@ class AddUpdateNoteRoute extends _i2.PageRouteInfo<AddUpdateNoteRouteArgs> {
 class AddUpdateNoteRouteArgs {
   const AddUpdateNoteRouteArgs({this.key, this.note});
 
-  final _i3.Key? key;
+  final _i5.Key? key;
 
-  final _i5.Note? note;
+  final _i6.Note? note;
 }

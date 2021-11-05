@@ -15,7 +15,7 @@ class AddNoteUsecase {
 
   Future<Either<NoteError, Unit>> call(Note note) async {
     try {
-      final noteDto = NoteDto.toDto(note);
+      final noteDto = NoteDto.fromNote(note);
 
       if (!noteDto.validNote) {
         return left(

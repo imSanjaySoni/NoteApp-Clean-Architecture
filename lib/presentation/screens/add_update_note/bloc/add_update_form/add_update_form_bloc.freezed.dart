@@ -42,6 +42,12 @@ class _$AddUpdateFormEventTearOff {
       value,
     );
   }
+
+  _AddOrUpdateNote addOrUpdateNote({String? id}) {
+    return _AddOrUpdateNote(
+      id: id,
+    );
+  }
 }
 
 /// @nodoc
@@ -56,6 +62,7 @@ mixin _$AddUpdateFormEvent {
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +72,7 @@ mixin _$AddUpdateFormEvent {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +82,7 @@ mixin _$AddUpdateFormEvent {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,6 +92,7 @@ mixin _$AddUpdateFormEvent {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +101,7 @@ mixin _$AddUpdateFormEvent {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +110,7 @@ mixin _$AddUpdateFormEvent {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -213,6 +225,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
   }) {
     return initialize(title, description, color);
   }
@@ -225,6 +238,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
   }) {
     return initialize?.call(title, description, color);
   }
@@ -237,6 +251,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -252,6 +267,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
   }) {
     return initialize(this);
   }
@@ -263,6 +279,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
   }) {
     return initialize?.call(this);
   }
@@ -274,6 +291,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -365,6 +383,7 @@ class _$_TitleChanged implements _TitleChanged {
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
   }) {
     return titleChanged(value);
   }
@@ -377,6 +396,7 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
   }) {
     return titleChanged?.call(value);
   }
@@ -389,6 +409,7 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -404,6 +425,7 @@ class _$_TitleChanged implements _TitleChanged {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
   }) {
     return titleChanged(this);
   }
@@ -415,6 +437,7 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
   }) {
     return titleChanged?.call(this);
   }
@@ -426,6 +449,7 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -514,6 +538,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
   }) {
     return descriptionChanged(value);
   }
@@ -526,6 +551,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
   }) {
     return descriptionChanged?.call(value);
   }
@@ -538,6 +564,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -553,6 +580,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
   }) {
     return descriptionChanged(this);
   }
@@ -564,6 +592,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -575,6 +604,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -663,6 +693,7 @@ class _$_ColorChanged implements _ColorChanged {
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
   }) {
     return colorChanged(value);
   }
@@ -675,6 +706,7 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
   }) {
     return colorChanged?.call(value);
   }
@@ -687,6 +719,7 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -702,6 +735,7 @@ class _$_ColorChanged implements _ColorChanged {
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
   }) {
     return colorChanged(this);
   }
@@ -713,6 +747,7 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
   }) {
     return colorChanged?.call(this);
   }
@@ -724,6 +759,7 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -739,6 +775,161 @@ abstract class _ColorChanged implements AddUpdateFormEvent {
   Color get value => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$ColorChangedCopyWith<_ColorChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AddOrUpdateNoteCopyWith<$Res> {
+  factory _$AddOrUpdateNoteCopyWith(
+          _AddOrUpdateNote value, $Res Function(_AddOrUpdateNote) then) =
+      __$AddOrUpdateNoteCopyWithImpl<$Res>;
+  $Res call({String? id});
+}
+
+/// @nodoc
+class __$AddOrUpdateNoteCopyWithImpl<$Res>
+    extends _$AddUpdateFormEventCopyWithImpl<$Res>
+    implements _$AddOrUpdateNoteCopyWith<$Res> {
+  __$AddOrUpdateNoteCopyWithImpl(
+      _AddOrUpdateNote _value, $Res Function(_AddOrUpdateNote) _then)
+      : super(_value, (v) => _then(v as _AddOrUpdateNote));
+
+  @override
+  _AddOrUpdateNote get _value => super._value as _AddOrUpdateNote;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_AddOrUpdateNote(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddOrUpdateNote implements _AddOrUpdateNote {
+  const _$_AddOrUpdateNote({this.id});
+
+  @override
+  final String? id;
+
+  @override
+  String toString() {
+    return 'AddUpdateFormEvent.addOrUpdateNote(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AddOrUpdateNote &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddOrUpdateNoteCopyWith<_AddOrUpdateNote> get copyWith =>
+      __$AddOrUpdateNoteCopyWithImpl<_AddOrUpdateNote>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? title, String? description, Color? color)
+        initialize,
+    required TResult Function(String value) titleChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
+  }) {
+    return addOrUpdateNote(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? title, String? description, Color? color)?
+        initialize,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
+  }) {
+    return addOrUpdateNote?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? title, String? description, Color? color)?
+        initialize,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
+    required TResult orElse(),
+  }) {
+    if (addOrUpdateNote != null) {
+      return addOrUpdateNote(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+  }) {
+    return addOrUpdateNote(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+  }) {
+    return addOrUpdateNote?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    required TResult orElse(),
+  }) {
+    if (addOrUpdateNote != null) {
+      return addOrUpdateNote(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddOrUpdateNote implements AddUpdateFormEvent {
+  const factory _AddOrUpdateNote({String? id}) = _$_AddOrUpdateNote;
+
+  String? get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$AddOrUpdateNoteCopyWith<_AddOrUpdateNote> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

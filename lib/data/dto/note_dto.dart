@@ -16,7 +16,7 @@ class NoteDto {
     this.dateTime,
   });
 
-  factory NoteDto.toDto(Note note) {
+  factory NoteDto.fromNote(Note note) {
     return NoteDto(
       id: note.id,
       title: note.title,

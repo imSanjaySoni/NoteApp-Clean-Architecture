@@ -14,4 +14,7 @@ class AddUpdateFormEvent with _$AddUpdateFormEvent {
       _DescriptionChanged;
 
   const factory AddUpdateFormEvent.colorChanged(Color value) = _ColorChanged;
+
+  const factory AddUpdateFormEvent.addOrUpdateNote({String? id}) =
+      _AddOrUpdateNote;
 }
