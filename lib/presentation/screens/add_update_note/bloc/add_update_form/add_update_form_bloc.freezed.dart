@@ -17,11 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AddUpdateFormEventTearOff {
   const _$AddUpdateFormEventTearOff();
 
-  _Initialize initialize({String? title, String? description, Color? color}) {
+  _Initialize initialize(
+      {String? title, String? description, Color? color, List<Todo>? todos}) {
     return _Initialize(
       title: title,
       description: description,
       color: color,
+      todos: todos,
     );
   }
 
@@ -75,7 +77,8 @@ const $AddUpdateFormEvent = _$AddUpdateFormEventTearOff();
 mixin _$AddUpdateFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -88,7 +91,8 @@ mixin _$AddUpdateFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -101,7 +105,8 @@ mixin _$AddUpdateFormEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -174,7 +179,8 @@ abstract class _$InitializeCopyWith<$Res> {
   factory _$InitializeCopyWith(
           _Initialize value, $Res Function(_Initialize) then) =
       __$InitializeCopyWithImpl<$Res>;
-  $Res call({String? title, String? description, Color? color});
+  $Res call(
+      {String? title, String? description, Color? color, List<Todo>? todos});
 }
 
 /// @nodoc
@@ -193,6 +199,7 @@ class __$InitializeCopyWithImpl<$Res>
     Object? title = freezed,
     Object? description = freezed,
     Object? color = freezed,
+    Object? todos = freezed,
   }) {
     return _then(_Initialize(
       title: title == freezed
@@ -207,6 +214,10 @@ class __$InitializeCopyWithImpl<$Res>
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color?,
+      todos: todos == freezed
+          ? _value.todos
+          : todos // ignore: cast_nullable_to_non_nullable
+              as List<Todo>?,
     ));
   }
 }
@@ -214,7 +225,7 @@ class __$InitializeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initialize implements _Initialize {
-  const _$_Initialize({this.title, this.description, this.color});
+  const _$_Initialize({this.title, this.description, this.color, this.todos});
 
   @override
   final String? title;
@@ -222,10 +233,12 @@ class _$_Initialize implements _Initialize {
   final String? description;
   @override
   final Color? color;
+  @override
+  final List<Todo>? todos;
 
   @override
   String toString() {
-    return 'AddUpdateFormEvent.initialize(title: $title, description: $description, color: $color)';
+    return 'AddUpdateFormEvent.initialize(title: $title, description: $description, color: $color, todos: $todos)';
   }
 
   @override
@@ -238,7 +251,9 @@ class _$_Initialize implements _Initialize {
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
             (identical(other.color, color) ||
-                const DeepCollectionEquality().equals(other.color, color)));
+                const DeepCollectionEquality().equals(other.color, color)) &&
+            (identical(other.todos, todos) ||
+                const DeepCollectionEquality().equals(other.todos, todos)));
   }
 
   @override
@@ -246,7 +261,8 @@ class _$_Initialize implements _Initialize {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(color);
+      const DeepCollectionEquality().hash(color) ^
+      const DeepCollectionEquality().hash(todos);
 
   @JsonKey(ignore: true)
   @override
@@ -256,7 +272,8 @@ class _$_Initialize implements _Initialize {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -266,13 +283,14 @@ class _$_Initialize implements _Initialize {
     required TResult Function(String id) deleteTodo,
     required TResult Function(String value, String id) todoValueChanged,
   }) {
-    return initialize(title, description, color);
+    return initialize(title, description, color, todos);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -282,13 +300,14 @@ class _$_Initialize implements _Initialize {
     TResult Function(String id)? deleteTodo,
     TResult Function(String value, String id)? todoValueChanged,
   }) {
-    return initialize?.call(title, description, color);
+    return initialize?.call(title, description, color, todos);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -300,7 +319,7 @@ class _$_Initialize implements _Initialize {
     required TResult orElse(),
   }) {
     if (initialize != null) {
-      return initialize(title, description, color);
+      return initialize(title, description, color, todos);
     }
     return orElse();
   }
@@ -357,11 +376,15 @@ class _$_Initialize implements _Initialize {
 
 abstract class _Initialize implements AddUpdateFormEvent {
   const factory _Initialize(
-      {String? title, String? description, Color? color}) = _$_Initialize;
+      {String? title,
+      String? description,
+      Color? color,
+      List<Todo>? todos}) = _$_Initialize;
 
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   Color? get color => throw _privateConstructorUsedError;
+  List<Todo>? get todos => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$InitializeCopyWith<_Initialize> get copyWith =>
       throw _privateConstructorUsedError;
@@ -432,7 +455,8 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -448,7 +472,8 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -464,7 +489,8 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -605,7 +631,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -621,7 +648,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -637,7 +665,8 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -778,7 +807,8 @@ class _$_ColorChanged implements _ColorChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -794,7 +824,8 @@ class _$_ColorChanged implements _ColorChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -810,7 +841,8 @@ class _$_ColorChanged implements _ColorChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -951,7 +983,8 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -967,7 +1000,8 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -983,7 +1017,8 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -1099,7 +1134,8 @@ class _$_AddEmptyTodo implements _AddEmptyTodo {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -1115,7 +1151,8 @@ class _$_AddEmptyTodo implements _AddEmptyTodo {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -1131,7 +1168,8 @@ class _$_AddEmptyTodo implements _AddEmptyTodo {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -1267,7 +1305,8 @@ class _$_DeleteTodo implements _DeleteTodo {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -1283,7 +1322,8 @@ class _$_DeleteTodo implements _DeleteTodo {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -1299,7 +1339,8 @@ class _$_DeleteTodo implements _DeleteTodo {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -1451,7 +1492,8 @@ class _$_TodoValueChanged implements _TodoValueChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? title, String? description, Color? color)
+    required TResult Function(
+            String? title, String? description, Color? color, List<Todo>? todos)
         initialize,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
@@ -1467,7 +1509,8 @@ class _$_TodoValueChanged implements _TodoValueChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
@@ -1483,7 +1526,8 @@ class _$_TodoValueChanged implements _TodoValueChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? title, String? description, Color? color)?
+    TResult Function(String? title, String? description, Color? color,
+            List<Todo>? todos)?
         initialize,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,

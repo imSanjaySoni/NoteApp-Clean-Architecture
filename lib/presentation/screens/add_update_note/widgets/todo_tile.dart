@@ -67,7 +67,7 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
       dense: true,
       contentPadding: EdgeInsets.zero,
       title: TextField(
-        autofocus: true,
+        controller: todoController,
         style: AppTypography.headline6,
         decoration: InputDecoration(
           isDense: true,

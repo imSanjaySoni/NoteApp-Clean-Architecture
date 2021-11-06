@@ -6,6 +6,7 @@ class AddUpdateFormEvent with _$AddUpdateFormEvent {
     String? title,
     String? description,
     Color? color,
+    List<Todo>? todos,
   }) = _Initialize;
 
   const factory AddUpdateFormEvent.titleChanged(String value) = _TitleChanged;

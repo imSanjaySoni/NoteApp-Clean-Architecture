@@ -21,6 +21,7 @@ class AddUpdateFormBloc extends Bloc<AddUpdateFormEvent, AddUpdateFormState> {
           title: event.title,
           description: event.description,
           selectedColor: event.color,
+          todos: event.todos ?? [],
         ),
       );
     });

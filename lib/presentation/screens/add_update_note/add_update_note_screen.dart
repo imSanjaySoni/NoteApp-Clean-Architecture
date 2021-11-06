@@ -41,6 +41,7 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
             title: widget.note?.title,
             description: widget.note?.description,
             color: widget.note?.color ?? colors.randomElement,
+            todos: widget.note?.todo,
           ),
         );
   }
