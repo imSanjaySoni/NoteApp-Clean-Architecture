@@ -16,18 +16,20 @@ class ColorsBar extends StatelessWidget {
           color: selectedColor,
           child: SizedBox(
             height: kToolbarHeight,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: colors
-                    .map(
-                      (color) => _ColorBox(
-                        color: color,
-                        isSelected: selectedColor == color,
-                        onTap: () => onChanged(color),
-                      ),
-                    )
-                    .toList(),
+            child: Center(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: colors
+                      .map(
+                        (color) => _ColorBox(
+                          color: color,
+                          isSelected: selectedColor == color,
+                          onTap: () => onChanged(color),
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
             ),
           ),

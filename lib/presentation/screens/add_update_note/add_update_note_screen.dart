@@ -151,6 +151,7 @@ class _BuildForm extends StatelessWidget {
                 description: _descriptionController.text,
                 color: state.selectedColor,
                 dateTime: DateTime.now(),
+                todo: state.todos,
               ),
             ),
           );
@@ -163,6 +164,7 @@ class _BuildForm extends StatelessWidget {
                 description: _descriptionController.text,
                 color: state.selectedColor,
                 dateTime: DateTime.now(),
+                todo: state.todos,
               ),
               widget.note!.id!,
             ),

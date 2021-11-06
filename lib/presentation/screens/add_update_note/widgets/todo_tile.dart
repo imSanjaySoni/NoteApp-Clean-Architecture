@@ -19,7 +19,7 @@ class _AddTodoTile extends StatelessWidget {
           children: [
             Text(
               'Add todo',
-              style: AppTypography.title,
+              style: AppTypography.headline6,
             ),
             const SizedBox(width: 12),
             const Icon(
@@ -41,10 +41,12 @@ class _TodoFieldTile extends StatefulWidget {
     Key? key,
     this.value,
     required this.onChanged,
+    required this.onRemoved,
   }) : super(key: key);
 
   final String? value;
   final Function(String value) onChanged;
+  final VoidCallback onRemoved;
 
   @override
   State<_TodoFieldTile> createState() => _TodoFieldTileState();
@@ -65,12 +67,13 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
       dense: true,
       contentPadding: EdgeInsets.zero,
       title: TextField(
-        style: AppTypography.title,
+        autofocus: true,
+        style: AppTypography.headline6,
         decoration: InputDecoration(
           isDense: true,
           border: InputBorder.none,
           hintText: 'Todo..',
-          hintStyle: AppTypography.title.copyWith(
+          hintStyle: AppTypography.headline6.copyWith(
             color: AppColors.title.withOpacity(0.6),
           ),
         ),
@@ -84,7 +87,7 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
           FeatherIcons.trash2,
           color: Colors.black87,
         ),
-        onPressed: () {},
+        onPressed: widget.onRemoved,
       ),
     );
   }
@@ -114,12 +117,28 @@ class _BuildTodoListField extends StatelessWidget {
 
             return _TodoFieldTile(
               value: todo.title,
-              onChanged: (value) {},
+              onChanged: (value) {
+                context.read<AddUpdateFormBloc>().add(
+                      AddUpdateFormEvent.todoValueChanged(
+                        value: value,
+                        id: todo.id!,
+                      ),
+                    );
+              },
+              onRemoved: () {
+                context
+                    .read<AddUpdateFormBloc>()
+                    .add(AddUpdateFormEvent.deleteTodo(todo.id!));
+              },
             );
           },
         ),
         _AddTodoTile(
-          onAdd: () {},
+          onAdd: () {
+            context
+                .read<AddUpdateFormBloc>()
+                .add(const AddUpdateFormEvent.addEmptyTodo());
+          },
         ),
       ],
     );

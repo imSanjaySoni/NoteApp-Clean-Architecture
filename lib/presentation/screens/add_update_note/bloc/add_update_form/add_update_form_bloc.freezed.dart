@@ -48,6 +48,24 @@ class _$AddUpdateFormEventTearOff {
       id: id,
     );
   }
+
+  _AddEmptyTodo addEmptyTodo() {
+    return const _AddEmptyTodo();
+  }
+
+  _DeleteTodo deleteTodo(String id) {
+    return _DeleteTodo(
+      id,
+    );
+  }
+
+  _TodoValueChanged todoValueChanged(
+      {required String value, required String id}) {
+    return _TodoValueChanged(
+      value: value,
+      id: id,
+    );
+  }
 }
 
 /// @nodoc
@@ -63,6 +81,9 @@ mixin _$AddUpdateFormEvent {
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
     required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,6 +94,9 @@ mixin _$AddUpdateFormEvent {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,6 +107,9 @@ mixin _$AddUpdateFormEvent {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -93,6 +120,9 @@ mixin _$AddUpdateFormEvent {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -102,6 +132,9 @@ mixin _$AddUpdateFormEvent {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +144,9 @@ mixin _$AddUpdateFormEvent {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -226,6 +262,9 @@ class _$_Initialize implements _Initialize {
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
     required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
   }) {
     return initialize(title, description, color);
   }
@@ -239,6 +278,9 @@ class _$_Initialize implements _Initialize {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
   }) {
     return initialize?.call(title, description, color);
   }
@@ -252,6 +294,9 @@ class _$_Initialize implements _Initialize {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -268,6 +313,9 @@ class _$_Initialize implements _Initialize {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
   }) {
     return initialize(this);
   }
@@ -280,6 +328,9 @@ class _$_Initialize implements _Initialize {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
   }) {
     return initialize?.call(this);
   }
@@ -292,6 +343,9 @@ class _$_Initialize implements _Initialize {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -384,6 +438,9 @@ class _$_TitleChanged implements _TitleChanged {
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
     required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
   }) {
     return titleChanged(value);
   }
@@ -397,6 +454,9 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
   }) {
     return titleChanged?.call(value);
   }
@@ -410,6 +470,9 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -426,6 +489,9 @@ class _$_TitleChanged implements _TitleChanged {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
   }) {
     return titleChanged(this);
   }
@@ -438,6 +504,9 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
   }) {
     return titleChanged?.call(this);
   }
@@ -450,6 +519,9 @@ class _$_TitleChanged implements _TitleChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -539,6 +611,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
     required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
   }) {
     return descriptionChanged(value);
   }
@@ -552,6 +627,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
   }) {
     return descriptionChanged?.call(value);
   }
@@ -565,6 +643,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -581,6 +662,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
   }) {
     return descriptionChanged(this);
   }
@@ -593,6 +677,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
   }) {
     return descriptionChanged?.call(this);
   }
@@ -605,6 +692,9 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -694,6 +784,9 @@ class _$_ColorChanged implements _ColorChanged {
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
     required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
   }) {
     return colorChanged(value);
   }
@@ -707,6 +800,9 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
   }) {
     return colorChanged?.call(value);
   }
@@ -720,6 +816,9 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -736,6 +835,9 @@ class _$_ColorChanged implements _ColorChanged {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
   }) {
     return colorChanged(this);
   }
@@ -748,6 +850,9 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
   }) {
     return colorChanged?.call(this);
   }
@@ -760,6 +865,9 @@ class _$_ColorChanged implements _ColorChanged {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (colorChanged != null) {
@@ -849,6 +957,9 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
     required TResult Function(String value) descriptionChanged,
     required TResult Function(Color value) colorChanged,
     required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
   }) {
     return addOrUpdateNote(id);
   }
@@ -862,6 +973,9 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
   }) {
     return addOrUpdateNote?.call(id);
   }
@@ -875,6 +989,9 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
     TResult Function(String value)? descriptionChanged,
     TResult Function(Color value)? colorChanged,
     TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (addOrUpdateNote != null) {
@@ -891,6 +1008,9 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_ColorChanged value) colorChanged,
     required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
   }) {
     return addOrUpdateNote(this);
   }
@@ -903,6 +1023,9 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
   }) {
     return addOrUpdateNote?.call(this);
   }
@@ -915,6 +1038,9 @@ class _$_AddOrUpdateNote implements _AddOrUpdateNote {
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_ColorChanged value)? colorChanged,
     TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
     required TResult orElse(),
   }) {
     if (addOrUpdateNote != null) {
@@ -930,6 +1056,508 @@ abstract class _AddOrUpdateNote implements AddUpdateFormEvent {
   String? get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$AddOrUpdateNoteCopyWith<_AddOrUpdateNote> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AddEmptyTodoCopyWith<$Res> {
+  factory _$AddEmptyTodoCopyWith(
+          _AddEmptyTodo value, $Res Function(_AddEmptyTodo) then) =
+      __$AddEmptyTodoCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$AddEmptyTodoCopyWithImpl<$Res>
+    extends _$AddUpdateFormEventCopyWithImpl<$Res>
+    implements _$AddEmptyTodoCopyWith<$Res> {
+  __$AddEmptyTodoCopyWithImpl(
+      _AddEmptyTodo _value, $Res Function(_AddEmptyTodo) _then)
+      : super(_value, (v) => _then(v as _AddEmptyTodo));
+
+  @override
+  _AddEmptyTodo get _value => super._value as _AddEmptyTodo;
+}
+
+/// @nodoc
+
+class _$_AddEmptyTodo implements _AddEmptyTodo {
+  const _$_AddEmptyTodo();
+
+  @override
+  String toString() {
+    return 'AddUpdateFormEvent.addEmptyTodo()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _AddEmptyTodo);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? title, String? description, Color? color)
+        initialize,
+    required TResult Function(String value) titleChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
+  }) {
+    return addEmptyTodo();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? title, String? description, Color? color)?
+        initialize,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
+  }) {
+    return addEmptyTodo?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? title, String? description, Color? color)?
+        initialize,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
+    required TResult orElse(),
+  }) {
+    if (addEmptyTodo != null) {
+      return addEmptyTodo();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
+  }) {
+    return addEmptyTodo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
+  }) {
+    return addEmptyTodo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
+    required TResult orElse(),
+  }) {
+    if (addEmptyTodo != null) {
+      return addEmptyTodo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddEmptyTodo implements AddUpdateFormEvent {
+  const factory _AddEmptyTodo() = _$_AddEmptyTodo;
+}
+
+/// @nodoc
+abstract class _$DeleteTodoCopyWith<$Res> {
+  factory _$DeleteTodoCopyWith(
+          _DeleteTodo value, $Res Function(_DeleteTodo) then) =
+      __$DeleteTodoCopyWithImpl<$Res>;
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$DeleteTodoCopyWithImpl<$Res>
+    extends _$AddUpdateFormEventCopyWithImpl<$Res>
+    implements _$DeleteTodoCopyWith<$Res> {
+  __$DeleteTodoCopyWithImpl(
+      _DeleteTodo _value, $Res Function(_DeleteTodo) _then)
+      : super(_value, (v) => _then(v as _DeleteTodo));
+
+  @override
+  _DeleteTodo get _value => super._value as _DeleteTodo;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_DeleteTodo(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DeleteTodo implements _DeleteTodo {
+  const _$_DeleteTodo(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'AddUpdateFormEvent.deleteTodo(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _DeleteTodo &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeleteTodoCopyWith<_DeleteTodo> get copyWith =>
+      __$DeleteTodoCopyWithImpl<_DeleteTodo>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? title, String? description, Color? color)
+        initialize,
+    required TResult Function(String value) titleChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
+  }) {
+    return deleteTodo(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? title, String? description, Color? color)?
+        initialize,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
+  }) {
+    return deleteTodo?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? title, String? description, Color? color)?
+        initialize,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
+    required TResult orElse(),
+  }) {
+    if (deleteTodo != null) {
+      return deleteTodo(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
+  }) {
+    return deleteTodo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
+  }) {
+    return deleteTodo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
+    required TResult orElse(),
+  }) {
+    if (deleteTodo != null) {
+      return deleteTodo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteTodo implements AddUpdateFormEvent {
+  const factory _DeleteTodo(String id) = _$_DeleteTodo;
+
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$DeleteTodoCopyWith<_DeleteTodo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$TodoValueChangedCopyWith<$Res> {
+  factory _$TodoValueChangedCopyWith(
+          _TodoValueChanged value, $Res Function(_TodoValueChanged) then) =
+      __$TodoValueChangedCopyWithImpl<$Res>;
+  $Res call({String value, String id});
+}
+
+/// @nodoc
+class __$TodoValueChangedCopyWithImpl<$Res>
+    extends _$AddUpdateFormEventCopyWithImpl<$Res>
+    implements _$TodoValueChangedCopyWith<$Res> {
+  __$TodoValueChangedCopyWithImpl(
+      _TodoValueChanged _value, $Res Function(_TodoValueChanged) _then)
+      : super(_value, (v) => _then(v as _TodoValueChanged));
+
+  @override
+  _TodoValueChanged get _value => super._value as _TodoValueChanged;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+    Object? id = freezed,
+  }) {
+    return _then(_TodoValueChanged(
+      value: value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_TodoValueChanged implements _TodoValueChanged {
+  const _$_TodoValueChanged({required this.value, required this.id});
+
+  @override
+  final String value;
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'AddUpdateFormEvent.todoValueChanged(value: $value, id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _TodoValueChanged &&
+            (identical(other.value, value) ||
+                const DeepCollectionEquality().equals(other.value, value)) &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(value) ^
+      const DeepCollectionEquality().hash(id);
+
+  @JsonKey(ignore: true)
+  @override
+  _$TodoValueChangedCopyWith<_TodoValueChanged> get copyWith =>
+      __$TodoValueChangedCopyWithImpl<_TodoValueChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? title, String? description, Color? color)
+        initialize,
+    required TResult Function(String value) titleChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(Color value) colorChanged,
+    required TResult Function(String? id) addOrUpdateNote,
+    required TResult Function() addEmptyTodo,
+    required TResult Function(String id) deleteTodo,
+    required TResult Function(String value, String id) todoValueChanged,
+  }) {
+    return todoValueChanged(value, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String? title, String? description, Color? color)?
+        initialize,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
+  }) {
+    return todoValueChanged?.call(value, id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? title, String? description, Color? color)?
+        initialize,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(Color value)? colorChanged,
+    TResult Function(String? id)? addOrUpdateNote,
+    TResult Function()? addEmptyTodo,
+    TResult Function(String id)? deleteTodo,
+    TResult Function(String value, String id)? todoValueChanged,
+    required TResult orElse(),
+  }) {
+    if (todoValueChanged != null) {
+      return todoValueChanged(value, id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_ColorChanged value) colorChanged,
+    required TResult Function(_AddOrUpdateNote value) addOrUpdateNote,
+    required TResult Function(_AddEmptyTodo value) addEmptyTodo,
+    required TResult Function(_DeleteTodo value) deleteTodo,
+    required TResult Function(_TodoValueChanged value) todoValueChanged,
+  }) {
+    return todoValueChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
+  }) {
+    return todoValueChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_ColorChanged value)? colorChanged,
+    TResult Function(_AddOrUpdateNote value)? addOrUpdateNote,
+    TResult Function(_AddEmptyTodo value)? addEmptyTodo,
+    TResult Function(_DeleteTodo value)? deleteTodo,
+    TResult Function(_TodoValueChanged value)? todoValueChanged,
+    required TResult orElse(),
+  }) {
+    if (todoValueChanged != null) {
+      return todoValueChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TodoValueChanged implements AddUpdateFormEvent {
+  const factory _TodoValueChanged({required String value, required String id}) =
+      _$_TodoValueChanged;
+
+  String get value => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$TodoValueChangedCopyWith<_TodoValueChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

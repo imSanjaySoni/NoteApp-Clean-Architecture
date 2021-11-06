@@ -56,7 +56,7 @@ class NoteDto {
       description: note.description,
       dateTime: note.dateTime?.toIso8601String(),
       colorValue: note.color?.value,
-      todoList: [],
+      todoList: note.todo.map((todo) => TodoDto.fromDomain(todo)).toList(),
     );
   }
   Note toDomain() {

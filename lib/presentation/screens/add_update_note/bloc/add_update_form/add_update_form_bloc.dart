@@ -61,6 +61,39 @@ class AddUpdateFormBloc extends Bloc<AddUpdateFormEvent, AddUpdateFormState> {
         _addUpdateBloc.add(AddUpdateEvent.updateNote(note, event.id!));
       }
     });
+
+    //* TODO's events
+    //* add empty todo
+    on<_AddEmptyTodo>((event, emit) {
+      final todos = List<Todo>.from(state.todos);
+      todos.add(Todo.empty());
+
+      emit(state.copyWith(todos: todos));
+    });
+
+    //* Delete todo item
+    on<_DeleteTodo>((event, emit) {
+      final todos = List<Todo>.from(state.todos);
+      todos.removeWhere((todo) => todo.id == event.id);
+
+      emit(state.copyWith(todos: todos));
+    });
+
+    //* Update todo item
+    on<_TodoValueChanged>((event, emit) {
+      final todos = List<Todo>.from(state.todos);
+
+      final updatedTodoList = todos.map((todo) {
+        if (todo.id == event.id) {
+          return todo.copyWith(
+            title: event.value,
+          );
+        }
+        return todo;
+      }).toList();
+
+      emit(state.copyWith(todos: updatedTodoList));
+    });
   }
 
   final AddUpdateBloc _addUpdateBloc;

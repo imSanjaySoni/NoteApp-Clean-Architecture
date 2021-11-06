@@ -63,8 +63,11 @@ class NoteDetailScreen extends StatelessWidget {
           const SizedBox(height: AppSpacings.xxl),
 
           //* Show todo's list if any
-          if (!note.hasTodo) ...{
-            _BuildTodoList(todoList: note.todo),
+          if (note.hasTodo) ...{
+            FadeInDown(
+              delay: const Duration(milliseconds: 300),
+              child: _BuildTodoList(todoList: note.todo),
+            ),
             const SizedBox(height: AppSpacings.xxl),
           },
 
@@ -82,17 +85,6 @@ class NoteDetailScreen extends StatelessWidget {
   }
 }
 
-final _todoList = [
-  Todo(
-    completed: true,
-    title: 'Code in evening',
-  ),
-  Todo(
-    completed: false,
-    title: 'Code in evening',
-  ),
-];
-
 class _BuildTodoList extends StatelessWidget {
   const _BuildTodoList({Key? key, required this.todoList}) : super(key: key);
   final List<Todo> todoList;
@@ -109,10 +101,10 @@ class _BuildTodoList extends StatelessWidget {
         ),
         ListView.builder(
           shrinkWrap: true,
-          itemCount: _todoList.length,
+          itemCount: todoList.length,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (_, index) {
-            final Todo todo = _todoList[index];
+            final Todo todo = todoList[index];
 
             return CheckboxListTile(
               controlAffinity: ListTileControlAffinity.leading,

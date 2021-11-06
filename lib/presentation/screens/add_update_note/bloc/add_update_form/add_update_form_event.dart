@@ -17,4 +17,13 @@ class AddUpdateFormEvent with _$AddUpdateFormEvent {
 
   const factory AddUpdateFormEvent.addOrUpdateNote({String? id}) =
       _AddOrUpdateNote;
+
+  const factory AddUpdateFormEvent.addEmptyTodo() = _AddEmptyTodo;
+
+  const factory AddUpdateFormEvent.deleteTodo(String id) = _DeleteTodo;
+
+  const factory AddUpdateFormEvent.todoValueChanged({
+    required String value,
+    required String id,
+  }) = _TodoValueChanged;
 }
