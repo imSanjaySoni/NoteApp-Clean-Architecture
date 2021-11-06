@@ -13,7 +13,8 @@ import 'package:note_app/presentation/screens/home/bloc/home_bloc.dart';
 import 'di/di.dart';
 import 'presentation/app.dart';
 import 'presentation/screens/add_update_note/bloc/add_update_form/add_update_form_bloc.dart';
-import 'presentation/screens/note_detail/bloc/note_detail_bloc.dart';
+import 'presentation/screens/note_detail/bloc/action/note_action_bloc.dart';
+import 'presentation/screens/note_detail/bloc/detail/note_detail_bloc.dart';
 
 Future main() async {
   //* observe bloc logs
@@ -47,6 +48,9 @@ Future main() async {
         ),
         BlocProvider<AddUpdateBloc>(
           create: (_) => getIt<AddUpdateBloc>(),
+        ),
+        BlocProvider<NoteActionBloc>(
+          create: (_) => getIt<NoteActionBloc>(),
         ),
         BlocProvider<NoteDetailBloc>(
           create: (_) => getIt<NoteDetailBloc>(),

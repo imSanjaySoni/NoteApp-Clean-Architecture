@@ -7,27 +7,27 @@ import 'package:note_app/domain/usecase/usecase.dart';
 import 'package:note_app/presentation/components/toast.dart';
 import 'package:note_app/presentation/routes/routes.dart';
 
-part 'note_detail_bloc.freezed.dart';
-part 'note_detail_event.dart';
-part 'note_detail_state.dart';
+part 'note_action_bloc.freezed.dart';
+part 'note_action_event.dart';
+part 'note_action_state.dart';
 
 @injectable
-class NoteDetailBloc extends Bloc<NoteDetailEvent, NoteDetailState> {
-  NoteDetailBloc(
+class NoteActionBloc extends Bloc<NoteActionEvent, NoteActionState> {
+  NoteActionBloc(
     this._usecase,
-  ) : super(const NoteDetailState.initial()) {
+  ) : super(const NoteActionState.initial()) {
     on<_DeleteNote>((event, emit) async {
       final failureOrSuccess = await _usecase(event.noteId);
 
       failureOrSuccess.fold(
         (failure) {
-          emit(NoteDetailState.deleteFailure(message: failure.message));
+          emit(NoteActionState.deleteFailure(message: failure.message));
           getIt<AppRouter>()
               .context
               .showToast('🙁  ${failure.message}', isError: true);
         },
         (success) {
-          emit(const NoteDetailState.deleteSuccess());
+          emit(const NoteActionState.deleteSuccess());
           getIt<AppRouter>().navigate(const HomeRoute());
           getIt<AppRouter>().context.showToast('🤙  Note Deleted.');
         },

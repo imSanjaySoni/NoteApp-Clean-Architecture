@@ -19,10 +19,10 @@ class GetNoteUsecase {
       return right(note);
     } catch (e) {
       if (e is NoRecordsException) {
-        return left(NoteError(message: "Empty, click '+' to add new."));
+        return left(NoteError(message: 'No matched note found.'));
       }
       return left(
-        NoteError(message: 'Failed to load notes, please try again.'),
+        NoteError(message: 'Failed to load note, please try again.'),
       );
     }
   }

@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'note_detail_bloc.dart';
+part of 'note_action_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,8 +14,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$NoteDetailEventTearOff {
-  const _$NoteDetailEventTearOff();
+class _$NoteActionEventTearOff {
+  const _$NoteActionEventTearOff();
 
   _DeleteNote deleteNote(String noteId) {
     return _DeleteNote(
@@ -25,10 +25,10 @@ class _$NoteDetailEventTearOff {
 }
 
 /// @nodoc
-const $NoteDetailEvent = _$NoteDetailEventTearOff();
+const $NoteActionEvent = _$NoteActionEventTearOff();
 
 /// @nodoc
-mixin _$NoteDetailEvent {
+mixin _$NoteActionEvent {
   String get noteId => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -65,26 +65,26 @@ mixin _$NoteDetailEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $NoteDetailEventCopyWith<NoteDetailEvent> get copyWith =>
+  $NoteActionEventCopyWith<NoteActionEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NoteDetailEventCopyWith<$Res> {
-  factory $NoteDetailEventCopyWith(
-          NoteDetailEvent value, $Res Function(NoteDetailEvent) then) =
-      _$NoteDetailEventCopyWithImpl<$Res>;
+abstract class $NoteActionEventCopyWith<$Res> {
+  factory $NoteActionEventCopyWith(
+          NoteActionEvent value, $Res Function(NoteActionEvent) then) =
+      _$NoteActionEventCopyWithImpl<$Res>;
   $Res call({String noteId});
 }
 
 /// @nodoc
-class _$NoteDetailEventCopyWithImpl<$Res>
-    implements $NoteDetailEventCopyWith<$Res> {
-  _$NoteDetailEventCopyWithImpl(this._value, this._then);
+class _$NoteActionEventCopyWithImpl<$Res>
+    implements $NoteActionEventCopyWith<$Res> {
+  _$NoteActionEventCopyWithImpl(this._value, this._then);
 
-  final NoteDetailEvent _value;
+  final NoteActionEvent _value;
   // ignore: unused_field
-  final $Res Function(NoteDetailEvent) _then;
+  final $Res Function(NoteActionEvent) _then;
 
   @override
   $Res call({
@@ -101,7 +101,7 @@ class _$NoteDetailEventCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$DeleteNoteCopyWith<$Res>
-    implements $NoteDetailEventCopyWith<$Res> {
+    implements $NoteActionEventCopyWith<$Res> {
   factory _$DeleteNoteCopyWith(
           _DeleteNote value, $Res Function(_DeleteNote) then) =
       __$DeleteNoteCopyWithImpl<$Res>;
@@ -111,7 +111,7 @@ abstract class _$DeleteNoteCopyWith<$Res>
 
 /// @nodoc
 class __$DeleteNoteCopyWithImpl<$Res>
-    extends _$NoteDetailEventCopyWithImpl<$Res>
+    extends _$NoteActionEventCopyWithImpl<$Res>
     implements _$DeleteNoteCopyWith<$Res> {
   __$DeleteNoteCopyWithImpl(
       _DeleteNote _value, $Res Function(_DeleteNote) _then)
@@ -143,7 +143,7 @@ class _$_DeleteNote implements _DeleteNote {
 
   @override
   String toString() {
-    return 'NoteDetailEvent.deleteNote(noteId: $noteId)';
+    return 'NoteActionEvent.deleteNote(noteId: $noteId)';
   }
 
   @override
@@ -220,7 +220,7 @@ class _$_DeleteNote implements _DeleteNote {
   }
 }
 
-abstract class _DeleteNote implements NoteDetailEvent {
+abstract class _DeleteNote implements NoteActionEvent {
   const factory _DeleteNote(String noteId) = _$_DeleteNote;
 
   @override
@@ -232,8 +232,8 @@ abstract class _DeleteNote implements NoteDetailEvent {
 }
 
 /// @nodoc
-class _$NoteDetailStateTearOff {
-  const _$NoteDetailStateTearOff();
+class _$NoteActionStateTearOff {
+  const _$NoteActionStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -251,10 +251,10 @@ class _$NoteDetailStateTearOff {
 }
 
 /// @nodoc
-const $NoteDetailState = _$NoteDetailStateTearOff();
+const $NoteActionState = _$NoteActionStateTearOff();
 
 /// @nodoc
-mixin _$NoteDetailState {
+mixin _$NoteActionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -302,20 +302,20 @@ mixin _$NoteDetailState {
 }
 
 /// @nodoc
-abstract class $NoteDetailStateCopyWith<$Res> {
-  factory $NoteDetailStateCopyWith(
-          NoteDetailState value, $Res Function(NoteDetailState) then) =
-      _$NoteDetailStateCopyWithImpl<$Res>;
+abstract class $NoteActionStateCopyWith<$Res> {
+  factory $NoteActionStateCopyWith(
+          NoteActionState value, $Res Function(NoteActionState) then) =
+      _$NoteActionStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NoteDetailStateCopyWithImpl<$Res>
-    implements $NoteDetailStateCopyWith<$Res> {
-  _$NoteDetailStateCopyWithImpl(this._value, this._then);
+class _$NoteActionStateCopyWithImpl<$Res>
+    implements $NoteActionStateCopyWith<$Res> {
+  _$NoteActionStateCopyWithImpl(this._value, this._then);
 
-  final NoteDetailState _value;
+  final NoteActionState _value;
   // ignore: unused_field
-  final $Res Function(NoteDetailState) _then;
+  final $Res Function(NoteActionState) _then;
 }
 
 /// @nodoc
@@ -325,7 +325,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$NoteDetailStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$NoteActionStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -341,7 +341,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'NoteDetailState.initial()';
+    return 'NoteActionState.initial()';
   }
 
   @override
@@ -421,7 +421,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements NoteDetailState {
+abstract class _Initial implements NoteActionState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -434,7 +434,7 @@ abstract class _$DeleteSuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$DeleteSuccessCopyWithImpl<$Res>
-    extends _$NoteDetailStateCopyWithImpl<$Res>
+    extends _$NoteActionStateCopyWithImpl<$Res>
     implements _$DeleteSuccessCopyWith<$Res> {
   __$DeleteSuccessCopyWithImpl(
       _DeleteSuccess _value, $Res Function(_DeleteSuccess) _then)
@@ -451,7 +451,7 @@ class _$_DeleteSuccess implements _DeleteSuccess {
 
   @override
   String toString() {
-    return 'NoteDetailState.deleteSuccess()';
+    return 'NoteActionState.deleteSuccess()';
   }
 
   @override
@@ -531,7 +531,7 @@ class _$_DeleteSuccess implements _DeleteSuccess {
   }
 }
 
-abstract class _DeleteSuccess implements NoteDetailState {
+abstract class _DeleteSuccess implements NoteActionState {
   const factory _DeleteSuccess() = _$_DeleteSuccess;
 }
 
@@ -545,7 +545,7 @@ abstract class _$DeleteFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$DeleteFailureCopyWithImpl<$Res>
-    extends _$NoteDetailStateCopyWithImpl<$Res>
+    extends _$NoteActionStateCopyWithImpl<$Res>
     implements _$DeleteFailureCopyWith<$Res> {
   __$DeleteFailureCopyWithImpl(
       _DeleteFailure _value, $Res Function(_DeleteFailure) _then)
@@ -577,7 +577,7 @@ class _$_DeleteFailure implements _DeleteFailure {
 
   @override
   String toString() {
-    return 'NoteDetailState.deleteFailure(message: $message)';
+    return 'NoteActionState.deleteFailure(message: $message)';
   }
 
   @override
@@ -666,7 +666,7 @@ class _$_DeleteFailure implements _DeleteFailure {
   }
 }
 
-abstract class _DeleteFailure implements NoteDetailState {
+abstract class _DeleteFailure implements NoteActionState {
   const factory _DeleteFailure({String? message}) = _$_DeleteFailure;
 
   String? get message => throw _privateConstructorUsedError;

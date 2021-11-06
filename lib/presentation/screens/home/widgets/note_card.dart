@@ -23,7 +23,7 @@ class NoteCard extends StatelessWidget {
     return GestureDetector(
       onLongPressDown: onSelect,
       onTap: () {
-        context.router.push(NoteDetailRoute(note: note));
+        context.router.push(NoteDetailRoute(noteId: note.id!));
       },
       child: Container(
         clipBehavior: Clip.antiAlias,
