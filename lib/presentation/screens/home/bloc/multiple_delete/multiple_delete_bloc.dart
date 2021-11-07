@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:note_app/domain/usecase/delete_multiple_notes.dart';
+import 'package:note_app/domain/usecase/usecase.dart';
 import 'package:note_app/presentation/components/toast.dart';
 
 part 'multiple_delete_event.dart';

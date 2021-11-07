@@ -24,12 +24,12 @@ class NoteActionBloc extends Bloc<NoteActionEvent, NoteActionState> {
           emit(NoteActionState.deleteFailure(message: failure.message));
           getIt<AppRouter>()
               .context
-              .showToast('🙁  ${failure.message}', isError: true);
+              .showToast('👎  ${failure.message}', isError: true);
         },
         (success) {
           emit(const NoteActionState.deleteSuccess());
           getIt<AppRouter>().navigate(const HomeRoute());
-          getIt<AppRouter>().context.showToast('🤙  Note Deleted.');
+          getIt<AppRouter>().context.showToast('👍  Note Deleted.');
         },
       );
     });
