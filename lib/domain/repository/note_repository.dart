@@ -5,4 +5,5 @@ abstract class NoteRepository {
   Future<NoteDto> getNote(String id);
   Future addUpdateNote(NoteDto note);
   Future deleteNote(String id);
+  Future deleteMultiNotes(List<String> ids);
 }

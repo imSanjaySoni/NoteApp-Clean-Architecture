@@ -13,9 +13,12 @@ import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/components/components.dart';
 import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/screens/add_update_note/bloc/add_update_bloc.dart';
+import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
+import 'package:note_app/presentation/theme/typography.dart';
 
 import 'bloc/home_bloc.dart';
+import 'bloc/multiple_delete/multiple_delete_bloc.dart';
 import 'widgets/note_card.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,20 +27,55 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const NoteAppBar(
+      appBar: NoteAppBar(
         systemUiOverlayStyle: SystemUiOverlayStyle.light,
         autoImplementLeading: false,
         title: StringConstants.homeAppBarTitle,
+        actions: context.watch<MultipleDeleteBloc>().state.mapOrNull(
+              selected: (selectedNotes) => [
+                AppButton(
+                  child: Row(
+                    children: [
+                      Text(
+                        'Delete - ${selectedNotes.selectedIds.length}',
+                        style: AppTypography.headline6
+                            .copyWith(color: AppColors.white),
+                      ),
+                      const SizedBox(width: AppSpacings.xl),
+                      const Icon(FeatherIcons.trash2),
+                    ],
+                  ),
+                  onPressed: () {
+                    context
+                        .read<MultipleDeleteBloc>()
+                        .add(const MultipleDeleteEvent.delete());
+                  },
+                ),
+                AppButton(
+                  child: const Icon(FeatherIcons.x),
+                  onPressed: () {
+                    context
+                        .read<MultipleDeleteBloc>()
+                        .add(const MultipleDeleteEvent.clearAll());
+                  },
+                ),
+              ],
+            ),
       ),
+
+      //* add new note button
       floatingActionButton: FadeInRight(
         delay: animationDuration,
         child: FloatingActionButton(
+          tooltip: 'Add note',
           onPressed: () {
             context.router.push(AddUpdateNoteRoute());
           },
           child: const Icon(FeatherIcons.plus),
         ),
       ),
+
+      //* Show available notes list
       body: ValueListenableBuilder(
         valueListenable: getIt<Database>().box.listenable(),
         builder: (context, _, child) {
@@ -68,6 +106,8 @@ class _BuildNotesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final multipleDeleteBloc = context.read<MultipleDeleteBloc>();
+
     return StaggeredGridView.countBuilder(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacings.xl,
@@ -77,9 +117,27 @@ class _BuildNotesList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: notes.length,
       itemBuilder: (BuildContext context, int index) {
+        final noteId = notes[index].id!;
         return FadeInUp(
           duration: Duration(milliseconds: 100 * index),
-          child: NoteCard(note: notes[index]),
+          child: NoteCard(
+            note: notes[index],
+            selected: multipleDeleteBloc.isSelected(noteId),
+            onTap: () {
+              multipleDeleteBloc.state.maybeMap(
+                orElse: () {
+                  context.router.push(NoteDetailRoute(noteId: noteId));
+                },
+                selected: (_) {
+                  multipleDeleteBloc
+                      .add(MultipleDeleteEvent.toggleSelect(noteId));
+                },
+              );
+            },
+            onSelect: () {
+              multipleDeleteBloc.add(MultipleDeleteEvent.toggleSelect(noteId));
+            },
+          ),
         );
       },
       staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),

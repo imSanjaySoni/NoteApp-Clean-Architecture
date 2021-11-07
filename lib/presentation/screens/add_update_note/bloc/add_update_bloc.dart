@@ -32,11 +32,11 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
         emit(AddUpdateState.failed(message: failure.message));
         getIt<AppRouter>()
             .context
-            .showToast('🙁  ${failure.message}', isError: true);
+            .showToast('👎  ${failure.message}', isError: true);
       }, (_) {
         emit(const AddUpdateState.saved());
         getIt<AppRouter>().navigate(const HomeRoute());
-        getIt<AppRouter>().context.showToast('🤙  Note Added.');
+        getIt<AppRouter>().context.showToast('👍  Note Added Successfully.');
       });
     });
 
@@ -51,11 +51,11 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
         emit(AddUpdateState.failed(message: failure.message));
         getIt<AppRouter>()
             .context
-            .showToast('🙁  ${failure.message}', isError: true);
+            .showToast('👎   ${failure.message}', isError: true);
       }, (_) {
         emit(const AddUpdateState.saved());
         getIt<AppRouter>().navigate(const HomeRoute());
-        getIt<AppRouter>().context.showToast('🤙  Note Updated.');
+        getIt<AppRouter>().context.showToast('👍   Note Updated Successfully.');
       });
     });
   }

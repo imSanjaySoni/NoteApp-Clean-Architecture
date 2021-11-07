@@ -72,6 +72,7 @@ class _ColorBox extends StatelessWidget {
                 ? const Icon(
                     FeatherIcons.check,
                     color: AppColors.white,
+                    size: 36,
                   )
                 : null,
           ),

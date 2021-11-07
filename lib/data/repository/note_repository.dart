@@ -28,6 +28,15 @@ class NoteRepositoryImplementation implements NoteRepository {
   }
 
   @override
+  Future deleteMultiNotes(List<String> ids) async {
+    try {
+      await _database.deleteAll(ids);
+    } catch (_) {
+      rethrow;
+    }
+  }
+
+  @override
   List<NoteDto> getAllNotes() {
     try {
       final notesDto =

@@ -3,6 +3,9 @@ import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
+export 'package:note_app/di/di.dart';
+export 'package:note_app/presentation/routes/routes.dart';
+
 extension ContextEx on BuildContext {
   void showToast(
     String message, {

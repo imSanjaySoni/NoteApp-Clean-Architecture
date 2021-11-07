@@ -54,4 +54,13 @@ class DatabaseImplementing implements Database {
       rethrow;
     }
   }
+
+  @override
+  Future deleteAll(List<String> keys) async {
+    try {
+      await box.deleteAll(keys);
+    } catch (_) {
+      rethrow;
+    }
+  }
 }
