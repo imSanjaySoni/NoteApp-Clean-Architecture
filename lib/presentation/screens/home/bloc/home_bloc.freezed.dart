@@ -20,10 +20,6 @@ class _$HomeEventTearOff {
   _GetAllNotes getAllNotes() {
     return const _GetAllNotes();
   }
-
-  _Refresh refresh() {
-    return const _Refresh();
-  }
 }
 
 /// @nodoc
@@ -34,38 +30,32 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllNotes,
-    required TResult Function() refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getAllNotes,
-    TResult Function()? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllNotes,
-    TResult Function()? refresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllNotes value) getAllNotes,
-    required TResult Function(_Refresh value) refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAllNotes value)? getAllNotes,
-    TResult Function(_Refresh value)? refresh,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllNotes value)? getAllNotes,
-    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +116,6 @@ class _$_GetAllNotes implements _GetAllNotes {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getAllNotes,
-    required TResult Function() refresh,
   }) {
     return getAllNotes();
   }
@@ -135,7 +124,6 @@ class _$_GetAllNotes implements _GetAllNotes {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? getAllNotes,
-    TResult Function()? refresh,
   }) {
     return getAllNotes?.call();
   }
@@ -144,7 +132,6 @@ class _$_GetAllNotes implements _GetAllNotes {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getAllNotes,
-    TResult Function()? refresh,
     required TResult orElse(),
   }) {
     if (getAllNotes != null) {
@@ -157,7 +144,6 @@ class _$_GetAllNotes implements _GetAllNotes {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetAllNotes value) getAllNotes,
-    required TResult Function(_Refresh value) refresh,
   }) {
     return getAllNotes(this);
   }
@@ -166,7 +152,6 @@ class _$_GetAllNotes implements _GetAllNotes {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetAllNotes value)? getAllNotes,
-    TResult Function(_Refresh value)? refresh,
   }) {
     return getAllNotes?.call(this);
   }
@@ -175,7 +160,6 @@ class _$_GetAllNotes implements _GetAllNotes {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetAllNotes value)? getAllNotes,
-    TResult Function(_Refresh value)? refresh,
     required TResult orElse(),
   }) {
     if (getAllNotes != null) {
@@ -187,107 +171,6 @@ class _$_GetAllNotes implements _GetAllNotes {
 
 abstract class _GetAllNotes implements HomeEvent {
   const factory _GetAllNotes() = _$_GetAllNotes;
-}
-
-/// @nodoc
-abstract class _$RefreshCopyWith<$Res> {
-  factory _$RefreshCopyWith(_Refresh value, $Res Function(_Refresh) then) =
-      __$RefreshCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$RefreshCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
-    implements _$RefreshCopyWith<$Res> {
-  __$RefreshCopyWithImpl(_Refresh _value, $Res Function(_Refresh) _then)
-      : super(_value, (v) => _then(v as _Refresh));
-
-  @override
-  _Refresh get _value => super._value as _Refresh;
-}
-
-/// @nodoc
-
-class _$_Refresh implements _Refresh {
-  const _$_Refresh();
-
-  @override
-  String toString() {
-    return 'HomeEvent.refresh()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Refresh);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getAllNotes,
-    required TResult Function() refresh,
-  }) {
-    return refresh();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getAllNotes,
-    TResult Function()? refresh,
-  }) {
-    return refresh?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getAllNotes,
-    TResult Function()? refresh,
-    required TResult orElse(),
-  }) {
-    if (refresh != null) {
-      return refresh();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetAllNotes value) getAllNotes,
-    required TResult Function(_Refresh value) refresh,
-  }) {
-    return refresh(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GetAllNotes value)? getAllNotes,
-    TResult Function(_Refresh value)? refresh,
-  }) {
-    return refresh?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetAllNotes value)? getAllNotes,
-    TResult Function(_Refresh value)? refresh,
-    required TResult orElse(),
-  }) {
-    if (refresh != null) {
-      return refresh(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Refresh implements HomeEvent {
-  const factory _Refresh() = _$_Refresh;
 }
 
 /// @nodoc
