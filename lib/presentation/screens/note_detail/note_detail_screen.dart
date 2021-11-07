@@ -1,4 +1,3 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -87,22 +86,16 @@ class _LoadedView extends StatelessWidget {
       ),
       children: [
         //* Show Note Title
-        FadeInDown(
-          delay: const Duration(milliseconds: 100),
-          child: SelectableText(
-            note.title ?? '',
-            style: AppTypography.headline3,
-          ),
+        SelectableText(
+          note.title ?? '',
+          style: AppTypography.headline3,
         ),
         const SizedBox(height: AppSpacings.l),
 
         //* Show Note Update/Add time
-        FadeInDown(
-          delay: const Duration(milliseconds: 200),
-          child: SelectableText(
-            note.date,
-            style: AppTypography.description.copyWith(color: Colors.black87),
-          ),
+        SelectableText(
+          note.date,
+          style: AppTypography.description.copyWith(color: Colors.black87),
         ),
         const SizedBox(height: AppSpacings.xxl),
 
@@ -113,12 +106,9 @@ class _LoadedView extends StatelessWidget {
         },
 
         //* Note Description
-        FadeInDown(
-          delay: const Duration(milliseconds: 400),
-          child: SelectableText(
-            note.description ?? '',
-            style: AppTypography.headline6,
-          ),
+        SelectableText(
+          note.description ?? '',
+          style: AppTypography.headline6,
         ),
       ],
     );
@@ -131,46 +121,39 @@ class _BuildTodoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInDown(
-      key: const ValueKey<String>('todo-list'),
-      delay: const Duration(milliseconds: 300),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Todo's",
-            style: AppTypography.headline6
-                .copyWith(decoration: TextDecoration.underline),
-          ),
-          ListView.builder(
-            key: const PageStorageKey('note-todos'),
-            shrinkWrap: true,
-            itemCount: todoList.length,
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (_, index) {
-              final Todo todo = todoList[index];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "TODO's",
+          style: AppTypography.headline6
+              .copyWith(decoration: TextDecoration.underline),
+        ),
+        ListView.builder(
+          key: const PageStorageKey('note-todos'),
+          shrinkWrap: true,
+          itemCount: todoList.length,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (_, index) {
+            final Todo todo = todoList[index];
 
-              return CheckboxListTile(
-                controlAffinity: ListTileControlAffinity.leading,
-                dense: true,
-                value: todo.completed,
-                contentPadding: EdgeInsets.zero,
-                title: Text(
-                  todo.title ?? '',
-                  style: AppTypography.title.copyWith(
-                    decoration:
-                        todo.completed! ? TextDecoration.lineThrough : null,
-                  ),
+            return CheckboxListTile(
+              controlAffinity: ListTileControlAffinity.leading,
+              dense: true,
+              value: todo.completed,
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                todo.title ?? '',
+                style: AppTypography.title.copyWith(
+                  decoration:
+                      todo.completed! ? TextDecoration.lineThrough : null,
                 ),
-                onChanged: (bool? value) {
-                  //Todo
-                  // toggle check
-                },
-              );
-            },
-          ),
-        ],
-      ),
+              ),
+              onChanged: (bool? value) {},
+            );
+          },
+        ),
+      ],
     );
   }
 }

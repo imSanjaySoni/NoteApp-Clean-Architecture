@@ -13,37 +13,33 @@ class _BuildTitleField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInDown(
-      delay: const Duration(milliseconds: 100),
-      duration: animationDuration,
-      child: Stack(
-        children: [
-          if (state.showTitleHint)
-            Opacity(
-              opacity: 0.6,
-              child: Text(
-                'Title',
-                style: AppTypography.headline1,
-                softWrap: true,
-              ),
+    return Stack(
+      children: [
+        if (state.showTitleHint)
+          Opacity(
+            opacity: 0.6,
+            child: Text(
+              'Title',
+              style: AppTypography.headline1,
+              softWrap: true,
             ),
-          TextField(
-            controller: _titleController,
-            style: AppTypography.headline1,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.zero,
-            ),
-            minLines: 1,
-            maxLines: 10,
-            onChanged: (value) {
-              context.read<AddUpdateFormBloc>().add(
-                    AddUpdateFormEvent.titleChanged(value),
-                  );
-            },
           ),
-        ],
-      ),
+        TextField(
+          controller: _titleController,
+          style: AppTypography.headline1,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.zero,
+          ),
+          minLines: 1,
+          maxLines: 10,
+          onChanged: (value) {
+            context.read<AddUpdateFormBloc>().add(
+                  AddUpdateFormEvent.titleChanged(value),
+                );
+          },
+        ),
+      ],
     );
   }
 }
@@ -61,37 +57,33 @@ class _BuildDescriptionField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInDown(
-      delay: const Duration(milliseconds: 400),
-      duration: animationDuration,
-      child: Stack(
-        children: [
-          if (state.showDescriptionHint)
-            Opacity(
-              opacity: 0.6,
-              child: Text(
-                'Type something...',
-                style: AppTypography.headline6,
-                softWrap: true,
-              ),
+    return Stack(
+      children: [
+        if (state.showDescriptionHint)
+          Opacity(
+            opacity: 0.6,
+            child: Text(
+              'Type something...',
+              style: AppTypography.headline6,
+              softWrap: true,
             ),
-          TextField(
-            controller: _descriptionController,
-            style: AppTypography.headline6,
-            decoration: const InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.zero,
-            ),
-            minLines: 2,
-            maxLines: 100,
-            onChanged: (value) {
-              context.read<AddUpdateFormBloc>().add(
-                    AddUpdateFormEvent.descriptionChanged(value),
-                  );
-            },
           ),
-        ],
-      ),
+        TextField(
+          controller: _descriptionController,
+          style: AppTypography.headline6,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.zero,
+          ),
+          minLines: 2,
+          maxLines: 100,
+          onChanged: (value) {
+            context.read<AddUpdateFormBloc>().add(
+                  AddUpdateFormEvent.descriptionChanged(value),
+                );
+          },
+        ),
+      ],
     );
   }
 }
