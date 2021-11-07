@@ -26,6 +26,7 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
   @override
   void initState() {
     super.initState();
+
     BlocProvider.of<NoteDetailBloc>(context)
         .add(NoteDetailEvent.showNote(widget.noteId));
   }
@@ -107,10 +108,7 @@ class _LoadedView extends StatelessWidget {
 
         //* Show todo's list if any
         if (note.hasTodo) ...{
-          FadeInDown(
-            delay: const Duration(milliseconds: 300),
-            child: _BuildTodoList(todoList: note.todo),
-          ),
+          _BuildTodoList(todoList: note.todo),
           const SizedBox(height: AppSpacings.xxl),
         },
 
@@ -133,41 +131,46 @@ class _BuildTodoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          "Todo's",
-          style: AppTypography.headline6
-              .copyWith(decoration: TextDecoration.underline),
-        ),
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: todoList.length,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (_, index) {
-            final Todo todo = todoList[index];
+    return FadeInDown(
+      key: const ValueKey<String>('todo-list'),
+      delay: const Duration(milliseconds: 300),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Todo's",
+            style: AppTypography.headline6
+                .copyWith(decoration: TextDecoration.underline),
+          ),
+          ListView.builder(
+            key: const PageStorageKey('note-todos'),
+            shrinkWrap: true,
+            itemCount: todoList.length,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (_, index) {
+              final Todo todo = todoList[index];
 
-            return CheckboxListTile(
-              controlAffinity: ListTileControlAffinity.leading,
-              dense: true,
-              value: todo.completed,
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                todo.title ?? '',
-                style: AppTypography.title.copyWith(
-                  decoration:
-                      todo.completed! ? TextDecoration.lineThrough : null,
+              return CheckboxListTile(
+                controlAffinity: ListTileControlAffinity.leading,
+                dense: true,
+                value: todo.completed,
+                contentPadding: EdgeInsets.zero,
+                title: Text(
+                  todo.title ?? '',
+                  style: AppTypography.title.copyWith(
+                    decoration:
+                        todo.completed! ? TextDecoration.lineThrough : null,
+                  ),
                 ),
-              ),
-              onChanged: (bool? value) {
-                //Todo
-                // toggle check
-              },
-            );
-          },
-        ),
-      ],
+                onChanged: (bool? value) {
+                  //Todo
+                  // toggle check
+                },
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

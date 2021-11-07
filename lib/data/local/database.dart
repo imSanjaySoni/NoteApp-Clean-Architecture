@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:note_app/common/constants.dart';
@@ -11,9 +11,9 @@ class DatabaseImplementing implements Database {
   Box get box => Hive.box(databaseBox);
 
   @override
-  Future<T> get<T>(String id) async {
+  T get<T>(String id) {
     try {
-      final data = await box.get(id);
+      final data = box.get(id);
       if (data == null) {
         throw NoteAppException.noRecords();
       }
