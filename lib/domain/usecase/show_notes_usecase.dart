@@ -14,7 +14,7 @@ class ShowAllNotesUsecase {
   Future<Either<NoteError, List<Note>>> call() async {
     try {
       final notesDto = _repository.getAllNotes();
-      final notes = notesDto.map((note) => note.toDomain()).toList();
+      final notes = (notesDto..sort()).map((note) => note.toDomain()).toList();
 
       return right(notes);
     } catch (e) {

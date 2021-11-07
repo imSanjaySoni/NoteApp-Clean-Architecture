@@ -39,7 +39,7 @@ class TodoDto {
 }
 
 @HiveType(typeId: 1)
-class NoteDto {
+class NoteDto implements Comparable {
   NoteDto({
     this.id,
     this.title,
@@ -102,4 +102,16 @@ class NoteDto {
   final String? dateTime;
   @HiveField(5)
   final List<TodoDto>? todoList;
+
+  @override
+  int compareTo(other) {
+    try {
+      final _isAfter = DateTime.parse(other.dateTime).isAfter(
+        DateTime.parse(dateTime!),
+      );
+      return _isAfter ? 1 : -1;
+    } catch (_) {
+      return 1;
+    }
+  }
 }

@@ -27,7 +27,7 @@ Future main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(NoteDtoAdapter());
   Hive.registerAdapter(TodoDtoAdapter());
-  await Hive.openBox(databaseBox, keyComparator: _reverseOrder);
+  await Hive.openBox(databaseBox);
 
   //* Update statusbar theme
   SystemChrome.setSystemUIOverlayStyle(
@@ -59,22 +59,4 @@ Future main() async {
       child: const App(),
     ),
   );
-}
-
-///* get hive data in reverseOrder
-int _reverseOrder(k1, k2) {
-  if (k1 is int) {
-    if (k2 is int) {
-      if (k1 > k2) {
-        return -1;
-      } else if (k1 < k2) {
-        return 1;
-      } else {
-        return 0;
-      }
-    } else {
-      return -1;
-    }
-  }
-  return -1;
 }
