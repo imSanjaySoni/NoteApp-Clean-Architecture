@@ -12,7 +12,7 @@ class DeleteMultipleNotesUsecase {
   Future<Either<NoteError, Unit>> call(List<String> selectedIds) async {
     try {
       await _repository.deleteMultiNotes(selectedIds);
-      return left(NoteError(message: 'Failed to delete notes'));
+      return right(unit);
     } catch (_) {
       return left(NoteError(message: 'Failed to delete notes'));
     }
