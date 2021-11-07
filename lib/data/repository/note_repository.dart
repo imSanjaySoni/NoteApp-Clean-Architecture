@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:note_app/common/constants.dart';
 import 'package:note_app/data/dto/note_dto.dart';
 import 'package:note_app/domain/database/database.dart';
 import 'package:note_app/domain/repository/note_repository.dart';
@@ -12,7 +13,14 @@ class NoteRepositoryImplementation implements NoteRepository {
   @override
   Future addUpdateNote(NoteDto note) async {
     try {
-      await _database.addUpdate(note.id!, note);
+      await _database.addUpdate(
+        note.id!,
+        note.copyWith(
+          title: (note.title != null && note.title!.length > maxTitleCharCount)
+              ? note.title?.substring(0, maxTitleCharCount)
+              : note.title,
+        ),
+      );
     } catch (_) {
       rethrow;
     }

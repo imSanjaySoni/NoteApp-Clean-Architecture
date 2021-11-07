@@ -40,6 +40,14 @@ class NoteDetailBloc extends Bloc<NoteDetailEvent, NoteDetailState> {
           }).toList(),
         );
 
+/* sort by value 
+        updatedNote.todo.sort((a, b) {
+          if (b.completed) {
+            return -1;
+          }
+          return 1;
+        });
+*/
         final failureOrSuccess = await _updateUsecase(updatedNote);
         failureOrSuccess.fold(
           (error) {

@@ -28,7 +28,9 @@ class UpdateNoteUsecase {
       return right(unit);
     } catch (e) {
       return left(
-        NoteError(message: 'Failed to Update note, please try again.'),
+        NoteError(
+          message: 'Failed to Update note, please try again.\nError: $e',
+        ),
       );
     }
   }

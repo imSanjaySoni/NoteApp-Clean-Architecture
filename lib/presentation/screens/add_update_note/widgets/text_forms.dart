@@ -32,7 +32,8 @@ class _BuildTitleField extends StatelessWidget {
             contentPadding: EdgeInsets.zero,
           ),
           minLines: 1,
-          maxLines: 10,
+          maxLines: maxTitleLinesCount,
+          maxLength: maxTitleCharCount,
           onChanged: (value) {
             context.read<AddUpdateFormBloc>().add(
                   AddUpdateFormEvent.titleChanged(value),

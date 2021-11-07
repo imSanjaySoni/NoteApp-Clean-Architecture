@@ -16,4 +16,9 @@ const Duration splashDuration = Duration(seconds: 2);
 const Duration animationDuration = Duration(milliseconds: 400);
 const Duration apiCallInterval = Duration(seconds: 5);
 
+//? add/update screen form fields
+const int maxTitleCharCount = 140;
+const int maxTitleLinesCount = 8;
+const int todoMaxCharCount = 100;
+
 const String databaseBox = 'note_database_box';

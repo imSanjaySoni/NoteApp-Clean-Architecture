@@ -78,6 +78,7 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
           ),
         ),
         onChanged: widget.onChanged,
+        maxLength: todoMaxCharCount,
         maxLines: 4,
         minLines: 1,
       ),
