@@ -8,4 +8,13 @@ extension StringEx on String? {
     final newStr = str.trim();
     return newStr.isEmpty;
   }
+
+  String? clipToMaxLength(int maxLength) {
+    if (this == null) {
+      return null;
+    } else if (this!.length < maxLength) {
+      return this;
+    }
+    return this?.substring(0, maxLength);
+  }
 }

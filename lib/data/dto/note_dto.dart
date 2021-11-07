@@ -1,7 +1,8 @@
 import 'dart:ui' show Color;
 
 import 'package:hive_flutter/hive_flutter.dart';
-
+import 'package:note_app/common/constants.dart';
+import 'package:note_app/common/extension/string.dart';
 import 'package:note_app/domain/model/note.dart';
 
 part 'note_dto.g.dart';
@@ -18,7 +19,7 @@ class TodoDto {
     return TodoDto(
       completed: todo.completed,
       id: todo.id,
-      title: todo.title,
+      title: todo.title.clipToMaxLength(todoMaxCharCount),
     );
   }
 
@@ -52,13 +53,14 @@ class NoteDto implements Comparable {
   factory NoteDto.fromNote(Note note) {
     return NoteDto(
       id: note.id,
-      title: note.title,
+      title: note.title.clipToMaxLength(maxTitleCharCount),
       description: note.description,
       dateTime: note.dateTime?.toIso8601String(),
       colorValue: note.color?.value,
       todoList: note.todo.map((todo) => TodoDto.fromDomain(todo)).toList(),
     );
   }
+
   Note toDomain() {
     return Note(
       id: id,
