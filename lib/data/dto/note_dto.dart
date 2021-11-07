@@ -33,7 +33,7 @@ class TodoDto {
     return Todo(
       id: id,
       title: title,
-      completed: completed,
+      completed: completed ?? false,
     );
   }
 }

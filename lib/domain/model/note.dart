@@ -30,7 +30,7 @@ class Todo with _$Todo {
   Todo._();
 
   factory Todo({
-    bool? completed,
+    @Default(false) bool completed,
     String? title,
     String? id,
   }) = _Todo;

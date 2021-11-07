@@ -269,7 +269,7 @@ abstract class _Note extends Note {
 class _$TodoTearOff {
   const _$TodoTearOff();
 
-  _Todo call({bool? completed, String? title, String? id}) {
+  _Todo call({bool completed = false, String? title, String? id}) {
     return _Todo(
       completed: completed,
       title: title,
@@ -283,7 +283,7 @@ const $Todo = _$TodoTearOff();
 
 /// @nodoc
 mixin _$Todo {
-  bool? get completed => throw _privateConstructorUsedError;
+  bool get completed => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get id => throw _privateConstructorUsedError;
 
@@ -295,7 +295,7 @@ mixin _$Todo {
 abstract class $TodoCopyWith<$Res> {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
       _$TodoCopyWithImpl<$Res>;
-  $Res call({bool? completed, String? title, String? id});
+  $Res call({bool completed, String? title, String? id});
 }
 
 /// @nodoc
@@ -316,7 +316,7 @@ class _$TodoCopyWithImpl<$Res> implements $TodoCopyWith<$Res> {
       completed: completed == freezed
           ? _value.completed
           : completed // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -334,7 +334,7 @@ abstract class _$TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   factory _$TodoCopyWith(_Todo value, $Res Function(_Todo) then) =
       __$TodoCopyWithImpl<$Res>;
   @override
-  $Res call({bool? completed, String? title, String? id});
+  $Res call({bool completed, String? title, String? id});
 }
 
 /// @nodoc
@@ -356,7 +356,7 @@ class __$TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
       completed: completed == freezed
           ? _value.completed
           : completed // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -372,10 +372,11 @@ class __$TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Todo extends _Todo {
-  _$_Todo({this.completed, this.title, this.id}) : super._();
+  _$_Todo({this.completed = false, this.title, this.id}) : super._();
 
+  @JsonKey(defaultValue: false)
   @override
-  final bool? completed;
+  final bool completed;
   @override
   final String? title;
   @override
@@ -413,11 +414,11 @@ class _$_Todo extends _Todo {
 }
 
 abstract class _Todo extends Todo {
-  factory _Todo({bool? completed, String? title, String? id}) = _$_Todo;
+  factory _Todo({bool completed, String? title, String? id}) = _$_Todo;
   _Todo._() : super._();
 
   @override
-  bool? get completed => throw _privateConstructorUsedError;
+  bool get completed => throw _privateConstructorUsedError;
   @override
   String? get title => throw _privateConstructorUsedError;
   @override

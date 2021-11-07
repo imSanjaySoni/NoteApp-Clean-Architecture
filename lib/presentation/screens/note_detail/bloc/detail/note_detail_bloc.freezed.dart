@@ -22,6 +22,12 @@ class _$NoteDetailEventTearOff {
       noteId,
     );
   }
+
+  _ToggleTodoCheckbox toggleTodoCheckbox(String todoId) {
+    return _ToggleTodoCheckbox(
+      todoId,
+    );
+  }
 }
 
 /// @nodoc
@@ -29,43 +35,43 @@ const $NoteDetailEvent = _$NoteDetailEventTearOff();
 
 /// @nodoc
 mixin _$NoteDetailEvent {
-  String get noteId => throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String noteId) showNote,
+    required TResult Function(String todoId) toggleTodoCheckbox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String noteId)? showNote,
+    TResult Function(String todoId)? toggleTodoCheckbox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String noteId)? showNote,
+    TResult Function(String todoId)? toggleTodoCheckbox,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ShowNote value) showNote,
+    required TResult Function(_ToggleTodoCheckbox value) toggleTodoCheckbox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ShowNote value)? showNote,
+    TResult Function(_ToggleTodoCheckbox value)? toggleTodoCheckbox,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ShowNote value)? showNote,
+    TResult Function(_ToggleTodoCheckbox value)? toggleTodoCheckbox,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $NoteDetailEventCopyWith<NoteDetailEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -74,7 +80,6 @@ abstract class $NoteDetailEventCopyWith<$Res> {
   factory $NoteDetailEventCopyWith(
           NoteDetailEvent value, $Res Function(NoteDetailEvent) then) =
       _$NoteDetailEventCopyWithImpl<$Res>;
-  $Res call({String noteId});
 }
 
 /// @nodoc
@@ -85,26 +90,12 @@ class _$NoteDetailEventCopyWithImpl<$Res>
   final NoteDetailEvent _value;
   // ignore: unused_field
   final $Res Function(NoteDetailEvent) _then;
-
-  @override
-  $Res call({
-    Object? noteId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      noteId: noteId == freezed
-          ? _value.noteId
-          : noteId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
-abstract class _$ShowNoteCopyWith<$Res>
-    implements $NoteDetailEventCopyWith<$Res> {
+abstract class _$ShowNoteCopyWith<$Res> {
   factory _$ShowNoteCopyWith(_ShowNote value, $Res Function(_ShowNote) then) =
       __$ShowNoteCopyWithImpl<$Res>;
-  @override
   $Res call({String noteId});
 }
 
@@ -164,6 +155,7 @@ class _$_ShowNote implements _ShowNote {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String noteId) showNote,
+    required TResult Function(String todoId) toggleTodoCheckbox,
   }) {
     return showNote(noteId);
   }
@@ -172,6 +164,7 @@ class _$_ShowNote implements _ShowNote {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String noteId)? showNote,
+    TResult Function(String todoId)? toggleTodoCheckbox,
   }) {
     return showNote?.call(noteId);
   }
@@ -180,6 +173,7 @@ class _$_ShowNote implements _ShowNote {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String noteId)? showNote,
+    TResult Function(String todoId)? toggleTodoCheckbox,
     required TResult orElse(),
   }) {
     if (showNote != null) {
@@ -192,6 +186,7 @@ class _$_ShowNote implements _ShowNote {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ShowNote value) showNote,
+    required TResult Function(_ToggleTodoCheckbox value) toggleTodoCheckbox,
   }) {
     return showNote(this);
   }
@@ -200,6 +195,7 @@ class _$_ShowNote implements _ShowNote {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_ShowNote value)? showNote,
+    TResult Function(_ToggleTodoCheckbox value)? toggleTodoCheckbox,
   }) {
     return showNote?.call(this);
   }
@@ -208,6 +204,7 @@ class _$_ShowNote implements _ShowNote {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ShowNote value)? showNote,
+    TResult Function(_ToggleTodoCheckbox value)? toggleTodoCheckbox,
     required TResult orElse(),
   }) {
     if (showNote != null) {
@@ -220,11 +217,143 @@ class _$_ShowNote implements _ShowNote {
 abstract class _ShowNote implements NoteDetailEvent {
   const factory _ShowNote(String noteId) = _$_ShowNote;
 
-  @override
   String get noteId => throw _privateConstructorUsedError;
-  @override
   @JsonKey(ignore: true)
   _$ShowNoteCopyWith<_ShowNote> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ToggleTodoCheckboxCopyWith<$Res> {
+  factory _$ToggleTodoCheckboxCopyWith(
+          _ToggleTodoCheckbox value, $Res Function(_ToggleTodoCheckbox) then) =
+      __$ToggleTodoCheckboxCopyWithImpl<$Res>;
+  $Res call({String todoId});
+}
+
+/// @nodoc
+class __$ToggleTodoCheckboxCopyWithImpl<$Res>
+    extends _$NoteDetailEventCopyWithImpl<$Res>
+    implements _$ToggleTodoCheckboxCopyWith<$Res> {
+  __$ToggleTodoCheckboxCopyWithImpl(
+      _ToggleTodoCheckbox _value, $Res Function(_ToggleTodoCheckbox) _then)
+      : super(_value, (v) => _then(v as _ToggleTodoCheckbox));
+
+  @override
+  _ToggleTodoCheckbox get _value => super._value as _ToggleTodoCheckbox;
+
+  @override
+  $Res call({
+    Object? todoId = freezed,
+  }) {
+    return _then(_ToggleTodoCheckbox(
+      todoId == freezed
+          ? _value.todoId
+          : todoId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ToggleTodoCheckbox implements _ToggleTodoCheckbox {
+  const _$_ToggleTodoCheckbox(this.todoId);
+
+  @override
+  final String todoId;
+
+  @override
+  String toString() {
+    return 'NoteDetailEvent.toggleTodoCheckbox(todoId: $todoId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ToggleTodoCheckbox &&
+            (identical(other.todoId, todoId) ||
+                const DeepCollectionEquality().equals(other.todoId, todoId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(todoId);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ToggleTodoCheckboxCopyWith<_ToggleTodoCheckbox> get copyWith =>
+      __$ToggleTodoCheckboxCopyWithImpl<_ToggleTodoCheckbox>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String noteId) showNote,
+    required TResult Function(String todoId) toggleTodoCheckbox,
+  }) {
+    return toggleTodoCheckbox(todoId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String noteId)? showNote,
+    TResult Function(String todoId)? toggleTodoCheckbox,
+  }) {
+    return toggleTodoCheckbox?.call(todoId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String noteId)? showNote,
+    TResult Function(String todoId)? toggleTodoCheckbox,
+    required TResult orElse(),
+  }) {
+    if (toggleTodoCheckbox != null) {
+      return toggleTodoCheckbox(todoId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ShowNote value) showNote,
+    required TResult Function(_ToggleTodoCheckbox value) toggleTodoCheckbox,
+  }) {
+    return toggleTodoCheckbox(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ShowNote value)? showNote,
+    TResult Function(_ToggleTodoCheckbox value)? toggleTodoCheckbox,
+  }) {
+    return toggleTodoCheckbox?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ShowNote value)? showNote,
+    TResult Function(_ToggleTodoCheckbox value)? toggleTodoCheckbox,
+    required TResult orElse(),
+  }) {
+    if (toggleTodoCheckbox != null) {
+      return toggleTodoCheckbox(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleTodoCheckbox implements NoteDetailEvent {
+  const factory _ToggleTodoCheckbox(String todoId) = _$_ToggleTodoCheckbox;
+
+  String get todoId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ToggleTodoCheckboxCopyWith<_ToggleTodoCheckbox> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

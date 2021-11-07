@@ -146,10 +146,14 @@ class _BuildTodoList extends StatelessWidget {
                 todo.title ?? '',
                 style: AppTypography.title.copyWith(
                   decoration:
-                      todo.completed! ? TextDecoration.lineThrough : null,
+                      todo.completed ? TextDecoration.lineThrough : null,
                 ),
               ),
-              onChanged: (bool? value) {},
+              onChanged: (bool? value) {
+                context
+                    .read<NoteDetailBloc>()
+                    .add(NoteDetailEvent.toggleTodoCheckbox(todo.id!));
+              },
             );
           },
         ),
