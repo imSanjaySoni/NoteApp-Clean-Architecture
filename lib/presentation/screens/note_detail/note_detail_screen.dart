@@ -94,7 +94,7 @@ class _LoadedView extends StatelessWidget {
 
         //* Show Note Update/Add time
         SelectableText(
-          note.date,
+          note.dateWithTime,
           style: AppTypography.description.copyWith(color: Colors.black87),
         ),
         const SizedBox(height: AppSpacings.xxl),

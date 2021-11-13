@@ -30,6 +30,7 @@ class _BuildTitleField extends StatelessWidget {
           decoration: const InputDecoration(
             border: InputBorder.none,
             contentPadding: EdgeInsets.zero,
+            counterText: '',
           ),
           minLines: 1,
           maxLines: maxTitleLinesCount,

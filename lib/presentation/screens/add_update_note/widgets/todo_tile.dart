@@ -17,15 +17,15 @@ class _AddTodoTile extends StatelessWidget {
         contentPadding: EdgeInsets.zero,
         title: Row(
           children: [
-            Text(
-              'Add todo',
-              style: AppTypography.headline6,
-            ),
-            const SizedBox(width: 12),
             const Icon(
               FeatherIcons.plusCircle,
               size: 18,
               color: AppColors.title,
+            ),
+            const SizedBox(width: 12),
+            Text(
+              'Add todo',
+              style: AppTypography.headline6,
             ),
           ],
         ),
@@ -76,6 +76,7 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
           hintStyle: AppTypography.headline6.copyWith(
             color: AppColors.title.withOpacity(0.6),
           ),
+          counterText: '',
         ),
         onChanged: widget.onChanged,
         maxLength: todoMaxCharCount,
@@ -103,12 +104,6 @@ class _BuildTodoListField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (state.hasTodo)
-          Text(
-            "TODO's",
-            style: AppTypography.headline6
-                .copyWith(decoration: TextDecoration.underline),
-          ),
         ListView.builder(
           shrinkWrap: true,
           itemCount: state.todos.length,
