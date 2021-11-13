@@ -11,6 +11,7 @@ import 'package:note_app/presentation/theme/typography.dart';
 
 import 'bloc/add_update_bloc.dart';
 import 'bloc/add_update_form/add_update_form_bloc.dart';
+import 'widgets/toolbar.dart';
 
 part 'widgets/todo_tile.dart';
 part 'widgets/colors_bar.dart';
@@ -95,14 +96,7 @@ class _BuildForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: state.selectedColor,
-      bottomNavigationBar: ColorsBar(
-        selectedColor: state.selectedColor,
-        onChanged: (Color color) {
-          context
-              .read<AddUpdateFormBloc>()
-              .add(AddUpdateFormEvent.colorChanged(color));
-        },
-      ),
+      bottomNavigationBar: Toolbar(),
       appBar: NoteAppBar(
         actions: [
           AppButton(
