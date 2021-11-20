@@ -1,5 +1,6 @@
-# NoteApp Clean Architecture with Bloc & Freezed
-
+# NoteApp Domain-Driven Clean Architecture with FlutterBloc + Freezed + Hive
+<Image src="screenshots/cover.png" width ="100%">
+  
 #### Screenshots
 
 |                                               |                                               |
