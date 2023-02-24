@@ -38,7 +38,6 @@ linter:
     prefer_asserts_in_initializer_lists: true
     prefer_final_in_for_each: true
     prefer_final_locals: true
-    prefer_const: true
     prefer_foreach: true
     sort_constructors_first: true
     sort_unnamed_constructors_first: false

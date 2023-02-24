@@ -5,6 +5,8 @@ import 'package:note_app/di/di.dart';
 import 'routes/routes.dart';
 import 'theme/theme.dart';
 
+export 'screens/screens.dart';
+
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 

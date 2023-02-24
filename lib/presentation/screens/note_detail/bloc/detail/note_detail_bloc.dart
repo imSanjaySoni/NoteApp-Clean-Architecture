@@ -1,19 +1,17 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/domain/usecase/usecase.dart';
 import 'package:note_app/presentation/components/toast.dart';
 
+part 'note_detail_bloc.freezed.dart';
 part 'note_detail_event.dart';
 part 'note_detail_state.dart';
-part 'note_detail_bloc.freezed.dart';
 
 @injectable
 class NoteDetailBloc extends Bloc<NoteDetailEvent, NoteDetailState> {
-  NoteDetailBloc(this._usecase, this._updateUsecase)
-      : super(const NoteDetailState.initial()) {
+  NoteDetailBloc(this._usecase, this._updateUsecase) : super(const NoteDetailState.initial()) {
     //* show note detail
     on<_ShowNote>((event, emit) async {
       emit(const NoteDetailState.loading());
@@ -32,7 +30,7 @@ class NoteDetailBloc extends Bloc<NoteDetailEvent, NoteDetailState> {
         final state = this.state as _Loaded;
 
         final updatedNote = state.note.copyWith(
-          todo: state.note.todo.map((todo) {
+          todos: state.note.todos.map((todo) {
             if (todo.id == event.todoId) {
               return todo.copyWith(completed: !todo.completed);
             }
@@ -51,9 +49,7 @@ class NoteDetailBloc extends Bloc<NoteDetailEvent, NoteDetailState> {
         final failureOrSuccess = await _updateUsecase(updatedNote);
         failureOrSuccess.fold(
           (error) {
-            getIt<AppRouter>()
-                .context
-                .showToast('👎  ${error.message}', isError: true);
+            getIt<AppRouter>().context.showToast('👎  ${error.message}', isError: true);
           },
           (_) => emit(state.copyWith(note: updatedNote)),
         );

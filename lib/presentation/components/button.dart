@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/presentation/theme/colors.dart';
-
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 

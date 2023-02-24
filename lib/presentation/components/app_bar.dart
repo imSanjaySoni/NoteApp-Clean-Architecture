@@ -1,12 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/extension/map_index.dart';
-
 import 'package:note_app/presentation/components/components.dart';
-import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
@@ -52,8 +49,7 @@ class NoteAppBar extends StatelessWidget with PreferredSizeWidget {
                       ? Expanded(
                           child: Text(
                             title!,
-                            style: AppTypography.headline1
-                                .copyWith(color: AppColors.white),
+                            style: AppTypography.headline1.copyWith(color: AppColors.white),
                           ),
                         )
                       : const Spacer(),

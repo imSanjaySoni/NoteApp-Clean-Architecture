@@ -17,7 +17,7 @@ extension ContextEx on BuildContext {
           message,
           style: AppTypography.description.copyWith(color: AppColors.white),
         ),
-        backgroundColor: isError ? AppColors.error : AppColors.primary,
+        backgroundColor: isError ? AppColors.error : AppColors.success,
         duration: const Duration(seconds: 2),
       ),
     );

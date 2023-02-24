@@ -1,13 +1,10 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:note_app/common/constants.dart';
-import 'package:note_app/di/di.dart';
-
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/domain/usecase/usecase.dart';
 import 'package:note_app/presentation/components/toast.dart';
-import 'package:note_app/presentation/routes/routes.dart';
 
 export 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,9 +27,7 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
 
       failureOrSuccess.fold((failure) {
         emit(AddUpdateState.failed(message: failure.message));
-        getIt<AppRouter>()
-            .context
-            .showToast('👎  ${failure.message}', isError: true);
+        getIt<AppRouter>().context.showToast('👎  ${failure.message}', isError: true);
       }, (_) {
         emit(const AddUpdateState.saved());
         getIt<AppRouter>().navigate(const HomeRoute());
@@ -49,9 +44,7 @@ class AddUpdateBloc extends Bloc<AddUpdateEvent, AddUpdateState> {
 
       failureOrSuccess.fold((failure) {
         emit(AddUpdateState.failed(message: failure.message));
-        getIt<AppRouter>()
-            .context
-            .showToast('👎   ${failure.message}', isError: true);
+        getIt<AppRouter>().context.showToast('👎   ${failure.message}', isError: true);
       }, (_) {
         emit(const AddUpdateState.saved());
         getIt<AppRouter>().navigate(const HomeRoute());

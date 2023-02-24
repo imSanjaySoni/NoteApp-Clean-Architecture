@@ -57,7 +57,7 @@ class NoteDto implements Comparable {
       description: note.description,
       dateTime: note.dateTime?.toIso8601String(),
       colorValue: note.color?.value,
-      todoList: note.todo.map((todo) => TodoDto.fromDomain(todo)).toList(),
+      todoList: note.todos.map((todo) => TodoDto.fromDomain(todo)).toList(),
     );
   }
 
@@ -68,7 +68,7 @@ class NoteDto implements Comparable {
       description: description,
       dateTime: DateTime.tryParse(dateTime!),
       color: Color(colorValue!),
-      todo: todoList?.map((todo) => todo.toDomain()).toList() ?? [],
+      todos: todoList?.map((todo) => todo.toDomain()).toList() ?? [],
     );
   }
 
@@ -108,10 +108,10 @@ class NoteDto implements Comparable {
   @override
   int compareTo(other) {
     try {
-      final _isAfter = DateTime.parse(other.dateTime).isAfter(
+      final isAfter = DateTime.parse(other.dateTime).isAfter(
         DateTime.parse(dateTime!),
       );
-      return _isAfter ? 1 : -1;
+      return isAfter ? 1 : -1;
     } catch (_) {
       return 1;
     }

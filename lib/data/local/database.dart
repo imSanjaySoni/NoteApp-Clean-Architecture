@@ -1,12 +1,11 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
-
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/exception.dart';
 import 'package:note_app/domain/database/database.dart';
 
 @LazySingleton(as: Database)
-class DatabaseImplementing implements Database {
+class LocalDBImplementation implements Database {
   @override
   Box get box => Hive.box(databaseBox);
 

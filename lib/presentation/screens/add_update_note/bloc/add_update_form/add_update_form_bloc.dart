@@ -1,15 +1,13 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-
 import 'package:note_app/common/extension/string.dart';
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/screens/add_update_note/bloc/add_update_bloc.dart';
 
+part 'add_update_form_bloc.freezed.dart';
 part 'add_update_form_event.dart';
 part 'add_update_form_state.dart';
-part 'add_update_form_bloc.freezed.dart';
 
 @injectable
 class AddUpdateFormBloc extends Bloc<AddUpdateFormEvent, AddUpdateFormState> {

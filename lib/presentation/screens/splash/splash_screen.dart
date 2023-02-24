@@ -1,7 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/strings.dart';
 import 'package:note_app/presentation/routes/routes.dart';
@@ -20,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance?.addPostFrameCallback(
+    WidgetsBinding.instance.addPostFrameCallback(
       (_) {
         Future.delayed(splashDuration, () {
           context.router.replaceAll(const [HomeRoute()]);

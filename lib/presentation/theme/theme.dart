@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:note_app/presentation/theme/colors.dart';
+import 'colors.dart';
 
 class AppTheme {
-  AppTheme._();
-
   static ThemeData light = ThemeData(
     scaffoldBackgroundColor: const Color(0xff252525),
     appBarTheme: AppBarTheme(
@@ -20,8 +18,8 @@ class AppTheme {
       iconTheme: const IconThemeData(color: AppColors.title),
     ),
     colorScheme: ColorScheme.fromSwatch().copyWith(
-      secondary: const Color(0xff333333),
-      primary: const Color(0xff333333),
+      secondary: AppColors.primary,
+      primary: AppColors.primary,
     ),
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: Color(0xff252525),

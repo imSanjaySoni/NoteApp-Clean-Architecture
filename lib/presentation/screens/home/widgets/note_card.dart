@@ -60,8 +60,7 @@ class NoteCard extends StatelessWidget {
                   const SizedBox(height: AppSpacings.m),
                   Text(
                     note.date,
-                    style: AppTypography.description
-                        .copyWith(color: Colors.black87),
+                    style: AppTypography.description.copyWith(color: Colors.black87),
                   ),
                 ],
               ),
