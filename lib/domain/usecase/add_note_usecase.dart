@@ -29,7 +29,7 @@ class AddNoteUsecase {
 
       await _repository.addUpdateNote(noteDto.copyWith(id: _uuid.v4()));
       return right(unit);
-    } catch (_) {
+    } on Exception catch (_) {
       return left(NoteError(message: 'Failed to add note, please try again.'));
     }
   }

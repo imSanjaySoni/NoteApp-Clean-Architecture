@@ -112,7 +112,7 @@ class NoteDto implements Comparable {
         DateTime.parse(dateTime!),
       );
       return isAfter ? 1 : -1;
-    } catch (_) {
+    } on Exception catch (_) {
       return 1;
     }
   }

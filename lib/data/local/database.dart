@@ -17,7 +17,7 @@ class LocalDBImplementation implements Database {
         throw NoteAppException.noRecords();
       }
       return data;
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -31,7 +31,7 @@ class LocalDBImplementation implements Database {
       }
 
       return data.toList().cast<T>();
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -40,7 +40,7 @@ class LocalDBImplementation implements Database {
   Future delete(String id) async {
     try {
       await box.delete(id);
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -49,7 +49,7 @@ class LocalDBImplementation implements Database {
   Future addUpdate<T>(String id, T item) async {
     try {
       await box.put(id, item);
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -58,7 +58,7 @@ class LocalDBImplementation implements Database {
   Future deleteAll(List<String> keys) async {
     try {
       await box.deleteAll(keys);
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }

@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:note_app/common/exception.dart';
-
 import 'package:note_app/domain/model/error.dart';
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/domain/repository/note_repository.dart';
@@ -17,7 +16,7 @@ class ShowAllNotesUsecase {
       final notes = (notesDto..sort()).map((note) => note.toDomain()).toList();
 
       return right(notes);
-    } catch (e) {
+    } on Exception catch (e) {
       if (e is NoRecordsException) {
         return left(
           NoteError(message: 'No notes found..\nclick + to add new one.'),
