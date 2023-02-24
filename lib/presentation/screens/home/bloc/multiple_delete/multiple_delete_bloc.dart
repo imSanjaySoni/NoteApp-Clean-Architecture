@@ -1,18 +1,16 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:note_app/domain/usecase/usecase.dart';
 import 'package:note_app/presentation/components/toast.dart';
 
+part 'multiple_delete_bloc.freezed.dart';
 part 'multiple_delete_event.dart';
 part 'multiple_delete_state.dart';
-part 'multiple_delete_bloc.freezed.dart';
 
 @injectable
-class MultipleDeleteBloc
-    extends Bloc<MultipleDeleteEvent, MultipleDeleteState> {
-  MultipleDeleteBloc(this._usecase)
-      : super(const MultipleDeleteState.initial()) {
+class MultipleDeleteBloc extends Bloc<MultipleDeleteEvent, MultipleDeleteState> {
+  MultipleDeleteBloc(this._usecase) : super(const MultipleDeleteState.initial()) {
     //* select / unselect note for deletion
     on<_ToggleSelect>((event, emit) {
       if (state is _Selected) {
@@ -48,9 +46,7 @@ class MultipleDeleteBloc
         failureOrSuccess.fold(
           (error) {
             emit(MultipleDeleteState.selected(selectedIds));
-            getIt<AppRouter>()
-                .context
-                .showToast('👎  ${error.message}', isError: true);
+            getIt<AppRouter>().context.showToast('👎  ${error.message}', isError: true);
           },
           (_) {
             emit(const MultipleDeleteState.success());
@@ -64,10 +60,7 @@ class MultipleDeleteBloc
   }
 
   //* check is current note selected or not.
-  bool isSelected(String? id) =>
-      (id != null) &&
-      (state is _Selected) &&
-      (state as _Selected).selectedIds.contains(id);
+  bool isSelected(String? id) => (id != null) && (state is _Selected) && (state as _Selected).selectedIds.contains(id);
 
   final DeleteMultipleNotesUsecase _usecase;
 }

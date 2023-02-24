@@ -1,6 +1,5 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/extension/random.dart';
 import 'package:note_app/domain/model/note.dart';
@@ -12,16 +11,16 @@ import 'package:note_app/presentation/theme/typography.dart';
 import 'bloc/add_update_bloc.dart';
 import 'bloc/add_update_form/add_update_form_bloc.dart';
 
-part 'widgets/todo_tile.dart';
 part 'widgets/colors_bar.dart';
 part 'widgets/text_forms.dart';
+part 'widgets/todo_tile.dart';
 
 class AddUpdateNoteScreen extends StatefulWidget {
   const AddUpdateNoteScreen({Key? key, this.note}) : super(key: key);
   final Note? note;
 
   @override
-  _AddUpdateNoteScreenState createState() => _AddUpdateNoteScreenState();
+  State<AddUpdateNoteScreen> createState() => _AddUpdateNoteScreenState();
 }
 
 class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
@@ -33,15 +32,14 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
     super.initState();
 
     _titleController = TextEditingController(text: widget.note?.title);
-    _descriptionController =
-        TextEditingController(text: widget.note?.description);
+    _descriptionController = TextEditingController(text: widget.note?.description);
 
     context.read<AddUpdateFormBloc>().add(
           AddUpdateFormEvent.initialize(
             title: widget.note?.title,
             description: widget.note?.description,
             color: widget.note?.color ?? colors.randomElement,
-            todos: widget.note?.todo,
+            todos: widget.note?.todos,
           ),
         );
   }
@@ -98,9 +96,7 @@ class _BuildForm extends StatelessWidget {
       bottomNavigationBar: ColorsBar(
         selectedColor: state.selectedColor,
         onChanged: (Color color) {
-          context
-              .read<AddUpdateFormBloc>()
-              .add(AddUpdateFormEvent.colorChanged(color));
+          context.read<AddUpdateFormBloc>().add(AddUpdateFormEvent.colorChanged(color));
         },
       ),
       appBar: NoteAppBar(
@@ -152,7 +148,7 @@ class _BuildForm extends StatelessWidget {
                 description: _descriptionController.text,
                 color: state.selectedColor,
                 dateTime: DateTime.now(),
-                todo: state.todos,
+                todos: state.todos,
               ),
             ),
           );
@@ -165,7 +161,7 @@ class _BuildForm extends StatelessWidget {
                 description: _descriptionController.text,
                 color: state.selectedColor,
                 dateTime: DateTime.now(),
-                todo: state.todos,
+                todos: state.todos,
               ),
               widget.note!.id!,
             ),

@@ -4,14 +4,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/strings.dart';
-import 'package:note_app/di/di.dart';
 import 'package:note_app/domain/database/database.dart';
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/components/components.dart';
-import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/screens/add_update_note/bloc/add_update_bloc.dart';
 import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
@@ -38,25 +35,20 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Text(
                         'Delete - ${selectedNotes.selectedIds.length}',
-                        style: AppTypography.headline6
-                            .copyWith(color: AppColors.white),
+                        style: AppTypography.headline6.copyWith(color: AppColors.white),
                       ),
                       const SizedBox(width: AppSpacings.xl),
                       const Icon(FeatherIcons.trash2),
                     ],
                   ),
                   onPressed: () {
-                    context
-                        .read<MultipleDeleteBloc>()
-                        .add(const MultipleDeleteEvent.delete());
+                    context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.delete());
                   },
                 ),
                 AppButton(
                   child: const Icon(FeatherIcons.x),
                   onPressed: () {
-                    context
-                        .read<MultipleDeleteBloc>()
-                        .add(const MultipleDeleteEvent.clearAll());
+                    context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.clearAll());
                   },
                 ),
               ],
@@ -108,13 +100,12 @@ class _BuildNotesList extends StatelessWidget {
   Widget build(BuildContext context) {
     final multipleDeleteBloc = context.read<MultipleDeleteBloc>();
 
-    return StaggeredGridView.countBuilder(
+    return MasonryGridView.count(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacings.xl,
         vertical: AppSpacings.xl,
       ),
       crossAxisCount: 2,
-      shrinkWrap: true,
       itemCount: notes.length,
       itemBuilder: (BuildContext context, int index) {
         final noteId = notes[index].id!;
@@ -129,8 +120,7 @@ class _BuildNotesList extends StatelessWidget {
                   context.router.push(NoteDetailRoute(noteId: noteId));
                 },
                 selected: (_) {
-                  multipleDeleteBloc
-                      .add(MultipleDeleteEvent.toggleSelect(noteId));
+                  multipleDeleteBloc.add(MultipleDeleteEvent.toggleSelect(noteId));
                 },
               );
             },
@@ -140,7 +130,6 @@ class _BuildNotesList extends StatelessWidget {
           ),
         );
       },
-      staggeredTileBuilder: (int index) => const StaggeredTile.fit(1),
       mainAxisSpacing: AppSpacings.l,
       crossAxisSpacing: AppSpacings.l,
     );

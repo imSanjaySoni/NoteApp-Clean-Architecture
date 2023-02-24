@@ -1,6 +1,8 @@
 extension StringEx on String? {
   bool get isEmptyString => _removeWhiteSpaces(this);
 
+  bool get isNotEmptyString => !isEmptyString;
+
   bool _removeWhiteSpaces(String? str) {
     if (str == null) {
       return true;
