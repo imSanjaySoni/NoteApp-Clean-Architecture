@@ -13,7 +13,7 @@ class NoteRepositoryImplementation implements NoteRepository {
   Future addUpdateNote(NoteDto note) async {
     try {
       await _database.addUpdate(note.id!, note);
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -22,7 +22,7 @@ class NoteRepositoryImplementation implements NoteRepository {
   Future deleteNote(String id) async {
     try {
       await _database.delete(id);
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -31,7 +31,7 @@ class NoteRepositoryImplementation implements NoteRepository {
   Future deleteMultiNotes(List<String> ids) async {
     try {
       await _database.deleteAll(ids);
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -39,10 +39,9 @@ class NoteRepositoryImplementation implements NoteRepository {
   @override
   List<NoteDto> getAllNotes() {
     try {
-      final notesDto =
-          _database.getAll().map((note) => note as NoteDto).toList();
+      final notesDto = _database.getAll().map((note) => note as NoteDto).toList();
       return notesDto;
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }
@@ -52,7 +51,7 @@ class NoteRepositoryImplementation implements NoteRepository {
     try {
       final noteDto = await _database.get(id) as NoteDto;
       return noteDto;
-    } catch (_) {
+    } on Exception catch (_) {
       rethrow;
     }
   }

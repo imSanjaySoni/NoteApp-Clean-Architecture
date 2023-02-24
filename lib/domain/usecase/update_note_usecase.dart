@@ -27,7 +27,7 @@ class UpdateNoteUsecase {
 
       await _repository.addUpdateNote(noteDto);
       return right(unit);
-    } catch (e) {
+    } on Exception catch (e) {
       return left(
         NoteError(
           message: 'Failed to Update note, please try again.\nError: $e',
