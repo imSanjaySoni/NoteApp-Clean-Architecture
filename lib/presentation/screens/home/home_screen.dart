@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_app/common/constants.dart';
+import 'package:note_app/common/extension/build_context.dart';
 import 'package:note_app/common/strings.dart';
 import 'package:note_app/domain/database/database.dart';
 import 'package:note_app/domain/model/note.dart';
@@ -100,16 +101,17 @@ class _BuildNotesList extends StatelessWidget {
   Widget build(BuildContext context) {
     final multipleDeleteBloc = context.read<MultipleDeleteBloc>();
 
-    return MasonryGridView.count(
+    return AlignedGridView.count(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacings.xl,
         vertical: AppSpacings.xl,
       ),
-      crossAxisCount: 2,
+      crossAxisCount: _getCrossAxisCount(context),
       itemCount: notes.length,
       itemBuilder: (BuildContext context, int index) {
         final noteId = notes[index].id!;
         return FadeInUp(
+          key: ValueKey<String>(noteId),
           duration: Duration(milliseconds: 100 * index),
           child: NoteCard(
             note: notes[index],
@@ -133,5 +135,14 @@ class _BuildNotesList extends StatelessWidget {
       mainAxisSpacing: AppSpacings.l,
       crossAxisSpacing: AppSpacings.l,
     );
+  }
+
+  int _getCrossAxisCount(BuildContext context) {
+    if (context.isDesktop) {
+      return 4;
+    } else if (context.isTablet) {
+      return 3;
+    }
+    return 2;
   }
 }
