@@ -4,8 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
 class AppTypography {
-  AppTypography._();
-
   static final TextStyle headline1 = GoogleFonts.montserrat(
     fontWeight: FontWeight.bold,
     fontSize: 34,
