@@ -12,34 +12,31 @@ class ColorsBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInRight(
-      delay: const Duration(milliseconds: 600),
-      child: SafeArea(
-        minimum: const EdgeInsets.only(bottom: 12),
-        child: Material(
-          color: selectedColor,
-          child: SizedBox(
-            height: kToolbarHeight,
-            child: Center(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: colors
-                      .map(
-                        (color) => _ColorBox(
-                          color: color,
-                          isSelected: selectedColor == color,
-                          onTap: () => onChanged(color),
-                        ),
-                      )
-                      .toList(),
-                ),
+    return SafeArea(
+      minimum: const EdgeInsets.only(bottom: 12),
+      child: Material(
+        color: selectedColor,
+        child: SizedBox(
+          height: kToolbarHeight,
+          child: Center(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: colors
+                    .map(
+                      (color) => _ColorBox(
+                        color: color,
+                        isSelected: selectedColor == color,
+                        onTap: () => onChanged(color),
+                      ),
+                    )
+                    .toList(),
               ),
             ),
           ),
         ),
       ),
-    );
+    ).animate(delay: 600.ms).fadeIn().slideX();
   }
 }
 

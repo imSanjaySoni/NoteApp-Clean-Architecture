@@ -1,6 +1,6 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -31,46 +31,39 @@ class HomeScreen extends StatelessWidget {
         title: StringConstants.homeAppBarTitle,
         actions: context.watch<MultipleDeleteBloc>().state.mapOrNull(
               selected: (selectedNotes) => [
-                FadeIn(
-                  child: AppButton(
-                    child: Row(
-                      children: [
-                        Text(
-                          'Delete - ${selectedNotes.selectedIds.length}',
-                          style: AppTypography.headline6.copyWith(color: AppColors.white),
-                        ),
-                        const SizedBox(width: AppSpacings.xl),
-                        const Icon(FeatherIcons.trash2),
-                      ],
-                    ),
-                    onPressed: () {
-                      context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.delete());
-                    },
+                AppButton(
+                  child: Row(
+                    children: [
+                      Text(
+                        'Delete - ${selectedNotes.selectedIds.length}',
+                        style: AppTypography.headline6.copyWith(color: AppColors.white),
+                      ),
+                      const SizedBox(width: AppSpacings.xl),
+                      const Icon(FeatherIcons.trash2),
+                    ],
                   ),
+                  onPressed: () {
+                    context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.delete());
+                  },
                 ),
-                FadeIn(
-                  child: AppButton(
-                    child: const Icon(FeatherIcons.x),
-                    onPressed: () {
-                      context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.clearAll());
-                    },
-                  ),
+                AppButton(
+                  child: const Icon(FeatherIcons.x),
+                  onPressed: () {
+                    context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.clearAll());
+                  },
                 ),
-              ],
+              ].animate().fadeIn(),
             ),
       ),
 
       //* add new note button
-      floatingActionButton: FadeInRight(
-        delay: animationDuration,
-        child: FloatingActionButton(
-          tooltip: 'Add note',
-          onPressed: () {
-            context.router.push(AddUpdateNoteRoute());
-          },
-          child: const Icon(FeatherIcons.plus),
-        ),
-      ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'Add note',
+        onPressed: () {
+          context.router.push(AddUpdateNoteRoute());
+        },
+        child: const Icon(FeatherIcons.plus),
+      ).animate(delay: animationDuration).fadeIn().slideX(begin: 1),
 
       //* Show available notes list
       body: ValueListenableBuilder(
@@ -114,27 +107,23 @@ class _BuildNotesList extends StatelessWidget {
       itemCount: notes.length,
       itemBuilder: (BuildContext context, int index) {
         final noteId = notes[index].id!;
-        return FadeInUp(
-          key: ValueKey<String>(noteId),
-          duration: Duration(milliseconds: 100 * index),
-          child: NoteCard(
-            note: notes[index],
-            selected: multipleDeleteBloc.isSelected(noteId),
-            onTap: () {
-              multipleDeleteBloc.state.maybeMap(
-                orElse: () {
-                  context.router.push(NoteDetailRoute(noteId: noteId));
-                },
-                selected: (_) {
-                  multipleDeleteBloc.add(MultipleDeleteEvent.toggleSelect(noteId));
-                },
-              );
-            },
-            onSelect: () {
-              multipleDeleteBloc.add(MultipleDeleteEvent.toggleSelect(noteId));
-            },
-          ),
-        );
+        return NoteCard(
+          note: notes[index],
+          selected: multipleDeleteBloc.isSelected(noteId),
+          onTap: () {
+            multipleDeleteBloc.state.maybeMap(
+              orElse: () {
+                context.router.push(NoteDetailRoute(noteId: noteId));
+              },
+              selected: (_) {
+                multipleDeleteBloc.add(MultipleDeleteEvent.toggleSelect(noteId));
+              },
+            );
+          },
+          onSelect: () {
+            multipleDeleteBloc.add(MultipleDeleteEvent.toggleSelect(noteId));
+          },
+        ).animate().fadeIn(delay: 100.ms * index).moveX(delay: 100.ms * index);
       },
       mainAxisSpacing: AppSpacings.l,
       crossAxisSpacing: AppSpacings.l,

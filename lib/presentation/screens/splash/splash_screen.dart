@@ -1,6 +1,6 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/strings.dart';
 import 'package:note_app/presentation/routes/routes.dart';
@@ -35,13 +35,10 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Scaffold(
         backgroundColor: Colors.black,
         body: Center(
-          child: FadeIn(
-            duration: animationDuration,
-            child: Text(
-              StringConstants.appName,
-              style: AppTypography.headline1.copyWith(color: AppColors.white),
-            ),
-          ),
+          child: Text(
+            StringConstants.appName,
+            style: AppTypography.headline1.copyWith(color: AppColors.white),
+          ).animate().fadeIn(duration: animationDuration),
         ),
       ),
     );
