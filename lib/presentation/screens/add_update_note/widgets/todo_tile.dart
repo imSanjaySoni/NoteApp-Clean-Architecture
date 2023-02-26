@@ -24,7 +24,7 @@ class _AddTodoTile extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             Text(
-              'Add todo',
+              StringConstants.todoTitle,
               style: AppTypography.headline6,
             ),
           ],
@@ -53,12 +53,20 @@ class _TodoFieldTile extends StatefulWidget {
 }
 
 class _TodoFieldTileState extends State<_TodoFieldTile> {
+  late FocusNode focusNode;
   late TextEditingController todoController;
 
   @override
   void initState() {
     super.initState();
+    focusNode = FocusNode()..requestFocus();
     todoController = TextEditingController(text: widget.value);
+  }
+
+  @override
+  void dispose() {
+    todoController.dispose();
+    super.dispose();
   }
 
   @override
@@ -67,12 +75,13 @@ class _TodoFieldTileState extends State<_TodoFieldTile> {
       dense: true,
       contentPadding: EdgeInsets.zero,
       title: TextField(
+        focusNode: focusNode,
         controller: todoController,
         style: AppTypography.headline6,
         decoration: InputDecoration(
           isDense: true,
           border: InputBorder.none,
-          hintText: 'Todo..',
+          hintText: StringConstants.todoPlaceholder,
           hintStyle: AppTypography.headline6.copyWith(
             color: AppColors.title.withOpacity(0.6),
           ),
@@ -122,18 +131,14 @@ class _BuildTodoListField extends StatelessWidget {
                     );
               },
               onRemoved: () {
-                context
-                    .read<AddUpdateFormBloc>()
-                    .add(AddUpdateFormEvent.deleteTodo(todo.id!));
+                context.read<AddUpdateFormBloc>().add(AddUpdateFormEvent.deleteTodo(todo.id!));
               },
             );
           },
         ),
         _AddTodoTile(
           onAdd: () {
-            context
-                .read<AddUpdateFormBloc>()
-                .add(const AddUpdateFormEvent.addEmptyTodo());
+            context.read<AddUpdateFormBloc>().add(const AddUpdateFormEvent.addEmptyTodo());
           },
         ),
       ],

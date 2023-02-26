@@ -19,7 +19,7 @@ class _BuildTitleField extends StatelessWidget {
           Opacity(
             opacity: 0.6,
             child: Text(
-              'Title',
+              StringConstants.titlePlaceholder,
               style: AppTypography.headline1,
               softWrap: true,
             ),
@@ -65,7 +65,7 @@ class _BuildDescriptionField extends StatelessWidget {
           Opacity(
             opacity: 0.6,
             child: Text(
-              'Type something...',
+              StringConstants.descriptionPlaceholder,
               style: AppTypography.headline6,
               softWrap: true,
             ),

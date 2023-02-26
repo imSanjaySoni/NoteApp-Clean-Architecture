@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/extension/random.dart';
+import 'package:note_app/common/strings.dart';
 import 'package:note_app/domain/model/note.dart';
 import 'package:note_app/presentation/components/components.dart';
 import 'package:note_app/presentation/theme/colors.dart';
@@ -59,7 +60,7 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
 
             //* show overlay screen while saving.
             context.watch<AddUpdateBloc>().state.maybeMap(
-                  orElse: () => Container(),
+                  orElse: () => const SizedBox.shrink(),
                   saving: (_) => FadeIn(
                     child: Container(
                       color: Colors.black.withOpacity(0.2),
