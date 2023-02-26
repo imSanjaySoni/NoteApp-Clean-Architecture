@@ -31,26 +31,30 @@ class HomeScreen extends StatelessWidget {
         title: StringConstants.homeAppBarTitle,
         actions: context.watch<MultipleDeleteBloc>().state.mapOrNull(
               selected: (selectedNotes) => [
-                AppButton(
-                  child: Row(
-                    children: [
-                      Text(
-                        'Delete - ${selectedNotes.selectedIds.length}',
-                        style: AppTypography.headline6.copyWith(color: AppColors.white),
-                      ),
-                      const SizedBox(width: AppSpacings.xl),
-                      const Icon(FeatherIcons.trash2),
-                    ],
+                FadeIn(
+                  child: AppButton(
+                    child: Row(
+                      children: [
+                        Text(
+                          'Delete - ${selectedNotes.selectedIds.length}',
+                          style: AppTypography.headline6.copyWith(color: AppColors.white),
+                        ),
+                        const SizedBox(width: AppSpacings.xl),
+                        const Icon(FeatherIcons.trash2),
+                      ],
+                    ),
+                    onPressed: () {
+                      context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.delete());
+                    },
                   ),
-                  onPressed: () {
-                    context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.delete());
-                  },
                 ),
-                AppButton(
-                  child: const Icon(FeatherIcons.x),
-                  onPressed: () {
-                    context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.clearAll());
-                  },
+                FadeIn(
+                  child: AppButton(
+                    child: const Icon(FeatherIcons.x),
+                    onPressed: () {
+                      context.read<MultipleDeleteBloc>().add(const MultipleDeleteEvent.clearAll());
+                    },
+                  ),
                 ),
               ],
             ),
@@ -101,7 +105,7 @@ class _BuildNotesList extends StatelessWidget {
   Widget build(BuildContext context) {
     final multipleDeleteBloc = context.read<MultipleDeleteBloc>();
 
-    return AlignedGridView.count(
+    return MasonryGridView.count(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacings.xl,
         vertical: AppSpacings.xl,
