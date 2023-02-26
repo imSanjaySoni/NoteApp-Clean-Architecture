@@ -1,5 +1,5 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/common/extension/random.dart';
 import 'package:note_app/common/strings.dart';
@@ -59,14 +59,18 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
             ),
 
             //* show overlay screen while saving.
-            context.watch<AddUpdateBloc>().state.maybeMap(
+            context
+                .watch<AddUpdateBloc>()
+                .state
+                .maybeMap(
                   orElse: () => const SizedBox.shrink(),
-                  saving: (_) => FadeIn(
-                    child: Container(
-                      color: Colors.black.withOpacity(0.2),
-                    ),
+                  saving: (_) => Container(
+                    color: Colors.black.withOpacity(0.2),
                   ),
-                ),
+                )
+                .animate()
+                .fadeIn()
+                .shimmer(),
           ],
         );
       },

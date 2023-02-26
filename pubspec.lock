@@ -17,14 +17,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.2.0"
-  animate_do:
-    dependency: "direct main"
-    description:
-      name: animate_do
-      sha256: "9aeacc1a7238f971c039bdf45d13c628be554a242e0251c4ddda09d19a1a923f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.2"
   args:
     dependency: transitive
     description:
@@ -262,6 +254,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_animate:
+    dependency: "direct main"
+    description:
+      name: flutter_animate
+      sha256: c6e38af9fe376fa07fb6995fe6a12d07a08828d2847aa652b7c1bc60f9993374
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   flutter_bloc:
     dependency: "direct main"
     description:
