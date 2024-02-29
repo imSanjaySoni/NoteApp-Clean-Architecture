@@ -8,14 +8,14 @@ import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/spacing.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
-class NoteAppBar extends StatelessWidget with PreferredSizeWidget {
+class NoteAppBar extends StatelessWidget implements PreferredSizeWidget {
   const NoteAppBar({
-    Key? key,
+    super.key,
     this.autoImplementLeading = true,
     this.title,
     this.actions,
     this.systemUiOverlayStyle = SystemUiOverlayStyle.dark,
-  }) : super(key: key);
+  });
 
   final bool autoImplementLeading;
   final String? title;
@@ -52,16 +52,13 @@ class NoteAppBar extends StatelessWidget with PreferredSizeWidget {
                       )
                     : const Spacer(),
                 if (actions != null) ...{
-                  ...actions!
-                      .mapIndexed(
-                        (action, i) => Padding(
-                          padding: (i == actions!.length - 1)
-                              ? EdgeInsets.zero
-                              : const EdgeInsets.only(right: AppSpacings.l),
-                          child: action,
-                        ),
-                      )
-                      .toList(),
+                  ...actions!.mapIndexed(
+                    (action, i) => Padding(
+                      padding:
+                          (i == actions!.length - 1) ? EdgeInsets.zero : const EdgeInsets.only(right: AppSpacings.l),
+                      child: action,
+                    ),
+                  ),
                 },
               ],
             ),
