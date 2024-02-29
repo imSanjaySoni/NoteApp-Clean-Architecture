@@ -4,11 +4,14 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_app/common/constants.dart';
 import 'package:note_app/data/dto/note_dto.dart';
 import 'package:note_app/observer.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'di/di.dart';
 import 'presentation/app.dart';
 
 Future main() async {
+  setPathUrlStrategy();
+
   //* observe bloc logs
   Bloc.observer = MyBlocObserver();
 

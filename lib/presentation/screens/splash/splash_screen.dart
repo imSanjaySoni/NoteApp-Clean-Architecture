@@ -7,8 +7,9 @@ import 'package:note_app/presentation/routes/routes.dart';
 import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
+@RoutePage()
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();

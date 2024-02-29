@@ -4,7 +4,7 @@ import 'package:note_app/presentation/theme/colors.dart';
 import 'package:note_app/presentation/theme/typography.dart';
 
 class ErrorText extends StatelessWidget {
-  const ErrorText(this.message, {Key? key}) : super(key: key);
+  const ErrorText(this.message, {super.key});
   final String message;
 
   @override

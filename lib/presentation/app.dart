@@ -8,18 +8,15 @@ import 'theme/theme.dart';
 export 'screens/screens.dart';
 
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
-
-  AppRouter get _router => getIt<AppRouter>();
+  const App({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      routerConfig: getIt<AppRouter>().config(),
       title: StringConstants.appName,
       debugShowCheckedModeBanner: false,
-      routeInformationParser: _router.defaultRouteParser(),
-      routerDelegate: _router.delegate(),
-      theme: AppTheme.light,
+      theme: AppTheme.dark,
     );
   }
 }

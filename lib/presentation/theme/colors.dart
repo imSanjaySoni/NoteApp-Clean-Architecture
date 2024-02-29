@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const primary = Color(0xff333333);
   static const secondary = Color(0xFFFFC833);
+  static const tertiary = Color(0xff252525);
 
   static const info = Color(0xFF2277FE);
   static const success = Color(0xFF53D1B6);

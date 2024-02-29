@@ -8,11 +8,11 @@ export 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
-    Key? key,
+    super.key,
     required this.child,
     required this.onPressed,
     this.isLoading = false,
-  }) : super(key: key);
+  });
 
   final Widget? child;
   final VoidCallback? onPressed;

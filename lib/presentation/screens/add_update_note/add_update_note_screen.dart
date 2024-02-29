@@ -16,8 +16,10 @@ part 'widgets/colors_bar.dart';
 part 'widgets/text_forms.dart';
 part 'widgets/todo_tile.dart';
 
+@RoutePage()
 class AddUpdateNoteScreen extends StatefulWidget {
-  const AddUpdateNoteScreen({Key? key, this.note}) : super(key: key);
+  const AddUpdateNoteScreen({super.key, this.note});
+
   final Note? note;
 
   @override
@@ -80,14 +82,12 @@ class _AddUpdateNoteScreenState extends State<AddUpdateNoteScreen> {
 
 class _BuildForm extends StatelessWidget {
   const _BuildForm({
-    Key? key,
     required this.widget,
     required TextEditingController titleController,
     required TextEditingController descriptionController,
     required this.state,
   })  : _titleController = titleController,
-        _descriptionController = descriptionController,
-        super(key: key);
+        _descriptionController = descriptionController;
 
   final AddUpdateNoteScreen widget;
   final TextEditingController _titleController;
