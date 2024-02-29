@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
 class AppTheme {
-  static ThemeData light = ThemeData(
-    scaffoldBackgroundColor: const Color(0xff252525),
+  static ThemeData dark = ThemeData(
+    useMaterial3: true,
+    scaffoldBackgroundColor: AppColors.tertiary,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.white,
       centerTitle: false,
@@ -22,15 +23,15 @@ class AppTheme {
       primary: AppColors.primary,
     ),
     textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Color(0xff252525),
-      selectionHandleColor: Color(0xff252525),
+      cursorColor: AppColors.tertiary,
+      selectionHandleColor: AppColors.tertiary,
       selectionColor: Colors.black26,
     ),
-    checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.all(const Color(0xff252525)),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(40)),
-      ),
+    checkboxTheme: const CheckboxThemeData(
+      shape: CircleBorder(),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: Colors.deepPurple,
     ),
   );
 }

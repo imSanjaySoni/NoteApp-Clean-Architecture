@@ -2,11 +2,9 @@ part of '../add_update_note_screen.dart';
 
 class _BuildTitleField extends StatelessWidget {
   const _BuildTitleField({
-    Key? key,
     required this.state,
     required TextEditingController titleController,
-  })  : _titleController = titleController,
-        super(key: key);
+  }) : _titleController = titleController;
 
   final AddUpdateFormState state;
   final TextEditingController _titleController;
@@ -48,11 +46,9 @@ class _BuildTitleField extends StatelessWidget {
 
 class _BuildDescriptionField extends StatelessWidget {
   const _BuildDescriptionField({
-    Key? key,
     required this.state,
     required TextEditingController descriptionController,
-  })  : _descriptionController = descriptionController,
-        super(key: key);
+  }) : _descriptionController = descriptionController;
 
   final AddUpdateFormState state;
   final TextEditingController _descriptionController;

@@ -19,8 +19,9 @@ import 'bloc/home_bloc.dart';
 import 'bloc/multiple_delete/multiple_delete_bloc.dart';
 import 'widgets/note_card.dart';
 
+@RoutePage()
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +59,7 @@ class HomeScreen extends StatelessWidget {
 
       //* add new note button
       floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
         tooltip: 'Add note',
         onPressed: () {
           context.router.push(AddUpdateNoteRoute());
@@ -87,10 +89,7 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _BuildNotesList extends StatelessWidget {
-  const _BuildNotesList({
-    Key? key,
-    required this.notes,
-  }) : super(key: key);
+  const _BuildNotesList({required this.notes});
 
   final List<Note> notes;
 

@@ -9,12 +9,12 @@ import 'package:note_app/presentation/theme/typography.dart';
 
 class NoteCard extends StatelessWidget {
   const NoteCard({
-    Key? key,
+    super.key,
     required this.note,
     this.selected = false,
     this.onSelect,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final Note note;
   final bool selected;
